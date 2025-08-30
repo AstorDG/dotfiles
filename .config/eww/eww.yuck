@@ -1,0 +1,149 @@
+; ======================================================================
+; =====                   Variables section                       ======
+; ======================================================================
+
+;Defines where to call eww commands
+(defvar eww "~/eww/target/release")
+(defvar musicClicked false)
+(defpoll musicPlayingStatus :interval "2s" :initial " " "~/.config/eww/bar/scripts/music_playing_status")
+; current tied to spotify but the plyaer can be changed if a different music client is used
+(deflisten currentSong :initial " Temp Song - Temp Artist" "playerctl metadata --player=spotify  --format '{{title}} - {{artist}}' --follow")
+
+;Polls the system time every 10 seconds and formats it as 12 hour clock 
+(defpoll time     
+	:interval "10s"
+	:initial "12:00"
+	"date '+%I:%M %p, %A %B %d'")
+
+; ======================================================================
+; =====                   Widget section                          ======
+; ======================================================================
+
+(defwidget hardwareMonitor []
+	(box
+		:class "hardwareMonitor"
+		:hexpand true
+		:orientation "horizontal"
+		"hardware monitor here"))
+
+;make currently selected workspace color Red and non selected white
+(defwidget workspaceWork []
+	(box 
+		:class "workSpace"
+		:hexpand true
+		:orientation "horizontal"
+		"Work"))
+
+(defwidget powerMenu []
+	(eventbox 
+	;systemctl suspend sleep command
+		:cursor "pointer"
+		(button
+			:onclick "scripts/power_menu_toggle.sh"
+			:class "powerMenu"
+			:hexpand true
+			:orientation "horizontal"
+			"󰐥")))
+
+(defwidget workspaceGame []
+	(box 
+		:class "workSpace"
+		:hexpand true
+		:orientation "horizontal"
+		"Game"))
+
+(defwidget musicPlayer []
+	(eventbox
+		:cursor "pointer"
+		(button
+			:onclick "scripts/music_window_toggle.sh"
+			(box 
+				:class "musicPlayer"
+				:orientation "horizontal"
+				:halign "center"
+				:spacing 0
+				:space-evenly false
+				; ;Current song that's playing
+				(box 
+					:class "currentSong"
+					:orientation "horizontal"
+					currentSong
+				)
+			)
+		)
+	)
+)
+
+; defines the dateTime widget, which displays the current date and time
+(defwidget dateTime []
+	(box
+		:class "dateTime"
+		:orientation "horizontal"
+		time))
+
+; ;;Left, Center and Right side of panels. These are sectioned like this so that widgets can be rearranged without needing to reformat their alignment
+; ;;Figure out making the boxes first and have their layout working before implementing functionality for the widgets
+
+; ;;Left side of panel
+(defwidget left []
+	(box 
+		:orientation "horizontal"
+		:spacing 0
+		:halign "start"
+		(hardwareMonitor)
+	))
+
+;Center of bar
+(defwidget center []
+	(box
+		:orientation "horizontal"
+		:spacing 5
+		:halign "center"
+		(workspaceWork)
+		(powerMenu)
+		(workspaceGame)
+		))
+
+;Right side of panel
+(defwidget right []
+	(box
+	:orientation "horizontal"
+	:spacing 2
+	:halign "end"
+	(musicPlayer)
+	(dateTime)))
+
+;panel widget to unify the left, center and right sections under one scss class
+(defwidget panel [] 
+	(box
+		:class "eww_panel"
+		:orientation "horizontal"
+		(left)
+		(center)
+		(right)
+	))
+
+; ======================================================================
+; =====                   Window section                          ======
+; ======================================================================
+
+(defwindow panel
+	:monitor 0
+	:geometry (geometry :x "0%" :y "0%" :width "100%" :height "5.0%" :anchor "bottom center")
+	:stacking "fg"
+	:reserve (struts :distance "5.1%" :side "bottom")
+	:windowtype "dock"
+	:wm-ignore true
+	(panel))
+
+(defwindow music_window
+	:monitor 0
+	:geometry (geometry :x "50px" :y "50px" :width "100px" :height "100px")
+	:stacking "fg"
+	"Hello there")
+
+(defwindow power_menu
+	:monitor 0
+	:geometry  (geometry :x "100px" :y "100px" :width "100px" :height "100px")
+	:stacking "fg"
+	"Hello from the power button")
