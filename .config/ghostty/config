@@ -1,26 +1,12 @@
-# # The config file consists of simple key-value pairs,
-# # separated by equals signs.
-# font-family = Iosevka
-# window-padding-x = 2
-#
-# # Spacing around the equals sign does not matter.
-# # All of these are identical:
-# key=value
-# key= value
-# key =value
-# key = value
-#
-# Any line beginning with a # is a comment. It's not possible to put
-# # a comment after a config option, since it would be interpreted as a
-# # part of the value. For example, this will have a value of "#123abc":
-# background = #123abc
+# Spacing around the equals sign does not matter.
+# Any line beginning with a # is a comment.
 
 # Display settings
-theme = catppuccin-mocha
+theme = Fahrenheit
 font-size = 13
 font-family = "Jetbrains Mono"
 window-decoration = false
-background-opacity = 1
+background-opacity = .7
 background-blur = true
 #command = fastfetch
 
