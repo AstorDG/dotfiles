@@ -3,7 +3,7 @@
 
 # Display settings
 theme = Tomorrow Night Burns
-font-size = 13
+font-size = 14
 font-family = "Jetbrains Mono"
 window-decoration = false
 background-opacity = .7
