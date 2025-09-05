@@ -15,7 +15,7 @@
 	// left_workspaces, power, right workspaces
     "modules-center": ["hyprland/workspaces#left", "hyprland/workspaces#right"],
 	// systray, music, cava art, time
-    // "modules-right": [ "tray", "mpris", "custom/cava", "custom/swaync"],
+    "modules-right": [ "clock" ],
 
 // ========================================
 
@@ -74,6 +74,11 @@
 
 // ========================================
 
+	"clock": {
+		"format": "{:%I:%M}",
+		"interval": 60,
+		"max-length": 25
+	},
 }
 // ============ Media =======================
 //
@@ -137,11 +142,6 @@
 //         //   "blueman": "bluetooth",
 //         //   "TelegramDesktop": "$HOME/.local/share/icons/hicolor/16x16/apps/telegram.png"
 //         // }
-//     },
-//     "clock": {
-//         // "timezone": "America/New_York",
-//         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-//         "format-alt": "{:%Y-%m-%d}"
 //     },
 //     "temperature": {
 //         // "thermal-zone": 2,
