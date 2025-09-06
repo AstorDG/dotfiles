@@ -16,6 +16,17 @@ window#waybar.hidden {
     opacity: 0.2;
 }
 
+
+#workspaces button.active {
+	background-color: #000000;
+	color: #ffffff;
+}
+
+#workspaces button.visible {
+	background-color: #000000;
+	color: #ffffff;
+}
+
 /*
 window#waybar.empty {
     background-color: transparent;

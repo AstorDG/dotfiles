@@ -11,13 +11,14 @@
 	"height": 0,
 
 	//power, internet, ram 50%, cpu 15% 45 deg, gpu 15% 45 deg
-    "modules-left": [ "battery", "network", "memory", "cpu", "temperatrue","custom/gpu-usage", ],
+    "modules-left": [ "battery", "network", "memory", "cpu", "custom/gpu-usage" ],
 	// left_workspaces, power, right workspaces
-    "modules-center": ["hyprland/workspaces#left", "hyprland/workspaces#right"],
+    "modules-center": [ "hyprland/workspaces#left", "custom/power", "hyprland/workspaces#right" ],
 	// systray, music, cava art, time
-    "modules-right": [ "clock" ],
+    "modules-right": [ "tray", "mpris", "pulseaudio", "cava", "clock" ],
 
 // ========================================
+
 
 
 // ======= hardware tracking ===============
@@ -42,12 +43,6 @@
 		"interval": 5
 	},
 
-	"temperature": {
-		"thermal-zone": 1,
-		"format": "{temperatureC}°C ",
-		"interval": 5
-	},
-
 	"custom/gpu-usage": {
 		"exec": "cat /sys/class/hwmon/hwmon3/device/gpu_busy_percent",
 		"format": "󰾲 {}%",
@@ -57,164 +52,74 @@
 // =========== Workspaces =================
 
 	"hyprland/workspaces#left": {
-		"format": "{name}",
-		"ignore-workspaces": [
-			"^[02468]$",
-			"^[0-9]*[02468]$"
-		]
+		
+		"format": "{name}: {icon}",
+		"format-icons": {
+			"1": "",
+			"3": "",
+			"5": "󰙨",
+			"7": "󱎓",
+		},
+		"ignore-workspaces": [ "^[246]$" ],
+		"persistent-workspaces": { "DP-2": [1,3,5,7] }
+	},
+
+	"custom/power": {
+		"format": "󰐥",
+		"on-click": "wlogout"
 	},
 
 	"hyprland/workspaces#right": {
-		"format": "{name}",
-		"ignore-workspaces": [
-			"^[13579]",
-			"^[0-9]*[13579]$"
-		]
-	},
+		"format": "{name}: {icon}",
+		"format-icons": {
+		 	"2": "",
+		 	"4": "",
+		 	"6": ""
+		},
+		"ignore-workspaces": [ "^[1357]$" ],
+		"persistent-workspaces": { "HDMI-A-1" [2,4,6] }
 
 // ========================================
 
+// ============== tray, time ==============
+
+	"tray": {
+		"icon-size": 15,
+		"spacing": 10
+ 		// for overriding icons
+		// "icons": {
+		//   "blueman": "bluetooth",
+		// }
+	},
+
 	"clock": {
-		"format": "{:%I:%M}",
+		"format": "{%a:%b:%d:%I:%M}",
 		"interval": 60,
 		"max-length": 25
 	},
+
+
+// ========================================
+
+// ============= Media ====================
+	"mpris": {
+		"player": "playerctld",
+		"interval": 5,
+		"format": "{player} {status_icon} {artist} {title}",
+		"status-icons": {
+			"paused": " Paused",
+			"playing": " Playing"
+		}, 
+	},
+
+	"pulseaudio": {
+		"format": "{volume}% ",
+		"scroll-step": 1
+	},
+
+	// can use the native cava module
+	"cava": {
+		"framerate": 30,
+		"bars": 12,
+	}
 }
-// ============ Media =======================
-//
-// 	"mpris": {
-// 		"format": "{status_icon}",
-//
-// 		"player-icons": {
-// 			"default": "▶  Playing"
-// 		},
-//
-// 		"status-icons": {
-// 			"paused":   Paused",
-//     		"playing": "  Playing",
-// 		},
-// 		"tooltip": false
-// 	},
-//
-// // =======================================
-//
-//
-//     // Modules configuration
-//     "hyprland/Left_workspaces": {
-//         "disable-scroll": true,
-//         "all-outputs": true,
-//         "warp-on-scroll": false,
-//         "format": "{name}: {icon}",
-//         "format-icons": {
-//             "Code": "",
-//             "2": "",
-//             "3": "",
-//             "urgent": "",
-//             "active": "",
-//             "default": ""
-//         },
-// 		"persistent-workspaces": {
-// 			"*": 3
-// 		}
-//     },
-//     "sway/mode": {
-//         "format": "<span style=\"italic\">{}</span>"
-//     },
-//     "sway/scratchpad": {
-//         "format": "{icon} {count}",
-//         "show-empty": false,
-//         "format-icons": ["", ""],
-//         "tooltip": true,
-//         "tooltip-format": "{app}: {title}"
-//     },
-//     "idle_inhibitor": {
-//         "format": "{icon}",
-//         "format-icons": {
-//             "activated": "",
-//             "deactivated": ""
-//         }
-//     },
-//     "tray": {
-//         "icon-size": 20,
-//         "spacing": 10,
-// 		// for overriding icons
-//         // "icons": {
-//         //   "blueman": "bluetooth",
-//         //   "TelegramDesktop": "$HOME/.local/share/icons/hicolor/16x16/apps/telegram.png"
-//         // }
-//     },
-//     "temperature": {
-//         // "thermal-zone": 2,
-//         // "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
-//         "critical-threshold": 80,
-//         // "format-critical": "{temperatureC}°C {icon}",
-//         "format": "{temperatureC}°C {icon}",
-//         "format-icons": ["", "", ""]
-//     },
-//     "backlight": {
-//         // "device": "acpi_video1",
-//         "format": "{percent}% {icon}",
-//         "format-icons": ["", "", "", "", "", "", "", "", ""]
-//     },
-//     "battery": {
-//         "states": {
-//             // "good": 95,
-//             "warning": 30,
-//             "critical": 15
-//         },
-//         "format": "{capacity}% {icon}",
-//         "format-full": "{capacity}% {icon}",
-//         "format-charging": "{capacity}% ",
-//         "format-plugged": "{capacity}% ",
-//         "format-alt": "{time} {icon}",
-//         // "format-good": "", // An empty format will hide the module
-//         // "format-full": "",
-//         "format-icons": ["", "", "", "", ""]
-//     },
-//     "battery#bat2": {
-//         "bat": "BAT2"
-//     },
-//     "pulseaudio": {
-//         // "scroll-step": 1, // %, can be a float
-//         "format": "{volume}% {icon} {format_source}",
-//         "format-bluetooth": "{volume}% {icon} {format_source}",
-//         "format-bluetooth-muted": " {icon} {format_source}",
-//         "format-muted": " {format_source}",
-//         "format-source": "{volume}% ",
-//         "format-source-muted": "",
-//         "format-icons": {
-//             "headphone": "",
-//             "hands-free": "",
-//             "headset": "",
-//             "phone": "",
-//             "portable": "",
-//             "car": "",
-//             "default": ["", "", ""]
-//         },
-//         "on-click": "pavucontrol"
-//     },
-//     "custom/media": {
-//         "format": "{icon} {text}",
-//         "return-type": "json",
-//         "max-length": 40,
-//         "format-icons": {
-//             "spotify": "",
-//             "default": "🎜"
-//         },
-//         "escape": true,
-//         "exec": "$HOME/.config/waybar/mediaplayer.py 2> /dev/null" // Script in resources folder
-//         // "exec": "$HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null" // Filter player based on name
-//     },
-//     "custom/power": {
-//         "format" : "⏻ ",
-// 		"tooltip": false,
-// 		"menu": "on-click",
-// 		"menu-file": "$HOME/.config/waybar/power_menu.xml", // Menu file in resources folder
-// 		"menu-actions": {
-// 			"shutdown": "shutdown",
-// 			"reboot": "reboot",
-// 			"suspend": "systemctl suspend",
-// 			"hibernate": "systemctl hibernate"
-// 		}
-//     }
-// }
