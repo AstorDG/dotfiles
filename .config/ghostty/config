@@ -2,7 +2,7 @@
 # Any line beginning with a # is a comment.
 
 # Display settings
-theme = Tomorrow Night Burns
+theme = Fahrenheit
 font-size = 17
 font-family = "Jetbrains Mono"
 window-decoration = false
