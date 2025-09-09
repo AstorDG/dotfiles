@@ -81,7 +81,7 @@
 // ============== time ==============
 
 	"clock": {
-		"format": "{:%a %d %H:%M}",
+		"format": "{:%a %d %I:%M}",
 		"interval": 60,
 		"max-length": 25,
 		"tooltip": true,
