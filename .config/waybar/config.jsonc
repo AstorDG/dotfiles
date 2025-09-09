@@ -60,7 +60,7 @@
 	},
 
 	"custom/power": {
-		"format": "󰐥",
+		"format": "",
 		"on-click": "wlogout"
 	},
 
@@ -70,9 +70,10 @@
 		 	"2": "",
 		 	"4": "",
 		 	"6": "",
+			"8": "",
 		},
 		"ignore-workspaces": [ "^[1357]$" ],
-		"persistent-workspaces": { "HDMI-A-1": [2,4,6] }
+		"persistent-workspaces": { "DP-2": [2,4,6,8] }
 	},
 
 // ========================================
