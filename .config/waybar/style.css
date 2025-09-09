@@ -64,6 +64,7 @@ tooltip label {
 }
 
 #custom-power {
+	font-size: 30px;
 	color: #720102;
 	margin: 10px 5px;
 	padding: 0px 13px;
