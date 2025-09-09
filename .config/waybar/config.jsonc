@@ -95,10 +95,10 @@
 	"mpris": {
 		"player": "playerctld",
 		"interval": 1,
-		"format": "{player} {status_icon}",
+		"format": "{player} {status_icon} {title}",
 		"status-icons": {
-			"paused": " Paused",
-			"playing": " Playing"
+			"paused": "",
+			"playing": ""
 		}, 
 	},
 
