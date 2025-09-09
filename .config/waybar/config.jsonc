@@ -10,43 +10,38 @@
 	"margin-top": 10, "margin-bottom": 0,
 	"height": 0,
 
-	//power, internet, ram 50%, cpu 15% 45 deg, gpu 15% 45 deg
-    "modules-left": [ "battery", "network", "memory", "cpu", "custom/gpu-usage" ],
+	// internet, ram 50%, cpu 15% , gpu 15% 
+    "modules-left": [ "group/hardware" ],
 	// left_workspaces, power, right workspaces
     "modules-center": [ "hyprland/workspaces#left", "custom/power", "hyprland/workspaces#right" ],
 	// systray, music, cava art, time
-    "modules-right": [ "tray", "mpris", "pulseaudio", "cava", "clock" ],
+    "modules-right": [ "tray", "group/media", "clock" ],
 
 // ========================================
 
 
-
 // ======= hardware tracking ===============
-
-	"battery": {
-		"format": "󱩘 {power} %",
-		"interval": 5
-	},
 
 	"network": {
 		"format": "󰳘 {bandwidthUpBytes} 󰱦 {bandwidthDownBytes}",
-		"interval": 3
+		"interval": 2,
+		"min-length": 20
 	},
 
 	"memory": {
 		"format": " {}%",
-		"interval": 5
+		"interval": 2
 	},
 
 	"cpu": {
 		"format": " {usage}%",
-		"interval": 5
+		"interval": 2
 	},
 
 	"custom/gpu-usage": {
 		"exec": "cat /sys/class/hwmon/hwmon3/device/gpu_busy_percent",
 		"format": "󰾲 {}%",
-		"interval": 5
+		"interval": 2
 	},
 
 // =========== Workspaces =================
@@ -74,10 +69,11 @@
 		"format-icons": {
 		 	"2": "",
 		 	"4": "",
-		 	"6": ""
+		 	"6": "",
 		},
 		"ignore-workspaces": [ "^[1357]$" ],
-		"persistent-workspaces": { "HDMI-A-1" [2,4,6] }
+		"persistent-workspaces": { "HDMI-A-1": [2,4,6] }
+	},
 
 // ========================================
 
@@ -93,9 +89,11 @@
 	},
 
 	"clock": {
-		"format": "{%a:%b:%d:%I:%M}",
+		"format": "{:%a %d %H:%M}",
 		"interval": 60,
-		"max-length": 25
+		"max-length": 25,
+		"tooltip": true,
+		"tooltip-format":"{:%B-%Y}"
 	},
 
 
@@ -104,8 +102,8 @@
 // ============= Media ====================
 	"mpris": {
 		"player": "playerctld",
-		"interval": 5,
-		"format": "{player} {status_icon} {artist} {title}",
+		"interval": 1,
+		"format": "{player} {status_icon}",
 		"status-icons": {
 			"paused": " Paused",
 			"playing": " Playing"
@@ -119,7 +117,31 @@
 
 	// can use the native cava module
 	"cava": {
-		"framerate": 30,
+		"cava_config": "~/.config/cava/cava.conf",
+		"autosens": 1,
 		"bars": 12,
-	}
+		"lower_cutoff_freq": 50,
+		"higher_cutoff_freq": 10000,
+		"method": "pulse",
+		"stero": true,
+		"noise_reduction": 0.77,
+		"input_delay": 2,
+		"format-icons": ["▁", "▂", "▃", "▄", "▅", "▆", "▇", "█" ],
+		"framerate": 30
+	},
+
+// ============= Groups ==============
+
+	"group/hardware": {
+		"orientation": "horizontal",
+		"modules": [ "network", "memory", "cpu", "custom/gpu-usage"]
+	},
+
+	"group/media": {
+		"orientation": "horizontal",
+		"modules": [ "cava", "mpris", "pulseaudio" ]
+	},
+
+//===================================
+
 }
