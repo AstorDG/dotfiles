@@ -100,6 +100,7 @@
 			"paused": "",
 			"playing": ""
 		}, 
+		"max-length": 20
 	},
 
 	"pulseaudio": {
