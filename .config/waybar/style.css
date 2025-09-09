@@ -72,27 +72,6 @@ tooltip label {
 	background-color: #000000;
 }
 
-/* Tray panel styling */
-#tray {
-	margin: 10px 10px;
-    border: 2px solid #D90202;
-    border-radius: 40px;
-    background-color: #136292;
-}
-
-#tray > widget {
-	margin: 2px 2px;
-	padding: 2px 15px;
-    transition: all 0.25s cubic-bezier(0.165, 0.84, 0.44, 1);
-    border-radius: 40px;
-}
-
-
-#tray menu > *:active, menu > *:active {
-	color: #D90202;
-	transition: all 0.25s cubic-bezier(0.165, 0.84, 0.44, 1);
-}
-
 #media {
 	color: #33d4c4;
 	margin: 10px 10px;
@@ -101,7 +80,7 @@ tooltip label {
 	background-color: #362921;
 }
 
-#cava, #mpris, #pulseaudio {
+#custom-cava, #mpris, #pulseaudio {
     border-radius: 30px;
 	margin: 2px 2px;
     padding: 0px 10px;
