@@ -20,6 +20,13 @@
 }
 
 {
+    "label" : "reboot",
+    "action" : "systemctl reboot",
+    "text" : "Reboot",
+    "keybind" : "r"
+}
+
+{
     "label" : "suspend",
     "action" : "systemctl suspend",
     "text" : "Suspend",
@@ -27,8 +34,8 @@
 }
 
 {
-    "label" : "reboot",
-    "action" : "systemctl reboot",
-    "text" : "Reboot",
-    "keybind" : "r"
+    "label" : "hibernate",
+    "action" : "systemctl hibernate",
+    "text" : "Hibernate",
+    "keybind" : "h"
 }
