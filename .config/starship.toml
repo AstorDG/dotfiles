@@ -128,9 +128,9 @@ disabled = false
 
 [character]
 disabled = false
-success_symbol = '[❯](bold fg:neon_green)'
+success_symbol = '[❯](bold fg:cyan)'
 error_symbol = '[❯](bold fg:bright_red)'
-vimcmd_symbol = '[❮](bold fg:neon_green)'
+vimcmd_symbol = '[❮](bold fg:cyan)'
 vimcmd_replace_one_symbol = '[❮](bold fg:neon_purple)'
 vimcmd_replace_symbol = '[❮](bold fg:neon_pruple)'
 vimcmd_visual_symbol = '[❮](bold fg:dark_yellow)'
