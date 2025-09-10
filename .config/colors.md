@@ -1,0 +1,8 @@
+- # This is a file to organize the colors I'm reusing in my dotfiles
+- It's helpful for keeping colors consistent
+- White: #FFFFFF
+- Black: #000000
+- Deep red: #720102
+- Bright red: #D90202
+- Rust Orange: #362921
+- Cyan: #33D4C4
