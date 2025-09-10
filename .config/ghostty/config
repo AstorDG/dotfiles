@@ -4,7 +4,7 @@
 # Display settings
 theme = Fahrenheit
 font-size = 17
-font-family = "Jetbrains Mono"
+font-family = "MonoidNerdFont"
 window-decoration = false
 background-opacity = .7
 background-blur = true
