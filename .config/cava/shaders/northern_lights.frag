@@ -1,0 +1,1 @@
+../../../dotfiles/.config/cava/shaders/northern_lights.frag

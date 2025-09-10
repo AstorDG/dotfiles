@@ -1,0 +1,1 @@
+../../../dotfiles/.config/cava/shaders/pass_through.vert
