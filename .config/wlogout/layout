@@ -28,14 +28,14 @@
 
 {
     "label" : "suspend",
-    "action" : "systemctl suspend",
+    "action" : "hyprlock & sleep 0.5; systemctl suspend",
     "text" : "Suspend",
     "keybind" : "u"
 }
 
 {
     "label" : "hibernate",
-    "action" : "systemctl hibernate",
+    "action" : "hyprlock & sleep 0.5; systemctl hibernate",
     "text" : "Hibernate",
     "keybind" : "h"
 }
