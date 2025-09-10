@@ -15,13 +15,14 @@ button {
 	background-repeat: no-repeat;
 	background-position: center;
 	background-size: 30%;
-	color: #FFFFFF;
+	color: #33D4C4;
 	margin: 8px;
 	padding: 10px;
 }
 
 button:hover {
 	background-color: #FFFFFF;
+	color: #33D4C4;
 	outline-style: none;
 }
 
