@@ -7,10 +7,10 @@
 - Rust Orange:  #B5340E
 - Dark Yellow:  #B58E0E
 - Neon Green:   #2CB03C
-- Neon Purple:  #932CB0
-- Light Purple: #3E2CB0
+- Neon Purple:  #932CB0 rgba(147,44 ,167, 1.0)
+- Light Purple: #3E2CB0 rgba(62 ,44 ,176, 1.0)
 - Neon Blue:    #3379D4
-- Cyan:         #33D4C4
+- Cyan:         #33D4C4 rgba(51 ,212,196,1.0)
 
 # Fonts
 - MonoidNerdFont
