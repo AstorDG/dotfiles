@@ -97,11 +97,11 @@ listview {
 }
 
 scrollbar {
-	background-color: @base03;
-	handle-color: @base0D;
-	handle-width: 10px;
-	border: 0 1px;
-	border-color: @base0D;
+	background-color: @White;
+	handle-color: @BrightRed;
+	handle-width: 15px;
+	handle-rounded-corners: true;
+	border-radius: 30px;
 	margin: 0 0 0 10px;
 }
 
