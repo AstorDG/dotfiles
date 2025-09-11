@@ -1,15 +1,15 @@
 "$schema" = 'https://starship.rs/config-schema.json'
 
 format = """
-[](bright_red)\
+[](cyan)\
 $os\
 $username\
-[](bg:rust_orange fg:bright_red)\
+[](bg:bright_red fg:cyan)\
 $directory\
-[](bg:dark_yellow fg:rust_orange)\
+[](bg:neon_purple fg:bright_red)\
 $git_branch\
 $git_status\
-[](bg:neon_green fg:dark_yellow)\
+[](bg:neon_blue fg:neon_purple)\
 $c\
 $cpp\
 $golang\
@@ -20,7 +20,7 @@ $odin\
 $python\
 $rust\
 $zig\
-[](fg:neon_green)\
+[](fg:neon_blue)\
 $line_break\
 $character"""
 
@@ -28,7 +28,7 @@ palette = 'custom_colors'
 
 [os]
 disabled = false
-style = "bg:bright_red fg:black"
+style = "bg:cyan fg:black"
 
 [os.symbols]
 Windows = ""
@@ -53,75 +53,75 @@ RedHatEnterprise = "󱄛"
 
 [username]
 show_always = true
-style_user = "bg:bright_red fg:black"
-style_root = "bg:bright_red fg:white"
+style_user = "bg:cyan fg:black"
+style_root = "bg:cyan fg:white"
 format = '[ $user]($style)'
 
 [directory]
-style = "bg:rust_orange fg:black"
+style = "bg:bright_red fg:black"
 format = "[ $path ]($style)"
 truncation_length = 0
 truncate_to_repo = false
 
 [git_branch]
 symbol = ""
-style = "bg:dark_yellow"
-format = '[[ $symbol $branch ](fg:black bg:dark_yellow)]($style)'
+style = "bg:neon_purple"
+format = '[[ $symbol $branch ](fg:black bg:neon_purple)]($style)'
 
 [git_status]
-style = "bg:dark_yellow"
-format = '[[($all_status$ahead_behind )](fg:black bg:dark_yellow)]($style)'
+style = "bg:neon_purple"
+format = '[[($all_status$ahead_behind )](fg:black bg:neon_purple)]($style)'
 
 
 [c]
 symbol = ""
-style = "bg:neon_green"
-format = '[[ $symbol( $version) ](fg:black bg:neon_green)]($style)'
+style = "bg:neon_blue"
+format = '[[ $symbol( $version) ](fg:black bg:neon_blue)]($style)'
 
 [cpp]
 symbol = ""
-style = "bg:neon_green"
-format = '[[ $symbol( $version) ](fg:black bg:neon_green)]($style)'
+style = "bg:neon_blue"
+format = '[[ $symbol( $version) ](fg:black bg:neon_blue)]($style)'
 
 [golang]
 symbol = ""
-style = "bg:neon_green"
-format = '[[ $symbol( $version) ](fg:black bg:neon_green)]($style)'
+style = "bg:neon_blue"
+format = '[[ $symbol( $version) ](fg:black bg:neon_blue)]($style)'
 
 [java]
 symbol = " "
-style = "bg:neon_green"
-format = '[[ $symbol( $version) ](fg:black bg:neon_green)]($style)'
+style = "bg:neon_blue"
+format = '[[ $symbol( $version) ](fg:black bg:neon_blue)]($style)'
 
 [lua]
 symbol = ""
-style = "bg:neon_green"
-format = '[[ $symbol( $version) ](fg:black bg:neon_green)]($style)'
+style = "bg:neon_blue"
+format = '[[ $symbol( $version) ](fg:black bg:neon_blue)]($style)'
 
 [mojo]
 symbol = "🔥"
-style = "bg:neon_green"
-format = '[[ $symbol( $version) ](fg:black bg:neon_green)]($style)'
+style = "bg:neon_blue"
+format = '[[ $symbol( $version) ](fg:black bg:neon_blue)]($style)'
 
 [odin]
 symbol = "Ø"
-style = "bg:neon_green"
-format = '[[ $symbol( $version) ](fg:black bg:neon_green)]($style)'
+style = "bg:neon_blue"
+format = '[[ $symbol( $version) ](fg:black bg:neon_blue)]($style)'
 
 [python]
 symbol = ""
-style = "bg:neon_green"
-format = '[[ $symbol( $version)(\(#$virtualenv\)) ](fg:black bg:neon_green)]($style)'
+style = "bg:neon_blue"
+format = '[[ $symbol( $version)(\(#$virtualenv\)) ](fg:black bg:neon_blue)]($style)'
 
 [rust]
 symbol = ""
-style = "bg:neon_green"
-format = '[[ $symbol( $version) ](fg:black bg:neon_green)]($style)'
+style = "bg:neon_blue"
+format = '[[ $symbol( $version) ](fg:black bg:neon_blue)]($style)'
 
 [zig]
 symbol = ""
-style = "bg:neon_green"
-format = '[[ $symbol( $version) ](fg:black bg:neon_green)]($style)'
+style = "bg:neon_blue"
+format = '[[ $symbol( $version) ](fg:black bg:neon_blue)]($style)'
 
 [line_break]
 disabled = false
