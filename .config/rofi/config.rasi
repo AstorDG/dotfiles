@@ -8,7 +8,7 @@ configuration {
 	display-drun: "Applications";
 	display-window: "Windows";
 	display-run: "Commands";
-	modi: "window,drun,run";
+	modi: "window,drun,run,calc";
 	kb-mode-next: "Alt+l";
 	kb-mode-previous: "Alt+h";
 }
