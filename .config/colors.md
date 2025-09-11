@@ -5,6 +5,7 @@
 - Deep_red:     #720102 rgba(114,1  ,2  ,1.0)
 - Bright_red:   #D90202 rgba(217,2  ,1  ,1.0)
 - Rust_Orange:  #B5340E rgba(181,52 ,14 ,1.0)
+- Muted_Orange: #362921 rgba(54, 41 ,33 ,1.0)
 - Dark_Yellow:  #B5880E rgba(181,136,14 ,1.0)
 - Neon_Green:   #2CB03C rgba(44 ,176,60 ,1.0)
 - Neon_Purple:  #932CB0 rgba(147,44 ,167, 1.0)
