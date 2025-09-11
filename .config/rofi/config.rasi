@@ -1,95 +1,99 @@
 /*
- * ROFI color theme
+ * ROFI theme
  *
  * Based on Base16 Material Color Scheme (https://github.com/ntpeters/base16-materialtheme-scheme)
- *
- * Modified by: Dave Davenport
- * User: Tomaszal
- * Copyright: Tomas Zaluckij
  */
 
-* {
-	base00: #263238;
-	base01: #2E3C43;
-	base02: #314549;
-	base03: #546E7A;
-	base04: #B2CCD6;
-	base05: #EEFFFF;
-	base06: #EEFFFF;
-	base07: #FFFFFF;
-	base08: #F07178;
-	base09: #F78C6C;
-	base0A: #FFCB6B;
-	base0B: #C3E88D;
-	base0C: #89DDFF;
-	base0D: #82AAFF;
-	base0E: #C792EA;
-	base0F: #FF5370;
-
-	/*base0D: #00BCD4;*/
-
-	spacing: 0;
-	background-color: transparent;
-
+configuration {
+	display-drun: "Applications";
+	display-window: "Windows";
+	display-run: "Commands";
+	modi: "window,drun,run";
+	kb-mode-next: "Alt+l";
+	kb-mode-previous: "Alt+h";
 }
 
 @theme "/dev/null"
 
+* {
+	/* colors */
+
+	black:        #000000DD; /* black + DD (85% opacity)*/
+	White:        #FFFFFF;
+	BrightRed:    #D90202;
+	NeonPurple:   #932CB0;
+	Cyan:         #33D4C4;
+	Orange:       #B5340E;
+	font: "MonoidNerdFont 15"; 
+
+	border: 0;
+	margin: 0;
+	padding: 0;
+	spacing: 0;
+
+	background-color: transparent;
+
+}
+
 window {
 	transparency: "real";
-	background-color: #263238CC; /*base00 + CC (80% opacity)*/
+	background-color: @black; 
+	width: 50%;
+	border: 3px;
+	border-color: @BrightRed;
+	border-radius: 30px;
 }
 
 mainbox {
-	children: [inputbar, message, mode-switcher, listview];
-	spacing: 30px;
+	children: [inputbar, mode-switcher, listview];
+	spacing: 20px;
 	padding: 30px 0;
-	border: 1px;
-	border-color: @base0D;
 }
 
 inputbar {
 	padding: 0 30px;
-	children: [prompt, textbox-prompt-colon, entry, case-indicator];
+	children: [prompt, textbox-prompt-colon, entry];
 }
 
 prompt {
-	text-color: @base0D;
+	text-color: @BrightRed;
 }
 
 textbox-prompt-colon {
 	expand: false;
 	str: ":";
-	margin: 0 1ch 0 0;
-	text-color: @base0D;
+	padding: 0px 10px;
+	text-color: @White;
 }
 
 entry {
-	text-color: @base07;
+	text-color: @Cyan;
+	cursor-color: @Cyan;
+	cursor-width: 10px;
 }
 
-case-indicator {
-	text-color: @base0F;
+mode-switcher {
+	border: 2px 0;
+	border-color: @BrightRed;
+	background-color: #362921;
 }
 
-mode-switcher, message {
-	border: 1px 0;
-	border-color: @base0D;
-}
-
-button, textbox {
-	background-color: @base03;
-	text-color: @base07;
+button {
+	background-color: #000000;
+	text-color: @Cyan;
+	border-radius: 30px;
+	margin: 0px 3px;
 	padding: 5px;
 }
 
 button selected {
-	background-color: @base0D;
+	background-color: @White;
+	text-color: @BrightRed;
 }
 
 listview {
 	scrollbar: true;
-	margin: 0 10px 0 30px;
+	margin: 0 0px 0 10px;
 }
 
 scrollbar {
@@ -98,41 +102,30 @@ scrollbar {
 	handle-width: 10px;
 	border: 0 1px;
 	border-color: @base0D;
-	margin: 0 0 0 20px;
+	margin: 0 0 0 10px;
 }
 
 element {
-	padding: 5px;
-  spacing: 5px;
-	highlight: bold underline;
-	children: [element-icon, element-text];
-}
-element-text, element-icon {
-	background-color : inherit;
-	text-color	     : inherit;
-	foreground-color : inherit;
+	margin: 8px 10px;
+	padding: 0px 90px;
+	spacing: 5px;
+	highlight: bold;
+	children: [element-text];
 }
 
-element normal {
-	background-color: transparent;
+element-text normal.normal{
+	text-color: @Cyan;
+	horizontal-align: 0.45;
 }
 
-element selected {
-	background-color: @base0D;
+element-text selected.normal{
+	text-color: @BrightRed;
+	background-color: @White;
+	border-radius: 30px;
+	horizontal-align: 0.45;
 }
 
-element alternate {
-	/*background-color: @base03;*/
-}
-
-element normal normal, element selected normal, element alternate normal {
-	text-color: @base07;
-}
-
-element normal urgent, element selected urgent, element alternate urgent {
-	text-color: @base0F;
-}
-
-element normal active, element selected active, element alternate active {
-	text-color: @base0B;
+element-text alternate.normal{
+	text-color: @Cyan;
+	horizontal-align: 0.45;
 }
