@@ -145,6 +145,7 @@ require('lazy').setup({
   {
     'windwp/nvim-autopairs',
     event = 'InsertEnter',
+    opts = {},
   },
 
   -- Adds a tab bar with open buffers(files) at the top of neovim

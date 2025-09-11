@@ -2,7 +2,7 @@
 # Any line beginning with a # is a comment.
 
 # Display settings
-theme = Fahrenheit
+theme = Kibble
 font-size = 17
 font-family = "MonoidNerdFont"
 window-decoration = false
