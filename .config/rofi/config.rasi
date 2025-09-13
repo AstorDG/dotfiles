@@ -6,9 +6,11 @@
 
 configuration {
 	display-drun: "Applications";
+	display-appimagelauncher: "AppImages";
 	display-window: "Windows";
 	display-run: "Commands";
-	modi: "window,drun,run,calc";
+	display-calc: "Calc";
+	modi: "window,appimagelauncher,drun,run,calc";
 	kb-mode-next: "Alt+l";
 	kb-mode-previous: "Alt+h";
 }
