@@ -777,6 +777,11 @@ require('lazy').setup({
             ['P'] = { 'toggle_preview', use_float = true, use_image_nvim = true, title = 'Neo-tree preview' },
           },
         },
+        filtered_items = {
+          visible = true,
+          hide_dotfiles = false,
+        },
+        nerver_show = {},
       },
     },
     config = function()
