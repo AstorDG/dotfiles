@@ -5,9 +5,9 @@ APPIMAGE_DIR="$HOME/Appimages/"
 
 find "$APPIMAGE_DIR" -name "*.AppImage" -executable
 
-if [ -n "$@" ]; then  
+if [ -n "$1" ]; then  
     # Launch the selected AppImage in background  
-    coproc ( "$@" > /dev/null 2>&1 )  
-    exit 0  
-fi  
-  
+    coproc ( "$1" > /dev/null 2>&1 )  
+    exit 0
+fi
+ 
