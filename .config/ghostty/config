@@ -8,15 +8,13 @@ font-family = "MonoidNerdFont"
 window-decoration = false
 background-opacity = .7
 background-blur = true
-#command = fastfetch
 
 # System settings
 confirm-close-surface = false
 shell-integration = zsh
 
 # Keybind Section
-keybind = alt+r=reset
-keybind = alt+shift+r=reload_config
+keybind = alt+r=reload_config
 keybind = alt+c=copy_url_to_clipboard
 keybind = ctrl+c=copy_to_clipboard
 keybind = ctrl+v=paste_from_clipboard
@@ -24,8 +22,6 @@ keybind = alt+a=select_all
 keybind = alt+shift+c=open_config
 keybind = alt+i=inspector:toggle
 keybind = super+q=quit
-#Window changes
-keybind = alt+l=clear_screen
 #Tab changes
 keybind = alt+t=new_tab
 keybind = alt+w=close_tab
@@ -34,13 +30,13 @@ keybind = ctrl+shift+tab=previous_tab
 keybind = alt+b=last_tab
 keybind = alt+o=toggle_tab_overview
 #Split changes
-# keybind = alt+v=new_split:right
-# keybind = alt+h=new_split:down
-# keybind = alt+g=close_surface
-# keybind = alt+h=goto_split:left
-# keybind = alt+k=goto_split:up
-# keybind = alt+j=goto_split:down
-# keybind = alt+l=goto_split:right
+keybind = alt+v=new_split:right
+keybind = alt+h=new_split:down
+keybind = alt+g=close_surface
+keybind = alt+h=goto_split:left
+keybind = alt+k=goto_split:up
+keybind = alt+j=goto_split:down
+keybind = alt+l=goto_split:right
 keybind = alt+shift+h=resize_split:left,10
 keybind = alt+shift+k=resize_split:up,10
 keybind = alt+shift+j=resize_split:down,10
