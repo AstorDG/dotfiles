@@ -1,1 +1,0 @@
-../../../dotfiles/.config/cava/shaders/bar_spectrum.frag

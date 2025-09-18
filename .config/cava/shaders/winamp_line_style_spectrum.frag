@@ -1,1 +1,0 @@
-../../../dotfiles/.config/cava/shaders/winamp_line_style_spectrum.frag
