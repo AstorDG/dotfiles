@@ -10,15 +10,14 @@
 	"margin-top": 10, "margin-bottom": 0,
 	"height": 0,
 
-	// internet, ram 50%, cpu 15% , gpu 15% 
-    "modules-left": [ "group/hardware" ],
+	// internet, ram %, cpu %, gpu %
+	"modules-left": [ "group/hardware" ],
 	// left_workspaces, power, right workspaces
-    "modules-center": [ "hyprland/workspaces#left", "custom/power", "hyprland/workspaces#right" ],
-	// music, cava art, time
-    "modules-right": [ "group/media", "clock" ],
+	"modules-center": [ "hyprland/workspaces#left", "custom/power", "hyprland/workspaces#right" ],
+	// cava, music, volume, date-time
+	"modules-right": [ "group/media", "clock" ],
 
 // ========================================
-
 
 // ======= hardware tracking ===============
 
@@ -88,7 +87,6 @@
 		"tooltip-format":"{:%B-%Y}"
 	},
 
-
 // ========================================
 
 // ============= Media ====================
@@ -108,7 +106,6 @@
 		"scroll-step": 1
 	},
 
-	// can use the native cava module
 	"custom/cava": {
 		"exec": "~/dotfiles/.config/scripts/waybar_cava.sh",
 		"format": {},

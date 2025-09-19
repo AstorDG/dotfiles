@@ -1,22 +1,22 @@
 
 * {
 	all: unset;
-    font-family: MonoidNerdFont;
-    font-size: 20px;
+	font-family: MonoidNerdFont;
+	font-size: 20px;
 	font-weight: 300;
 	transition: all 0.25s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
 window#waybar {
-    background: rgba(17, 17, 27, 0);
+	background: rgba(17, 17, 27, 0);
 }
 
 tooltip {
 	background: #000000;
-    border-radius: 20px;
-    border-width: 2px;
-    border-style: solid;
-    border-color: #D90202;
+	border-radius: 20px;
+	border-width: 2px;
+	border-style: solid;
+	border-color: #D90202;
 	background-color: #000000;
 }
 
@@ -33,34 +33,34 @@ tooltip label {
 }
 
 #network, #memory, #cpu, #custom-gpu-usage, #clock {
-    border-radius: 30px;
+	border-radius: 30px;
 	margin: 2px 2px;
-    padding: 0px 10px;
+	padding: 0px 10px;
 	background-color: #000000;
 }
 
 #workspaces {
 	color: #33d4c4;
 	margin: 10px 10px;
-    border-radius: 20px;
-    border: 2px solid #D90202;
-    background-color: #362921;
+	border-radius: 20px;
+	border: 2px solid #D90202;
+	background-color: #362921;
 }
 
 #workspaces button {
-    transition: all 0.05s cubic-bezier(0.165, 0.84, 0.44, 1);
-    margin: 2px 2px;
-    padding: 2px 15px;
-    background-color: #000000;
-    border-radius: 40px;
+	transition: all 0.05s cubic-bezier(0.165, 0.84, 0.44, 1);
+	margin: 2px 2px;
+	padding: 2px 15px;
+	background-color: #000000;
+	border-radius: 40px;
 }
 
 #workspaces button.active {
-    color: #D90202;
+	color: #D90202;
 }
 
 #workspaces button:hover {
-    background: #DDDDDD;
+	background: #DDDDDD;
 }
 
 #custom-power {
@@ -82,9 +82,9 @@ tooltip label {
 }
 
 #custom-cava, #mpris, #pulseaudio {
-    border-radius: 30px;
+	border-radius: 30px;
 	margin: 2px 2px;
-    padding: 0px 10px;
+	padding: 0px 10px;
 	background-color: #000000;
 }
 
