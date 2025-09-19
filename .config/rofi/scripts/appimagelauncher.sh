@@ -1,6 +1,6 @@
 #!/usr/bin/env bash  
   
-# List all AppImages in your directory  
+# List all AppImages in the home/Appimages directory
 APPIMAGE_DIR="$HOME/Appimages/"
 
 find "$APPIMAGE_DIR" -name "*.AppImage" -executable

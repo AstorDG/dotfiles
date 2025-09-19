@@ -1,25 +1,28 @@
 /*
  * ROFI theme
- *
  * Based on Base16 Material Color Scheme (https://github.com/ntpeters/base16-materialtheme-scheme)
  */
 
+// base configuration
 configuration {
+	// display names
 	display-drun: "Applications";
 	display-appimagelauncher: "AppImages";
 	display-window: "Windows";
 	display-run: "Commands";
 	display-calc: "Calc";
+	// included modes in the launcher
 	modi: "window,appimagelauncher,drun,run,calc";
+	// keybinds to move between modes
 	kb-mode-next: "Alt+l";
 	kb-mode-previous: "Alt+h";
 }
 
+// set the theme to null so that the base theme doesn't conflict with the user defined one
 @theme "/dev/null"
 
 * {
 	/* colors */
-
 	black:        #000000DD; /* black + DD (85% opacity)*/
 	White:        #FFFFFF;
 	BrightRed:    #D90202;
@@ -28,14 +31,14 @@ configuration {
 	Orange:       #B5340E;
 	font: "MonoidNerdFont 15"; 
 
-	border: 0;
-	margin: 0;
-	padding: 0;
-	spacing: 0;
-
 	background-color: transparent;
 
 }
+
+// To see how different elements of the window are displayed run man rofi-theme (man will need to be installed on your system)
+// in the terminal and then search with the / key and type in Layout.
+// This will show a diagram of the layout and the names of different elements in the window
+// These names are what can be used here for theming
 
 window {
 	transparency: "real";
