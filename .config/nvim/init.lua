@@ -934,6 +934,9 @@ require('lazy').setup({
           clangd = {},
           zls = {},
           codelldb = {},
+          basedpyright = {},
+          ruff = {},
+          debugpy = {},
           -- gopls = {},
           -- pyright = {},
           -- rust_analyzer = {},
@@ -970,6 +973,9 @@ require('lazy').setup({
           'clangd',
           'zls',
           'codelldb',
+          'basedpyright',
+          'ruff',
+          'debugpy',
         })
         require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 

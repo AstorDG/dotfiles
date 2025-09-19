@@ -1,8 +1,9 @@
 - # This is a file to organize the supplements for my configuration. The things that aren't config files but are still needed for my set up.
 
 
-- ## Packages linked to their github repos
+- ## Packages linked to their github repos or websites and the installation command
     - [hyprland](https://github.com/hyprwm/Hyprland?tab=readme-ov-file)
+    - [python3](https://www.python.org/)
 
 - ## Colors I'm reusing in my dotfiles. Helpful for keeping colors consistent
 - This is the website for converting colors to hex that I use: [colors](https://htmlcolorcodes.com/color-picker/)
