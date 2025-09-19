@@ -14,13 +14,12 @@
 ========       /:::========|  |==hjkl==:::\  \ required \    ========
 ========      '""""""""""""'  '""""""""""""'  '""""""""""'   ========
 =====================================================================
-=====================================================================
 --]]
 
 -- run `:checkhealth` to check for errors in the config.
 -- adds the vim-settings file to the config
 
--- ================== VIM SETTINGS ==================================
+-- ========================= VIM SETTINGS ===========================
 
 -- Set <space> as the leader key
 --  NOTE: Must happen before plugins are loaded (otherwise wrong leader will be used)
@@ -33,40 +32,32 @@ vim.g.have_nerd_font = true
 -- Make line numbers default
 vim.o.number = true
 vim.o.relativenumber = true
-
--- Enable mouse mode, can be useful for resizing splits for example!
+vim.o.cursorline = true
+-- Enable mouse mode
 vim.o.mouse = 'a'
 -- Set tab width
 vim.o.tabstop = 4
 vim.o.shiftwidth = 4
 -- Don't show the mode, since it's already in the status line
 vim.o.showmode = false
-
 -- Sync clipboard between OS and Neovim.
 vim.schedule(function()
   vim.o.clipboard = 'unnamedplus'
 end)
-
 -- Enable break indent
 vim.o.breakindent = true
 vim.o.swapfile = false
-
 -- Save undo history
 vim.o.undofile = true
-
 -- Case-insensitive searching UNLESS \C or one or more capital letters in the search term
 vim.o.ignorecase = true
 vim.o.smartcase = true
-
 -- Keep signcolumn on by default
 vim.o.signcolumn = 'yes'
-
 -- Decrease update time
 vim.o.updatetime = 250
-
 -- Decrease mapped sequence wait time
 vim.o.timeoutlen = 300
-
 -- Configure how new splits should be opened
 vim.o.splitright = true
 vim.o.splitbelow = true
@@ -74,9 +65,6 @@ vim.o.splitbelow = true
 vim.o.list = true
 vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
 vim.o.inccommand = 'split'
-
-vim.o.cursorline = true
-
 -- Minimal number of screen lines to keep above and below the cursor.
 vim.o.scrolloff = 15
 vim.o.confirm = true
@@ -85,7 +73,6 @@ vim.o.confirm = true
 
 -- Clear highlights on search when pressing <Esc> in normal mode
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
-
 -- Diagnostic keymaps
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
 
@@ -99,13 +86,6 @@ vim.keymap.set('n', '<left>', '<cmd>echo "Use h to move!!"<CR>')
 vim.keymap.set('n', '<right>', '<cmd>echo "Use l to move!!"<CR>')
 vim.keymap.set('n', '<up>', '<cmd>echo "Use k to move!!"<CR>')
 vim.keymap.set('n', '<down>', '<cmd>echo "Use j to move!!"<CR>')
-
---  Use CTRL+<hjkl> to switch between windows
-vim.keymap.set('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus to the left window' })
-vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right window' })
-vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
-vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
-
 -- Highlight when yanking (copying) text
 vim.api.nvim_create_autocmd('TextYankPost', {
   desc = 'Highlight when yanking (copying) text',
@@ -403,9 +383,8 @@ require('lazy').setup({
       opts = {
         notify_on_error = false,
         format_on_save = function(bufnr)
-          -- Disable "format_on_save lsp_fallback" for languages that don't
-          -- have a well standardized coding style. You can add additional
-          -- languages here or re-enable it for the disabled ones.
+          -- Disable "format_on_save lsp_fallback" for languages that don't have a well standardized coding style.
+          -- You can add additional languages here or re-enable it for the disabled ones.
           local disable_filetypes = { c = true, cpp = true }
           if disable_filetypes[vim.bo[bufnr].filetype] then
             return nil
@@ -418,20 +397,13 @@ require('lazy').setup({
         end,
         formatters_by_ft = {
           lua = { 'stylua' },
-          -- Conform can also run multiple formatters sequentially
-          -- python = { "isort", "black" },
-          --
-          -- You can use 'stop_after_first' to run the first available formatter from the list
-          -- javascript = { "prettierd", "prettier", stop_after_first = true },
         },
       },
     },
   },
 
   -- Shows how to use the DAP plugin to debug your code.
-  --
-  -- Primarily focused on configuring the debugger for Go, but can
-  -- be extended to other languages as well.
+  -- Primarily focused on configuring the debugger for Go, but can be extended to other languages as well.
   {
     'mfussenegger/nvim-dap',
     dependencies = {
@@ -677,22 +649,10 @@ require('lazy').setup({
         --   json = { "jsonlint" },
         --   markdown = { "vale" },
         --   rst = { "vale" },
-        --   ruby = { "ruby" },
-        --   terraform = { "tflint" },
-        --   text = { "vale" }
         -- }
         --
         -- You can disable the default linters by setting their filetypes to nil:
-        -- lint.linters_by_ft['clojure'] = nil
-        -- lint.linters_by_ft['dockerfile'] = nil
-        -- lint.linters_by_ft['inko'] = nil
-        -- lint.linters_by_ft['janet'] = nil
-        -- lint.linters_by_ft['json'] = nil
-        -- lint.linters_by_ft['markdown'] = nil
         -- lint.linters_by_ft['rst'] = nil
-        -- lint.linters_by_ft['ruby'] = nil
-        -- lint.linters_by_ft['terraform'] = nil
-        -- lint.linters_by_ft['text'] = nil
 
         -- Create autocommand which carries out the actual linting
         -- on the specified events.
@@ -712,6 +672,7 @@ require('lazy').setup({
     },
   },
 
+  -- Markdown renderer
   {
     'MeanderingProgrammer/markdown.nvim',
     opts = { file_types = { 'markdown', 'Avante' } },
@@ -1038,7 +999,7 @@ require('lazy').setup({
   },
 
   -- A powerful fuzzy finder that can look through buffers(files), the current buffer, documentation, LSPs and more
-  -- has a nice ui with a popup window for better focusing
+  -- has a nice ui with a popup window for better focusing.
   -- The documentation is pretty good and tj the creator of telescope has videos explaining the functionality
   -- The github is a good resource for how to use and configure telescope
   {
@@ -1050,11 +1011,9 @@ require('lazy').setup({
         'nvim-lua/plenary.nvim',
         {
           'nvim-telescope/telescope-fzf-native.nvim',
-
           -- `build` is used to run some command when the plugin is installed/updated.
           -- This is only run then, not every time Neovim starts up.
           build = 'make',
-
           -- `cond` is a condition used to determine whether this plugin should be
           -- installed and loaded.
           cond = function()
@@ -1068,12 +1027,6 @@ require('lazy').setup({
       },
       config = function()
         require('telescope').setup {
-          -- defaults = {
-          --   mappings = {
-          --     i = { ['<c-enter>'] = 'to_fuzzy_refine' },
-          --   },
-          -- },
-          -- pickers = {}
           extensions = {
             ['ui-select'] = {
               require('telescope.themes').get_dropdown(),
@@ -1173,5 +1126,4 @@ require('lazy').setup({
       },
     },
   },
-  -- Calls the plugin folder to be loaded
 }, {})
