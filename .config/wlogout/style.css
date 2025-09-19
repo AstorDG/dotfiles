@@ -8,8 +8,8 @@ window {
 }
 
 button {
-    border-radius: 40px;
-    border-color: #D90202;
+	border-radius: 40px;
+	border-color: #D90202;
 	border-style: solid;
 	border-width: 3px;
 	background-repeat: no-repeat;
@@ -27,25 +27,25 @@ button:hover {
 }
 
 #lock {
-    background-image: image(url("/home/winston/dotfiles/.config/wlogout/icons/lock.svg"), url("/home/winston/dotfiles/.config/wlogout/icons/lock.svg"));
+	background-image: image(url("icons/lock.svg"), url("icons/lock.svg"));
 }
 
 #logout {
-    background-image: image(url("/home/winston/dotfiles/.config/wlogout/icons/logout.svg"), url("/home/winston/dotfiles/.config/wlogout/icons/logout.svg"));
+	background-image: image(url("icons/logout.svg"), url("icons/logout.svg"));
 }
 
 #suspend {
-    background-image: image(url("/home/winston/dotfiles/.config/wlogout/icons/suspend.svg"), url("/home/winston/dotfiles/.config/wlogout/icons/suspend.svg"));
+	background-image: image(url("icons/suspend.svg"), url("icons/suspend.svg"));
 }
 
 #hibernate {
-    background-image: image(url("/home/winston/dotfiles/.config/wlogout/icons/hibernate.svg"), url("/home/winston/dotfiles/.config/wlogout/icons/hibernate.svg"));
+	background-image: image(url("icons/hibernate.svg"), url("icons/hibernate.svg"));
 }
 
 #shutdown {
-    background-image: image(url("/home/winston/dotfiles/.config/wlogout/icons/shutdown.svg"), url("/home/winston/dotfiles/.config/wlogout/icons/shutdown.svg"));
+	background-image: image(url("icons/shutdown.svg"), url("icons/shutdown.svg"));
 }
 
 #reboot {
-    background-image: image(url("/home/winston/dotfiles/.config/wlogout/icons/reboot.svg"), url("/home/winston/dotfiles/.config/wlogout/icons/reboot.svg"));
+	background-image: image(url("icons/reboot.svg"), url("icons/reboot.svg"));
 }
