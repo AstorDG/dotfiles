@@ -1,9 +1,20 @@
 - # This is a file to organize the supplements for my configuration. The things that aren't config files but are still needed for my set up.
 
 
-- ## Packages linked to their github repos or websites and the installation command
+- ## Packages linked to their github repos or websites
+    - [cava](https://github.com/karlstav/cava)
+    - [ghostty](https://ghostty.org/)
+    - [git](https://git-scm.com/downloads)
     - [hyprland](https://github.com/hyprwm/Hyprland?tab=readme-ov-file)
-    - [python3](https://www.python.org/)
+    - [neovim](https://neovim.io/)
+    - [rofi](https://github.com/davatorium/rofi)
+    - [spicetify](https://spicetify.app/)
+    - [starship](https://starship.rs/)
+    - [stow](https://www.gnu.org/software/stow/)
+    - [tmux](https://github.com/tmux/tmux)
+    - [waybar](https://github.com/Alexays/Waybar)
+    - [zen](https://zen-browser.app/)
+    - [zsh](https://wiki.archlinux.org/title/Zsh)
 
 - ## Colors I'm reusing in my dotfiles. Helpful for keeping colors consistent
 - This is the website for converting colors to hex that I use: [colors](https://htmlcolorcodes.com/color-picker/)
