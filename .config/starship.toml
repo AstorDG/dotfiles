@@ -1,5 +1,3 @@
-"$schema" = 'https://starship.rs/config-schema.json'
-
 format = """
 [](cyan)\
 $os\
@@ -30,26 +28,11 @@ palette = 'custom_colors'
 disabled = false
 style = "bg:cyan fg:black"
 
+# add your OS symbol here from the nerdfont cheat sheet
 [os.symbols]
 Windows = ""
-Ubuntu = "󰕈"
-SUSE = ""
-Raspbian = "󰐿"
-Mint = "󰣭"
 Macos = "󰀵"
-Manjaro = ""
-Linux = "󰌽"
-Gentoo = "󰣨"
-Fedora = "󰣛"
-Alpine = ""
-Amazon = ""
-Android = ""
 Arch = "󰣇"
-Artix = "󰣇"
-CentOS = ""
-Debian = "󰣚"
-Redhat = "󱄛"
-RedHatEnterprise = "󱄛"
 
 [username]
 show_always = true
@@ -136,16 +119,16 @@ vimcmd_replace_symbol = '[❮](bold fg:neon_pruple)'
 vimcmd_visual_symbol = '[❮](bold fg:dark_yellow)'
 
 [palettes.custom_colors]
-white =       '#FFFFFF'
-dark_grey=    '#4D4D4D'
-light_grey=   '#B0B0B0'
-black =       '#000000'
-bright_red =  '#D90202'
-dark_red =    '#720102'
-rust_orange=  '#B5340E'
-dark_yellow=  '#B58E0E'
-neon_green=   '#2CB03C'
-neon_purple=  '#932CB0'
-light_purple= '#3E2CB0'
-neon_blue=    '#3379D4'
-cyan=         '#33D4C4'
+white        =  '#FFFFFF'
+dark_grey    =  '#4D4D4D'
+light_grey   =  '#B0B0B0'
+black        =  '#000000'
+bright_red   =  '#D90202'
+dark_red     =  '#720102'
+rust_orange  =  '#B5340E'
+dark_yellow  =  '#B58E0E'
+neon_green   =  '#2CB03C'
+neon_purple  =  '#932CB0'
+light_purple =  '#3E2CB0'
+neon_blue    =  '#3379D4'
+cyan         =  '#33D4C4'
