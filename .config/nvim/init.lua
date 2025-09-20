@@ -681,8 +681,8 @@ require('lazy').setup({
   -- Markdown renderer
   {
     'MeanderingProgrammer/markdown.nvim',
-    opts = {},
-    ft = {},
+    opts = { file_types = 'markdown' },
+    ft = { 'markdown' },
     main = 'render-markdown',
     dependencies = {
       'nvim-treesitter/nvim-treesitter',
