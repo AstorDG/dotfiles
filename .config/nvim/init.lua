@@ -609,13 +609,6 @@ require('lazy').setup({
     },
   },
 
-  -- Shows how nested you are in curly braces or parenthasis for better clarity
-  {
-    'lukas-reineke/indent-blankline.nvim',
-    main = 'ibl',
-    opts = {},
-  },
-
   -- `lazydev` configures Lua LSP for your Neovim config, runtime and plugins
   -- used for completion, annotations and signatures of Neovim apis
   {
@@ -681,7 +674,7 @@ require('lazy').setup({
   -- Markdown renderer
   {
     'MeanderingProgrammer/markdown.nvim',
-    opts = { file_types = 'markdown' },
+    opts = { 'markdown' },
     ft = { 'markdown' },
     main = 'render-markdown',
     dependencies = {
@@ -1134,6 +1127,32 @@ require('lazy').setup({
           width = { min = 1.0 },
           height = { min = 5 },
         },
+      },
+    },
+  },
+  -- A collection of plugins
+  ---@class snacks.Config
+  {
+    'folke/snacks.nvim',
+    priority = 1000,
+    lazy = false,
+    ---@type snacks.Config
+    opts = {
+      image = {},
+      lazygit = {},
+      -- Shows how nested you are in curly braces or parenthasis for better clarity
+      indent = {},
+      input = {},
+      notifier = {},
+      rename = {},
+    },
+    keys = {
+      {
+        '<leader>l',
+        function()
+          Snacks.lazygit()
+        end,
+        desc = 'Lazygit',
       },
     },
   },
