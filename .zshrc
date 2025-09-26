@@ -4,15 +4,16 @@
 eval "$(starship init zsh)"
 
 #plugins
-source /usr/local/share/zsh-autocomplete/zsh-autocomplete.plugin.zsh
-source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /opt/homebrew/share/zsh-autocomplete/zsh-autocomplete.plugin.zsh
+source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 #path variables
 path=(
 	$path
 	~/.zig/
 	)
+alias python='/opt/homebrew/bin/python3'
 
 #command history
 HISTFILE="$HOME/.zsh_history"
