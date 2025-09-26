@@ -171,9 +171,8 @@ require('lazy').setup({
             changed = { enabled = true, icon = '~' },
             deleted = { enabled = true, icon = '-' },
           },
-          separator = {
-            left = '▎',
-          },
+          preset = 'slanted',
+          separator_at_end = true,
         },
         sort = {
           ignore_case = true,
@@ -703,16 +702,37 @@ require('lazy').setup({
         -- - sd'   - [S]urround [D]elete [']quotes
         -- - sr)'  - [S]urround [R]eplace [)] [']
         require('mini.surround').setup()
-
-        -- Simple and easy statusline.
-        local statusline = require 'mini.statusline'
-        statusline.setup { use_icons = vim.g.have_nerd_font }
-        ---@diagnostic disable-next-line: duplicate-set-field
-        statusline.section_location = function()
-          return '%2l:%-2v'
-        end
       end,
     },
+  },
+  -- Status line plugin
+  {
+    'nvim-lualine/lualine.nvim',
+    dependencies = { 'nvim-tree/nvim-web-devicons' },
+    config = function()
+      require('lualine').setup {
+        sections = {
+          lualine_a = { { 'mode', separator = { left = '', right = '' } } }, -- leave colors alone
+          lualine_b = { { 'filename', color = { fg = '#33D4C4', bg = '#362921' }, separator = { left = '', right = '' } } }, -- grey background with cyan text
+          lualine_c = {
+            { 'branch', color = { fg = '#D90202', bg = '#ffffff' } },
+            {
+              'diff',
+              colored = true,
+              diff_color = {
+                added = { fg = '#14DE2C', bg = '#FFFFFF' },
+                modified = { fg = '#932CB0', bg = '#FFFFFF' },
+                removed = { fg = '#D90202', bg = '#FFFFFF' },
+              },
+              separator = { right = '' },
+            },
+          }, -- white background with red text}
+          lualine_x = { { 'encoding', color = { fg = 'D90202', bg = '#FFFFFF' }, separator = { left = '' } } }, -- white background with red text
+          lualine_y = { { 'lsp_status', color = { fg = '#33D4C4', bg = '#362921' }, separator = { left = '' } } }, -- grey background with cyan text
+          lualine_z = { { 'location', separator = { left = '', right = '' } } }, -- leave colors alone
+        },
+      }
+    end,
   },
 
   -- Renders a file tree and allows you to browse it
