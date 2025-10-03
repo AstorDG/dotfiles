@@ -22,6 +22,8 @@ keybind = alt+a=select_all
 keybind = alt+shift+c=open_config
 keybind = alt+i=inspector:toggle
 keybind = super+q=quit
+keybind = alt+==increase_font_size:1.0
+keybind = alt+-=decrease_font_size:1.0
 #Tab changes
 keybind = alt+t=new_tab
 keybind = alt+w=close_tab
