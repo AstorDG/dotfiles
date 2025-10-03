@@ -715,7 +715,7 @@ require('lazy').setup({
           lualine_a = { { 'mode', separator = { left = '', right = '' } } }, -- leave colors alone
           lualine_b = { { 'filename', color = { fg = '#33D4C4', bg = '#362921' }, separator = { left = '', right = '' } } }, -- grey background with cyan text
           lualine_c = {
-            { 'branch', color = { fg = '#D90202', bg = '#ffffff' } },
+            { 'branch', color = { fg = '#D90202', bg = '#ffffff' }, separator = { right = '' } },
             {
               'diff',
               colored = true,
@@ -773,11 +773,6 @@ require('lazy').setup({
         close_if_last_window = true,
         sort_case_insensitive = true,
       }
-      vim.api.nvim_create_autocmd('VimEnter', {
-        callback = function()
-          vim.cmd 'Neotree toggle'
-        end,
-      })
     end,
   },
 
