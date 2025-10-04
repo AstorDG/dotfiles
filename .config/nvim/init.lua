@@ -153,8 +153,8 @@ require('lazy').setup({
       local map = vim.keymap.set
       map('n', '<A-,>', ':BufferPrevious<CR>', { noremap = true, silent = true, desc = 'Ba[R]Bar Buffer[P]revious' })
       map('n', '<A-.>', ':BufferNext<CR>', { noremap = true, silent = true, desc = 'Ba[R]bar Buffer[N]ext' })
-      map('n', '<leader>rmp', ':BufferMovePrevious<CR>', { noremap = true, silent = true, desc = 'Ba[R]bar [M]oveBuffer[P]revious' })
-      map('n', '<leader>rmn', ':BufferMoveNext<CR>', { noremap = true, silent = true, desc = 'Ba[R]bar [M]oveBuffer[N]ext' })
+      map('n', '<leader>rl', ':BufferMovePrevious<CR>', { noremap = true, silent = true, desc = 'Ba[R]bar MoveBuffer[L]eft' })
+      map('n', '<leader>rr', ':BufferMoveNext<CR>', { noremap = true, silent = true, desc = 'Ba[R]bar MoveBuffer[R]ight' })
       map('n', '<leader>ri', ':BufferPin<CR>', { noremap = true, silent = true, desc = 'Ba[R]bar p[I]n' })
       map('n', '<leader>rc', ':BufferClose<CR>', { noremap = true, silent = true, desc = 'Ba[R]bar Buffer[C]lose' })
       map('n', '<leader>ra', ':BufferCloseAllButCurrent<CR>', { noremap = true, silent = true, desc = 'Ba[R]bar BufferClose[A]llButCurrent' })
@@ -548,65 +548,8 @@ require('lazy').setup({
     end,
   },
 
-  -- Adds git related signs to the gutter, as well as utilities for managing changes
-  -- example of config with no config function() and require('examplel').setup()
-  {
-    {
-      'lewis6991/gitsigns.nvim',
-      opts = {
-        on_attach = function(bufnr)
-          local gitsigns = require 'gitsigns'
-
-          local function map(mode, l, r, opts)
-            opts = opts or {}
-            opts.buffer = bufnr
-            vim.keymap.set(mode, l, r, opts)
-          end
-
-          -- Navigation
-          map('n', ']c', function()
-            if vim.wo.diff then
-              vim.cmd.normal { ']c', bang = true }
-            else
-              gitsigns.nav_hunk 'next'
-            end
-          end, { desc = 'Jump to next git [c]hange' })
-
-          map('n', '[c', function()
-            if vim.wo.diff then
-              vim.cmd.normal { '[c', bang = true }
-            else
-              gitsigns.nav_hunk 'prev'
-            end
-          end, { desc = 'Jump to previous git [c]hange' })
-
-          -- Actions
-          -- visual mode
-          map('v', '<leader>hs', function()
-            gitsigns.stage_hunk { vim.fn.line '.', vim.fn.line 'v' }
-          end, { desc = 'git [s]tage hunk' })
-          map('v', '<leader>hr', function()
-            gitsigns.reset_hunk { vim.fn.line '.', vim.fn.line 'v' }
-          end, { desc = 'git [r]eset hunk' })
-          -- normal mode
-          map('n', '<leader>hs', gitsigns.stage_hunk, { desc = 'git [s]tage hunk' })
-          map('n', '<leader>hr', gitsigns.reset_hunk, { desc = 'git [r]eset hunk' })
-          map('n', '<leader>hS', gitsigns.stage_buffer, { desc = 'git [S]tage buffer' })
-          map('n', '<leader>hu', gitsigns.stage_hunk, { desc = 'git [u]ndo stage hunk' })
-          map('n', '<leader>hR', gitsigns.reset_buffer, { desc = 'git [R]eset buffer' })
-          map('n', '<leader>hp', gitsigns.preview_hunk, { desc = 'git [p]review hunk' })
-          map('n', '<leader>hb', gitsigns.blame_line, { desc = 'git [b]lame line' })
-          map('n', '<leader>hd', gitsigns.diffthis, { desc = 'git [d]iff against index' })
-          map('n', '<leader>hD', function()
-            gitsigns.diffthis '@'
-          end, { desc = 'git [D]iff against last commit' })
-          -- Toggles
-          map('n', '<leader>tb', gitsigns.toggle_current_line_blame, { desc = '[T]oggle git show [b]lame line' })
-          map('n', '<leader>tD', gitsigns.preview_hunk_inline, { desc = '[T]oggle git show [D]eleted' })
-        end,
-      },
-    },
-  },
+  -- Adds git colors to the left side bar
+  { 'lewis6991/gitsigns.nvim' },
 
   -- `lazydev` configures Lua LSP for your Neovim config, runtime and plugins
   -- used for completion, annotations and signatures of Neovim apis
