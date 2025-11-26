@@ -31,7 +31,6 @@ vim.g.have_nerd_font = true
 
 -- Make line numbers default
 vim.o.number = true
-vim.o.relativenumber = true
 vim.o.cursorline = true
 -- Enable mouse mode
 vim.o.mouse = 'a'
@@ -377,12 +376,12 @@ require('lazy').setup({
       cmd = { 'ConformInfo' },
       keys = {
         {
-          '<leader>f',
+          '<leader>m',
           function()
             require('conform').format { async = true, lsp_format = 'fallback' }
           end,
           mode = '',
-          desc = '[F]ormat buffer',
+          desc = 'For[m]at buffer',
         },
       },
       opts = {
@@ -414,10 +413,8 @@ require('lazy').setup({
     dependencies = {
       -- Creates a beautiful debugger UI
       'rcarriga/nvim-dap-ui',
-
       -- Required dependency for nvim-dap-ui
       'nvim-neotest/nvim-nio',
-
       -- Installs the debug adapters for you
       'mason-org/mason.nvim',
       'jay-babu/mason-nvim-dap.nvim',
@@ -425,59 +422,7 @@ require('lazy').setup({
       -- Add your own debuggers here
       'leoluz/nvim-dap-go',
     },
-    keys = {
-      -- Basic debugging keymaps,
-      {
-        '<F5>',
-        function()
-          require('dap').continue()
-        end,
-        desc = 'Debug: Start/Continue',
-      },
-      {
-        '<F1>',
-        function()
-          require('dap').step_into()
-        end,
-        desc = 'Debug: Step Into',
-      },
-      {
-        '<F2>',
-        function()
-          require('dap').step_over()
-        end,
-        desc = 'Debug: Step Over',
-      },
-      {
-        '<F3>',
-        function()
-          require('dap').step_out()
-        end,
-        desc = 'Debug: Step Out',
-      },
-      {
-        '<leader>b',
-        function()
-          require('dap').toggle_breakpoint()
-        end,
-        desc = 'Debug: Toggle Breakpoint',
-      },
-      {
-        '<leader>B',
-        function()
-          require('dap').set_breakpoint(vim.fn.input 'Breakpoint condition: ')
-        end,
-        desc = 'Debug: Set Breakpoint',
-      },
-      -- Toggle to see last session result. Without this, you can't see session output in case of unhandled exception.
-      {
-        '<F7>',
-        function()
-          require('dapui').toggle()
-        end,
-        desc = 'Debug: See last session result.',
-      },
-    },
+    lazy = false,
     config = function()
       local dap = require 'dap'
       local dapui = require 'dapui'
@@ -545,6 +490,14 @@ require('lazy').setup({
           detached = vim.fn.has 'win32' == 0,
         },
       }
+      vim.keymap.set('n', '<Leader>db', dap.toggle_breakpoint, { desc = 'Toggle [b]reakpoint' })
+      vim.keymap.set('n', '<Leader>dB', dap.set_breakpoint, { desc = 'Set [B]reakpoint' })
+      vim.keymap.set('n', '<Leader>dc', dap.continue, { desc = '[C]ontinue' })
+      vim.keymap.set('n', '<Leader>di', dap.step_into, { desc = 'Step [i]nto' })
+      vim.keymap.set('n', '<Leader>do', dap.step_over, { desc = 'Step [o]ver' })
+      vim.keymap.set('n', '<Leader>du', dap.step_over, { desc = 'Step o[u]t' })
+      -- Toggle to see last session result. Without this, you can't see session output in case of unhandled exception.
+      vim.keymap.set('n', '<Leader>dt', dapui.toggle, { desc = 'See las[t] session result' })
     end,
   },
 
@@ -1075,10 +1028,10 @@ require('lazy').setup({
         -- Document existing key chains
         -- This can be added to for more categories of keybinds
         spec = {
-          { '<leader>s', group = '[S]earch' },
+          { '<leader>s', group = '[S]earch', icon = '󰍉' },
           { '<leader>t', group = '[T]oggle' },
-          { '<leader>h', group = 'Git [H]unk', mode = { 'n', 'v' } },
-          { '<leader>r', group = 'Ba[R]bar' },
+          { '<leader>r', group = 'Ba[r]bar', icon = '󰓩' },
+          { '<leader>d', group = '[D]ebug', icon = '' },
         },
         -- Define the window size
         win = {
@@ -1113,5 +1066,25 @@ require('lazy').setup({
         desc = 'Lazygit',
       },
     },
+  },
+  -- Colorizes hex and rgb strings inside of neovim so #FFFFFF will be white
+  {
+    'norcalli/nvim-colorizer.lua',
+    config = function()
+      require('colorizer').setup {
+        '*',
+        css = { rgb_fn = true },
+      }
+    end,
+  },
+
+  {
+    'folke/flash.nvim',
+    event = 'VeryLazy',
+    opts = {},
+		-- stylua: ignore
+		keys = {
+			{"<leader>f", mode = {"n","x","o"}, function() require("flash").jump() end, desc = "Flash"},
+		},
   },
 }, {})
