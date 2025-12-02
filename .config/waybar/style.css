@@ -32,7 +32,7 @@ tooltip label {
 	background-color: #362921;
 }
 
-#network, #memory, #cpu, #custom-gpu-usage, #clock {
+#network, #memory, #cpu, #custom-gpu-usage, #clock, #temperature {
 	border-radius: 30px;
 	margin: 2px 2px;
 	padding: 0px 10px;

@@ -32,15 +32,23 @@
 		"interval": 2
 	},
 
+	"custom/gpu-usage": {
+		"exec": "cat /sys/class/hwmon/hwmon3/device/gpu_busy_percent",
+		"format": "󰾲 {}%",
+		"interval": 2
+	},
+
 	"cpu": {
 		"format": " {usage}%",
 		"interval": 2
 	},
 
-	"custom/gpu-usage": {
-		"exec": "cat /sys/class/hwmon/hwmon3/device/gpu_busy_percent",
-		"format": "󰾲 {}%",
-		"interval": 2
+	"temperature": {
+		"hwmon-path": "/sys/class/hwmon/hwmon0/temp1_input",
+		"warning-threshold": 80,
+		"critical-threshold": 100,
+		"interval": 2,
+		"format": " {temperatureC}°C"
 	},
 
 // =========== Workspaces =================
@@ -115,7 +123,7 @@
 
 	"group/hardware": {
 		"orientation": "horizontal",
-		"modules": [ "network", "memory", "cpu", "custom/gpu-usage"]
+		"modules": [ "network", "memory", "custom/gpu-usage", "cpu", "temperature"]
 	},
 
 	"group/media": {
