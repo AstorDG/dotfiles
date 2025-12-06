@@ -15,7 +15,7 @@ shell-integration = zsh
 
 #Shaders and colors
 custom-shader = ~/.config/ghostty/shaders/cursor_warp.glsl
-cursor-color  = #7C0CA6
+cursor-color  = #600C90
 cursor-text   = #FFFFFF
 
 # Keybind Section

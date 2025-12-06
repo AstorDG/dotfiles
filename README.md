@@ -37,9 +37,28 @@ One of these is [lsd](https://webinstall.dev/lsd/). Ls is used to list out files
 lsd is a better version of ls by having more functionality. One of the best part of lsd is that it renders different images for different file types.
 Different file extensions also render with the icon attached to their extension. So folders render with a little folder icon next to their name, making them easy to differenciate from files. 
 #### Adding packages to the path
+Sometimes programs aren't available through a package manager so you have to download them through [Git](#Git) or from the internet etc. 
+If these are terminal programs and you want to be able to run them from any folders you have to add that program to your PATH.
 What is the path? The path is a list of folders that your terminal will search through when attempting to run a program. 
-What this means in practice is that you can run programs on your path no matter what folder your terminal is currently in.
+What this means in practice is that you can run programs on your path no matter what folder your terminal is currently in which is very convenient.
+To see what programs are currently on your path you can type: echo $PATH into your terminal.
+To permanently add programs to your path you have to edit your shell's configuration file. I have an example in my .zshrc file. You can copy this if you use z-shell.
+However you will probably have bash installed by default in your terminal. I will go over the differences between shells in the terminal section.
+The bash config file is .bashrc and you have to add: export PATH=/this/is/an/example/path:$PATH.
+The format of this example path is a link to an executable file. So you have to make sure the last file listed in this link is an executable.
+When you download a program it won't be executable by default. So you need to use the chmod terminal command in this format: chmod +x yourexecutable.
+Then you can run the program from the command line.
 
+## Dotfiles
+Now that you know which file to edit for shell customization how do you even find it? This leads into dotfiles.
+What are dotfiles and why are they called that?
+Dotfiles are just files that begin with a period. eg: .config, .git
+The reason that they being with . is to make them hidden from file managers. I personally hate hidden files but whatever.
+But I think they're there for less tech literate people to not get overwhelmed by all the files in their system that they will never touch. 
+We are the exception(Aoi Todo). So if you're trying to look for your .zshrc or .bashrc file in a file manager or in the terminal you won't be able to find them without 
+special flags set. If you're using ls in the terminal you have to add the -a flag to see hidden files. If you're using a file explorer you should be able to turn off hidden files in your settings.
+
+With all that said lets get into dotfiles and managing them. This is my repository for managing my dotfiles.
 ## The *Terminal*
 The terminal a topic that could and probably has had multiple books written about it. I'm really only putting this section here to tell you not to be afraid of it.
 It's the main way to install packages with your package manager although some distros have a graphical program that you can use to install packages. They are really using terminal commands under the hood though.
@@ -51,13 +70,6 @@ Git is a version control system for
 
 Ensure you have the following installed on your system
 
-## Dotfiles
-What are dotfiles and why are they called that? 
-Dotfiles are just files that begin with a period. eg: .config, .git
-The reason that they being with . is to make them hidden from file managers. I personally hate hidden files and always turn them off.
-But I think they're there for less tech literate people to not get overwhelmed by all the files in their system that they will never touch. 
-
-With all that said lets get into dotfiles and managing them. This is my repository for managing my dotfiles.
 
 
 ## Disclaimers
