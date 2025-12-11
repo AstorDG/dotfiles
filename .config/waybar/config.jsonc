@@ -43,12 +43,10 @@
 		"interval": 2
 	},
 
-	"temperature": {
-		"hwmon-path": "/sys/class/hwmon/hwmon0/temp1_input",
-		"warning-threshold": 80,
-		"critical-threshold": 100,
+	"custom/temperature": {
+		"exec": "sensors -u k10temp-pci-00c3 | awk '/temp1_input:/ {print int($2)}'",
+		"format": " {}°C",
 		"interval": 2,
-		"format": " {temperatureC}°C"
 	},
 
 // =========== Workspaces =================
@@ -123,7 +121,7 @@
 
 	"group/hardware": {
 		"orientation": "horizontal",
-		"modules": [ "network", "memory", "custom/gpu-usage", "cpu", "temperature"]
+		"modules": [ "network", "memory", "custom/gpu-usage", "cpu", "custom/temperature"]
 	},
 
 	"group/media": {
