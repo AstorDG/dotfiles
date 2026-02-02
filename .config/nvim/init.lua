@@ -1032,6 +1032,7 @@ require('lazy').setup({
           { '<leader>t', group = '[T]oggle' },
           { '<leader>r', group = 'Ba[r]bar', icon = '󰓩' },
           { '<leader>d', group = '[D]ebug', icon = '' },
+          { '<leader>o', group = '[O]pencode', icon = '󰵰' },
         },
         -- Define the window size
         win = {
@@ -1086,5 +1087,34 @@ require('lazy').setup({
 		keys = {
 			{"<leader>f", mode = {"n","x","o"}, function() require("flash").jump() end, desc = "Flash"},
 		},
+  },
+  {
+    'NickvanDyke/opencode.nvim',
+    dependencies = {
+      -- Recommended for `ask()` and `select()`.
+      -- Required for `snacks` provider.
+      ---@module 'snacks' <- Loads `snacks.nvim` types for configuration intellisense.
+      { 'folke/snacks.nvim', opts = { input = {}, picker = {}, terminal = {} } },
+    },
+    config = function()
+      ---@type opencode.Opts
+      vim.g.opencode_opts = {
+        -- Your configuration, if any — see `lua/opencode/config.lua`, or "goto definition" on the type or field.
+      }
+
+      -- Required for `opts.events.reload`.
+      vim.o.autoread = true
+
+      -- Recommended/example keymaps.
+      vim.keymap.set({ 'n', 'x' }, '<leader>oa', function()
+        require('opencode').ask('@this: ', { submit = true })
+      end, { desc = 'Ask opencode…' })
+      vim.keymap.set({ 'n', 'x' }, '<leader>ox', function()
+        require('opencode').select()
+      end, { desc = 'Execute opencode action…' })
+      vim.keymap.set({ 'n', 't' }, '<leader>ot', function()
+        require('opencode').toggle()
+      end, { desc = 'Toggle opencode' })
+    end,
   },
 }, {})
