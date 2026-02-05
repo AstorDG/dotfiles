@@ -2,26 +2,26 @@
 If you don't care about the tutorial scroll down to here. [Installation](#Installation)
 
 ## Intro
-What is ricing? Ricing is the process of customzing your linux environment. It's both aethetic and functinoal but mostly aethetic.
-Why is it called ricing? It came from asian car owners adding mostly asethetic mods to their cars and then the term was adopting in the computer space.
-I'm writing this as the introduction to ricing and some common linux tools that I would have wanted when I started on my linux journey.
-This is not meant to be a complete guide for all of the tools that I reference. It is meant to explain basic concepts that were confusing for me as a beginning and show you where to look when you get confused, because you will.
+What is ricing? Ricing is the process of customizing your linux environment. It's both aesthetic and functional but mostly aesthetic.
+Why is it called ricing? It came from asian car owners adding mostly aesthetic mods to their cars and then the term was adopted in the computer space.
+I'm writing this as the introduction to ricing and some common Linux tools that I would have wanted when I started on my Linux journey.
+This is not meant to be a complete guide for all of the tools that I reference. It is meant to explain basic concepts that were confusing for me as a beginner and show you where to look when you get confused, because you will.
 
 ## Disclaimers
-One of things that some guides will do that's very confusing is when they instruct you to run terminal commands they'll put '$' at the beginning of the command. The $ is just a stand in for the text in your terminal that preceeds the commands you type in. Also known as the command prompt. When running commands from a guide remember to exclude this part from the command when you're copy and pasting or typing out the command.
-Another thing to be weary of is multi line commands. Sometimes guides will just have a bunch of commands one after the other and whatever copy button they have will copy all of the lines into your terminal. If you try and run commands this way they will not work.
-Commands are run one at a time, for the most part. Copy these commands one line at a time.
-Remember that most of this setup is purely aesthetic. If you find your self getting frustrated will some tool or you're feeling like it's taking too long to set up, remember you can always just not use it. Or you can use it in it's uncustomized state. The beauty of linux is that it's your system and you can install and configure it however you want. Find a tool with the same or similar functionality that has better defaults or better configuration options. If it stops being fun just remember why you're ricing.
+One of things that some guides will do that's very confusing is when they instruct you to run terminal commands they'll put '$' at the beginning of the command. The $ is just a stand in for the text in your terminal that preceeds the commands you type in. Also known as the command prompt. When running commands from a guide remember to exclude this $ part from the command when you're copy and pasting or typing out the command.
+Another thing to be wary of is multi line commands. Sometimes guides will just have a bunch of commands one after the other and whatever copy button they have will copy all of the lines onto your clip board which will paste them all into your terminal. If you try and run commands this way they will not work.
+Run these commands one at a time, for the most part. Copy these commands one line at a time.
+Finaly disclaimers is to remember that most of this setup is purely aesthetic. If you find yourself getting frustrated trying to customize some tool. or you feel like it's taking too long to set up, remember you can always just not use it. Or you can use it in it's uncustomized state. The beauty of linux is that it's your system and you can install and configure it however you want. Find a tool with the same or similar functionality that has better defaults or better configuration options. If it stops being fun just remember why you're ricing.
 With that being said let's get into some of the base level knowledge that you'll need to know before deciding how to rice your system.
 
 ### The *Terminal*
 The terminal a topic that could and probably has had multiple books written about it. I'm really only putting this section here to tell you not to be afraid of it.
-It's the main way to install packages with your package manager although some distros have a graphical program that you can use to install packages. They are really using terminal commands under the hood though.
+It's the main way to install packages, also known as programs, with your package manager although some distros have a graphical program that you can use to install packages. They are really using terminal commands under the hood though.
 Which is also true of a lot of the tools in this rice. Many of these tools have ways to run terminal commands and then display the output in ways unique to that tool.
 This was very confusing for me at first when looking at other people's dotfiles so I will point out these occasions. 
 It's very powerful and I would encourage you to become comfortable with it as it will help you a lot on your linux journey. But it is possible to not have to use the terminal at all.
 If you're just here for the pretty looks you can copy and paste my dotfiles and never look at them again.
-Throughout this guide I will talk about running commands and sometimes give you specific commands to run. These are safe but I would encourage you to use caution when running terminal commands and try and sort of understand what they're doing. Asking mr GPT what a command does before running it is usually very helpful for breaking down commands. Especially long ones that chain into each other.
+Throughout this guide I will talk about running commands and sometimes give you specific commands to run. These are safe but I would encourage you to use caution when running terminal commands and try and sort of understand what they're doing. Asking Mr. Chat GPT or your prefered ai assistant what a command does before running it is usually very helpful for breaking down commands. Especially long ones that chain into each other.
 With all of the disclaimers out of the way lets talk about how you even install these tools.
 
 ## Package Managers
@@ -82,9 +82,12 @@ The reason that they being with . is to make them hidden from file managers, whi
 But I think they're there for less tech literate people to not get overwhelmed by all the files in their system that they will never touch. 
 We are the exception(Aoi Todo). So if you're trying to look for your .zshrc or .bashrc file in a file manager or in the terminal you won't be able to find them without 
 special flags set. If you're using ls in the terminal you have to add the -a flag to see hidden files. If you're using a file explorer you should be able to turn off hidden files in your settings.
-
+In my dotfiles I try and not to include fields when I'm using the default value for that field. Documentation isn't always the best for listing out all of the options that are configureable. This can be very frustrating because its hard to customize something that you don't know is customizeable. 
+I mainly just got over this by using deepwiki to answer a question when I needed to try an implement some specific functionality that maybe I coulnd't find in the documentation.
 With all that said lets get into dotfiles and managing them. This is my repository for managing my dotfiles.
 
+#### Nerd fonts
+When you look through my dotfiles on github there will be some characters that look like boxes with numbers in them. Those are unrendered icons and you need nerd fonts to render them. Usually these don't work in browsers that's why they look weird on github. Ghostty comes with a built in Nerd Font called JetBrains Mono. I use *This* website to preview the nerdfront that I use in ghostty.
 
 ## Cava
 [Cava repository](https://github.com/karlstav/cava)
@@ -96,14 +99,12 @@ There isn't much to customize for Cava even though my config looks kinda long. T
 This is the terminal I use. It's fast and has a lot of modern features. It has a very easy to configure configuration file and it's very cusomizeable but has very good defaults. Ghostty has a lot of configuring that can be done, but has really good defaults. The aethetic of mine is based on the theme I use which is Kibble. To see how the theme look run this command in ghostty. I use it because it gives me everything I need in a terminal.
 
 Cursor animations are one of the new features. To customize your cursor animation you need a glsl file which is a shader file. I'm a programmer and I really don't know how make my own glsl shader for my cursor. I used these resources to make my custom one. Make sure you have the cursor shader line in your config file.
-### Nerd fonts
-When you look through my dotfiles on github there will be some characters that look like boxes with numbers in them. Those are unrendered icons and you need nerd fonts to render them. Usually these don't work in browsers that's why they look weird on github. Ghostty comes with a built in Nerd Font called JetBrains Mono. I use *This* website to preview the nerdfront that I use in ghostty.
 
 ## Hyprland
 [Hyprland Documentation](https://wiki.hypr.land/Hypr-Ecosystem/hyprpaper/)
 It looks nice. Lets me customize keybinds to launch applications.
 My wallpaper is in my wallpapers folder. I would recommend adding your wallpapers there to keep the path to the picture consistent.
-Where did I find my wallpaper. R/unixporn is good as well as 
+Where did I find my wallpaper. R/unixporn is good repository of wallpapers as well.
 ### Hyprlock
 [Hyprlock Documentaion](https://wiki.hypr.land/Hypr-Ecosystem/hyprlock/)
 Lock screen I use
@@ -123,10 +124,6 @@ I used this to start my neovim journey. It's a tutorial by one of the neovim mai
 [Rofi repo](https://github.com/davatorium/rofi)
 Very useful tool. I use it as a calculator and to open my app images and launch apps I don't have keybinds for
 
-
-## Spicetify
-[Spicetify website](https://spicetify.app/)
-I use this to make my spotify look pretty
 
 ## Tmux
 [Tmux Wiki](https://github.com/tmux/tmux/wiki)
