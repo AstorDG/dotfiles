@@ -421,6 +421,7 @@ require('lazy').setup({
 
       -- Add your own debuggers here
       'leoluz/nvim-dap-go',
+      'mfussenegger/nvim-dap-python',
     },
     lazy = false,
     config = function()
@@ -436,12 +437,13 @@ require('lazy').setup({
         -- see mason-nvim-dap README for more information
         handlers = {},
 
-        -- You'll need to check that you have the required things installed
-        -- online, please don't ask me how to install them :)
-        ensure_installed = {
-          -- Update this to ensure that you have the debuggers for the langs you want
-          'delve',
-        },
+      -- You'll need to check that you have the required things installed
+      -- online, please don't ask me how to install them :)
+      ensure_installed = {
+        -- Update this to ensure that you have the debuggers for the langs you want
+        'delve',
+        'debugpy',
+      },
       }
 
       -- Dap UI setup
@@ -490,6 +492,27 @@ require('lazy').setup({
           detached = vim.fn.has 'win32' == 0,
         },
       }
+
+      -- Python DAP configuration for uv projects
+      local dap_python = require 'dap-python'
+      -- Function to find the Python interpreter in uv virtual environment
+      local function find_uv_python()
+        local cwd = vim.fn.getcwd()
+        -- Check for uv's default .venv location
+        local uv_venv = cwd .. '/.venv/bin/python'
+        if vim.fn.executable(uv_venv) == 1 then
+          return uv_venv
+        end
+        -- Fallback: check for venv in parent directories
+        local parent_venv = vim.fn.finddir('.venv', cwd .. ';')
+        if parent_venv ~= '' then
+          return parent_venv .. '/bin/python'
+        end
+        -- Final fallback: use system python (assumes debugpy is installed globally)
+        return 'python'
+      end
+      dap_python.setup(find_uv_python())
+      dap_python.test_runner = 'pytest'
       vim.keymap.set('n', '<Leader>db', dap.toggle_breakpoint, { desc = 'Toggle [b]reakpoint' })
       vim.keymap.set('n', '<Leader>dB', dap.set_breakpoint, { desc = 'Set [B]reakpoint' })
       vim.keymap.set('n', '<Leader>dc', dap.continue, { desc = '[C]ontinue' })
