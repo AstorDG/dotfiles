@@ -26,19 +26,24 @@ With all of the disclaimers out of the way lets talk about how you even install 
 
 ## Package Managers
 One of the biggest changes when coming from Windows or MacOS is how programs/applications, or packages as we call them in the linux world, are installed.
-The main paradigm for installing applications on those operating stystems is going to a website or an appstore and downloading the app or app installer. Then running the installer and the app appears in your program launcher, your task bar or your applications foloder.
-While you can install packages this way on linux the perfered way is to use your package manager.
-A package manager is basically an app store that is accessed through a terminal or command line interface(CLI for short). There are some differenced but they serve the same purpose of getting software onto your computer.
-Different linux distributions, or distros for short, will have different package managers. Examples include apt for ubuntu, pacman for Arch linux or DPKG for Debian.
+**All apps are packages but not all packages are apps**
+The main paradigm for installing applications on those operating stystems is going to a website or an app store and downloading the app or app installer. Then the app appears in your program launcher, your task bar or your applications foloder.
+While you can install packages this way on linux, the preferred way is to use a package manager.
+A package manager is a central program that handles downloading software onto your computer. Hence the name package manager. It manages the packages or software on your computer. You use a package manager basically like an app store. It can be accessed through the terminal but most distros have a graphical application that can also interact with the package manager so if you don't want to use the terminal you don't have to.
+There are some subtle differences between app stores and package managers but they serve the same purpose of getting software onto your computer.
+Different linux distributions, or distros for short, will have different package managers. Examples include apt for Ubuntu, pacman for Arch linux or DNF for Fedora.
 I would strongly suggest you to get familiar with your linux distribution's package manager as they can be confusing at first and take some time to learn.
 ### Installing and uninstalling programs
 One of the things that's annoying when using a package manager is finding the exact name of a program or app you want to install.
 Sometimes packages will have version numbers in their package names or have some extra characters that make it hard to know exactly what to type to download a package.
 One way to search for packages is online. Some package managers or distros will have a website where you can search for packages.
 The better way that I would suggest is to use your package manager to search for packages. All package mangers will have a command that allows you to search their database for packages and each will come with a little description so you will know what you're downloading.
+An example for Ubuntu: apt search pack-name
+Usually the graphical application for your package manager will also have this search feature but it doesn't always give as much information.
 Package managers can also be used to uninstall packages. This is usually as easy as running the package manager and then an uninstall command and the name of the package.
-They will also have functionality to search for your installed packages which can be helpful if you need to know what packages to install on another system or if you want
-to clean ur system of unused packages.
+Example for Arch linux: pacman -R package-name
+This makes it easy to manage all the applications you have installed on your computer because they're all visible in one place.
+They will also have functionality to search for all of your installed packages which can be helpful for many uses one being if you want to clean your system of unused packages.
 
 ### Suplementary package managers
 While technically multiple package mangers can be used on any distro this is usually a bad idea. Different package mangers store and manage data in different ways which can conflict with each other causing your system to break.
