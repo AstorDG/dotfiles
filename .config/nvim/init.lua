@@ -229,7 +229,10 @@ require('lazy').setup({
             {
               'rafamadriz/friendly-snippets',
               config = function()
-                require('luasnip.loaders.from_vscode').lazy_load()
+                -- Load custom snippets from snippets folder
+                require('luasnip.loaders.from_vscode').lazy_load {
+                  paths = { vim.fn.stdpath 'config' .. '/snippets' },
+                }
               end,
             },
           },
@@ -437,13 +440,13 @@ require('lazy').setup({
         -- see mason-nvim-dap README for more information
         handlers = {},
 
-      -- You'll need to check that you have the required things installed
-      -- online, please don't ask me how to install them :)
-      ensure_installed = {
-        -- Update this to ensure that you have the debuggers for the langs you want
-        'delve',
-        'debugpy',
-      },
+        -- You'll need to check that you have the required things installed
+        -- online, please don't ask me how to install them :)
+        ensure_installed = {
+          -- Update this to ensure that you have the debuggers for the langs you want
+          'delve',
+          'debugpy',
+        },
       }
 
       -- Dap UI setup
@@ -592,7 +595,7 @@ require('lazy').setup({
   -- Markdown renderer
   {
     'MeanderingProgrammer/markdown.nvim',
-    opts = { 'markdown' },
+    opts = { 'markdown', render_modes = true },
     ft = { 'markdown' },
     main = 'render-markdown',
     dependencies = {
@@ -814,6 +817,26 @@ require('lazy').setup({
                 vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled { bufnr = event.buf })
               end, '[T]oggle Inlay [H]ints')
             end
+
+            -- Enable codelens for any LSP that supports it
+            -- Codelens shows inline information like references, implementations, etc.
+            if client and client.server_capabilities.codeLensProvider then
+              local codelens_augroup = vim.api.nvim_create_augroup('kickstart-lsp-codelens', { clear = false })
+              vim.api.nvim_create_autocmd({ 'TextChanged', 'InsertLeave', 'CursorHold', 'LspAttach' }, {
+                buffer = event.buf,
+                group = codelens_augroup,
+                callback = function()
+                  vim.lsp.codelens.refresh { bufnr = event.buf }
+                end,
+              })
+
+              vim.api.nvim_create_autocmd('LspDetach', {
+                group = vim.api.nvim_create_augroup('kickstart-lsp-detach-codelens', { clear = true }),
+                callback = function(event2)
+                  vim.api.nvim_clear_autocmds { group = 'kickstart-lsp-codelens', buffer = event2.buf }
+                end,
+              })
+            end
           end,
         })
 
@@ -1011,6 +1034,15 @@ require('lazy').setup({
           builtin.find_files { cwd = vim.fn.stdpath 'config' }
         end, { desc = '[S]earch [N]eovim files' })
       end,
+    },
+  },
+
+  {
+    'folke/noice.nvim',
+    event = 'VeryLazy',
+    opts = {},
+    dependencies = {
+      'MunifTanjim/nui.nvim',
     },
   },
 
