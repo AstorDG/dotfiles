@@ -30,7 +30,7 @@ keybind = super+q=quit
 keybind = alt+==increase_font_size:1.0
 keybind = alt+-=decrease_font_size:1.0
 keybind = alt+g=close_surface
-#Split changes, I'm leaving these uncommeted for now as I see if I use the tmux splits more
+#Split changes, I'm leaving these commeted for now as I see if I use the tmux splits more
 # keybind = alt+v=new_split:right
 # keybind = alt+h=new_split:down
 # keybind = alt+h=goto_split:left
