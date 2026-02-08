@@ -1,5 +1,5 @@
-# My Dotfiles/Intro to Ricing
-If you don't care about the tutorial scroll down to here. [Installation](#Installation)
+# Intro to Ricing
+If you don't care about the tutorial go here. [Installation](#Installation)
 
 ## Intro
 What is ricing? Ricing is the process of customizing your linux environment. It's both aesthetic and functional but mostly aesthetic.
@@ -164,6 +164,7 @@ Git is a version control system for
 Ensure you have the following installed on your system
 ### Stow
 
+# Dotfiles
 ## Installation
 
 First, check out the dotfiles repo in your $HOME directory using git
