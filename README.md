@@ -44,33 +44,38 @@ Package managers can also be used to uninstall packages. This is usually as easy
 Example for Arch linux: pacman -R package-name
 This makes it easy to manage all the applications you have installed on your computer because they're all visible in one place.
 They will also have functionality to search for all of your installed packages which can be helpful for many uses one being if you want to clean your system of unused packages.
-
-### Suplementary package managers
+#### Appimages
+App images are a self-contained portable app format that work on any linux distro. They are self contained because they have everything they need to run the app they don't rely on anything else installed on your system. 
+You typically download them online from the website of the company that makes the app. They do this as opposed to making the program installable through package managers. Sometimes getting your app into a package managers database can be a hassle. 
+Appimages aren't able to be run by default so you have to give them execute permissions. From the terminal you can run chmod u+x name_of_your_appimage to actually run them. chmod makes a file runnable(executable) by adding the execute permissions to it. File managers can usually make files executable as well so you don't need to use the terminal. 
+You can double click them to run from a file manager just like a mac or windows application. If you're using the terminal just type the name of the appimage and hit enter to run the app.
+### Supplementary package managers
 While technically multiple package mangers can be used on any distro this is usually a bad idea. Different package mangers store and manage data in different ways which can conflict with each other causing your system to break.
-Don't try and install apt on Arch linux. For pacman on Ubuntu.
+Don't try and install apt on Arch linux. Or pacman on Ubuntu.
 There are only 2 packages I know of that are sort of an exception to this rule. Those are homebrew and webi.
 The benefit of using either of these two package managers is that they may have packages that your package manager doesn't have.
 #### HomeBrew:
-Homebrew is mostly used as a package manager for macos but can also be used on linux and is generally safe to use with your distro's package manager.
+[Homebrew](https://brew.sh/) is mostly used as a package manager for macos but can also be used on linux and is generally safe to use with your distro's package manager.
 It installs packages from the web, usually a github repository, and adds it to a folder that you can then use just like it was installed through your package manager.
 #### Webi
 [Webinstall](https://webinstall.dev/) isn't technically a package manager but it does install packages and put them on your path so it has basically the same usecase.
-While webi is mainly for software developer tools I wanted to mention it even for the non developers because it has some tools that are meant to be better versions of common linux command line tools.
-One of these is [lsd](https://webinstall.dev/lsd/). Ls is used to list out files and folders in the terminal
-lsd is a better version of ls by having more functionality. One of the best part of lsd is that it renders different images for different file types.
-Different file extensions also render with the icon attached to their extension. So folders render with a little folder icon next to their name, making them easy to differenciate from files. 
-#### Adding packages to the path
-Sometimes programs aren't available through a package manager so you have to download them through [Git](#Git) or from the internet etc. 
-If these are terminal programs and you want to be able to run them from any folders you have to add that program to your PATH.
-What is the path? The path is a list of folders that your terminal will search through when attempting to run a program. 
-What this means in practice is that you can run programs on your path no matter what folder your terminal is currently in which is very convenient.
-To see what programs are currently on your path you can type: echo $PATH into your terminal.
-To permanently add programs to your path you have to edit your shell's configuration file. I have an example in my .zshrc file. You can copy this if you use z-shell.
-However you will probably have bash installed by default in your terminal. I will go over the differences between shells in the terminal section.
-The bash config file is .bashrc and you have to add: export PATH=/this/is/an/example/path:$PATH.
-The format of this example path is a link to an executable file. So you have to make sure the last file listed in this link is an executable.
-When you download a program it won't be executable by default. So you need to use the chmod terminal command in this format: chmod +x yourexecutable.
+Webi is mainly for software developer and installs a bunch of dev tools that commonly in common package managers.
+#### Downloading programs from github
+Some programs aren't available to download from any of these sources but maybe you might still want them. This is some whatcommon for ricing tools. 
+For a lot of these you will download them through git via github. [Github](https://github.com/) is the website where you're reading this! It's just a place where developers store and share their code. Git is basically a tool for syncing code accross different devices and part of that is downloading code repositories. git clone is the terminal command to download a repository and there's an example further down for how to install this repository.
+You do need to make sure git is installed on your system to do this. You can check by running git in your terminal. If it says command not found you need to install git. It will be in your package manager so if your distro uses apt just run sudo apt install git.
+Once you clone a repository you need to cd into the directory. A directory is just a file folder. Which means run the cd command which means change directory and then the name of the repository that was just clones from git. Just type out the first couple characters and then press tab. Tab autocompletes commands in the terminal. Then you need to build or compile the program. This just means creating an executable or runnable file out of this directory. Usually in the readme section of github projects they will have instructions on how to do all of this.
+##### Adding packages to the path
+If these are terminal programs and you want to be able to run them from anywhere in your terminal you have to add that program to your PATH. They are not there by default like they are when the program is installed through your package manager.
+Some of this terminology was confusing to me so let me explain it here. The all capital PATH is a list of folders that your terminal will search through when attempting to run a program besides the folder your terminal is currently in.
+A folder path is a specifc location of that folder in the file system which is formatted by /s the represent folders.
+Folders in the path can be run no matter which folder your terminal is currently in.
+To see what folders are currently on your path you can type: echo $PATH into your terminal. This list is a bit hard to read because the separator between folders is a colon.
+To permanently add programs to your path you have to edit your shell's configuration file. There is an example in my .zshrc on line 12->15 to add a program to your path. .zshrc is the configuration file for z-shell.
+The configuration file for bash is .bashrc. Add this line to add a folder to your path: export PATH=/path/to/your/program/folder:$PATH.
+The format of this example path is a folder path. You're adding the FOLDER that contains your executable, not the executable file itself. Any executables in that folder can now be run from anywhere. You can use the chmod command I talked about earlier to make sure those programs are executable.
 Then you can run the program from the command line.
+To test if you successfully added the program to your path cd into another folder and try and run the program. I usually ```cd ~``` because that takes you into the home folder.
 
 ## Desktop environment vs Tiling window managers
 Desktop environment is what you're used to if you're coming from windows or Mac OS. There is a built in task bar that you can attach application to. There will usually be a control center for volume control and date time showing. And the windows open from different applications and float in the enviornment and you can drag and reshpae them.
@@ -168,7 +173,7 @@ Ensure you have the following installed on your system
 ## Installation
 
 First, check out the dotfiles repo in your $HOME directory using git
-
+[[Logistics]]
 ```
 cd ~
 git clone git@github.com/Astordg/dotfile.git

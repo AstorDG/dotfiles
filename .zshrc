@@ -27,10 +27,6 @@ setopt SHARE_HISTORY
 # Generated for envman. Do not edit.
 [ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
 
-# Added by LM Studio CLI (lms)
-export PATH="$PATH:/home/winston/.lmstudio/bin"
-# End of LM Studio CLI section
-
 export PATH="/opt/homebrew/opt/node@20/bin:$PATH"
 
 export NVM_DIR="$HOME/.nvm"
