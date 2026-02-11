@@ -31,5 +31,21 @@
 	"- **Notes from the interview:**",
 	"- **Next Steps:**"
     ]
-  }
+  },
+	"Portfolio Project Template": {
+		"prefix": "portfolio_template",
+		"description": "Template for all the info in a portfolio Project",
+		"body": [
+			"- Genre:",
+			"- Timeline:",
+			"- Role:",
+			"- Description:",
+			"- Tech stack:",
+			"- Team size:",
+			"- *My Work*",
+			"	- ",
+			"- Links",
+			"	- "
+		]
+	}
 }
