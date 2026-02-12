@@ -77,29 +77,41 @@ The format of this example path is a folder path. You're adding the FOLDER that 
 Then you can run the program from the command line.
 To test if you successfully added the program to your path cd into another folder and try and run the program. I usually ```cd ~``` because that takes you into the home folder.
 
+## Dotfiles
+What are dotfiles and why are they called that?
+Dotfiles are just files or folders that begin with a period or a dot hence dot files. eg: .zshrc, .config/, .git
+The reason that they being with a . is to make them hidden from file managers, which I personally hate, but whatever.
+I think they're there for less tech literate people to not get overwhelmed by all the files in their system that they will never touch.
+However we are the exception(Aoi Todo). So if you're trying to look for your .zshrc or .bashrc file to add a folder to your path you won't be able to find them without special flags set. This is true both in the terminal and in a graphical file manager.
+If you're using the ls command in the terminal you have to add the -a flag to see hidden files. If you're using a file explorer you should be able to turn off hidden files in your settings.
+Most of the configuration in these dotfiles and most dotfiles in general are in the .config directory that will have subfolders that are not hidden. So once you're in the .config folder you will be able to see these files normally.
+Usually the folder name in the .config folder is just the name of the program it's associated. Eg. tmux for tmux and rofi for rofi. Sometimes these names are a little different like hypr for hyprland or nvim for neovim. Whenever you install these tools their documentation will list out the name of their config folder.
+The reason I and other people have our dotfiles in a git repository is to sync them accross devices or when setting up a new computer. If you get a new computer you don't have to lose all of the customization you've made for your set up. You can just clone the repo with your dotfiles and be up and running quickly.
+Along the same vain if you have multiple computers you might want them to have the same set up. I personally sync these dotfiles between my laptop and my desktop which makes it easy and consistent to develop on both machines.
+
 ## Desktop environment vs Tiling window managers
 Desktop environment is what you're used to if you're coming from windows or Mac OS. There is a built in task bar that you can attach application to. There will usually be a control center for volume control and date time showing. And the windows open from different applications and float in the enviornment and you can drag and reshpae them.
 Window managers and what most people use, tiling window managers, only handle the organization and displaying of your windows. They don't come with a bar or an app launcher or a start menu. All of that is handled by other programs. The benefit of this is that tiling window managers help organize your windows into their own space on your monitor and they can neatly organize windows to use all of your screen real estate. They also have spaces.
 So if you're wondering how people make their windows look all pretty and organized it's because they're using a tiling window manager.
 How to pick which one you want: I really enjoy my tiling window manager having used desktop environments my whole life. It also gives you more customization. I would say if you like to customize and configure go with a tiling window manager and accept it take longer to set up than a desktop enviornment. But if you want something that just works and then you want to add some aethetics on top that may be limited go with a desktop enviornment.
 How to pick a tiling window manager: I'm gonna be honest I don't really know. All I can say is that I use hyprland because it has a good ecosystem for those extra featres that window managers don't come with. It was also relatively easy for me to configure as someone that had never used a tiling window manager before.
+### How to choose between them
+This is one of the first things that you need to decide between when ricing your setup.
+Part of this is distro dependent. Some distros will choose for you. Some will let you choose between them. Some are sort of hostile to switching from a desktop environment to a tiling window manager and it's just sort of annoying.
+For a Tiling window manager I would recommned hyprland. A lot of people use it so there's a lot of examples to pull for your customization which is nice. It also has an ecosystem of surronding tools that are nice, such as a wallpaper program, a lock screen and some others. You can find examples for these in my dotfiles. There are other options so if you want to do more research to see what's different between them you can always look around r/unixporn or on youtube. 
+I'm not really sure what the difference betwwen some of the desktop enviornments are. I used Mint for a bit which comes with cinnamon which had some customization options. KDE Plasma and GNome are the main ones so I'm sure there's a lot of cusomization examples to copy or be inspried by.
+I know I just gave you a lot of options but at the end of the day don't spend too long picking one or the other. Once you know which type of experience you want, DE Vs WM just pick one. You'll figure out what you like and don't like once you've used the one you picked for awhile and then you can make a better decision later if you want to switch.
 
-## Dotfiles
-Now that you know which file to edit for shell customization how do you even find it? This leads into dotfiles.
-What are dotfiles and why are they called that?
-Dotfiles are just files that begin with a period. eg: .config, .git
-The reason that they being with . is to make them hidden from file managers, which I personally hate hidden files but whatever.
-But I think they're there for less tech literate people to not get overwhelmed by all the files in their system that they will never touch. 
-We are the exception(Aoi Todo). So if you're trying to look for your .zshrc or .bashrc file in a file manager or in the terminal you won't be able to find them without 
-special flags set. If you're using ls in the terminal you have to add the -a flag to see hidden files. If you're using a file explorer you should be able to turn off hidden files in your settings.
+## My dotfile principles
 In my dotfiles I try and not to include fields when I'm using the default value for that field. Documentation isn't always the best for listing out all of the options that are configureable. This can be very frustrating because its hard to customize something that you don't know is customizeable. 
 I mainly just got over this by using deepwiki to answer a question when I needed to try an implement some specific functionality that maybe I coulnd't find in the documentation.
 With all that said lets get into dotfiles and managing them. This is my repository for managing my dotfiles.
 
-#### Nerd fonts
+#### Nerd Font Disclaimer
 When you look through my dotfiles on github there will be some characters that look like boxes with numbers in them. Those are unrendered icons and you need nerd fonts to render them. Usually these don't work in browsers that's why they look weird on github. Ghostty comes with a built in Nerd Font called JetBrains Mono. I use *This* website to preview the nerdfront that I use in ghostty.
+[Link to Nerdfont website](https://www.nerdfonts.com/)
 
-## Cava
+### Cava
 [Cava repository](https://github.com/karlstav/cava)
 This is a terminal audio visualizer. It's purely aethetic and I just have it on my second monitor when I'm working to look nice.
 There isn't much to customize for Cava even though my config looks kinda long. The defaul config that comes when you download cava comes with a lot of helpful comments, a lot of which I've left in mine. You can change a lot of elements of the bars. Just exeriment until you find what's nice to look at. The other big area of customization I did is changing the colors of the bars. You can have a gradient that makes the bars have different colors at different heights which is what I did. Or you can have a mono colored bars. You can also change the background.
