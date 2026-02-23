@@ -90,6 +90,10 @@ vim.keymap.set('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus to the left wind
 vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right window' })
 vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
 vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
+-- Neovim Splits
+vim.keymap.set('n', '<M-v>', '<cmd>vsplit<cr>', { desc = 'Create a vertial split' })
+vim.keymap.set('n', '<M-b>', '<cmd>split<cr>', { desc = 'Create a horizontal split' })
+vim.keymap.set('n', '<C-g>', '<cmd>q<cr>', { desc = 'Close a split' })
 
 -- Highlight when yanking (copying) text
 vim.api.nvim_create_autocmd('TextYankPost', {
@@ -446,6 +450,7 @@ require('lazy').setup({
           -- Update this to ensure that you have the debuggers for the langs you want
           'delve',
           'debugpy',
+          'codelldb',
         },
       }
 
@@ -472,16 +477,16 @@ require('lazy').setup({
       }
 
       -- Change breakpoint icons
-      -- vim.api.nvim_set_hl(0, 'DapBreak', { fg = '#e51400' })
-      -- vim.api.nvim_set_hl(0, 'DapStop', { fg = '#ffcc00' })
-      -- local breakpoint_icons = vim.g.have_nerd_font
-      --     and { Breakpoint = '', BreakpointCondition = '', BreakpointRejected = '', LogPoint = '', Stopped = '' }
-      --   or { Breakpoint = '●', BreakpointCondition = '⊜', BreakpointRejected = '⊘', LogPoint = '◆', Stopped = '⭔' }
-      -- for type, icon in pairs(breakpoint_icons) do
-      --   local tp = 'Dap' .. type
-      --   local hl = (type == 'Stopped') and 'DapStop' or 'DapBreak'
-      --   vim.fn.sign_define(tp, { text = icon, texthl = hl, numhl = hl })
-      -- end
+      vim.api.nvim_set_hl(0, 'DapBreak', { fg = '#e51400' })
+      vim.api.nvim_set_hl(0, 'DapStop', { fg = '#ffcc00' })
+      local breakpoint_icons = vim.g.have_nerd_font
+          and { Breakpoint = '', BreakpointCondition = '', BreakpointRejected = '', LogPoint = '', Stopped = '' }
+        or { Breakpoint = '●', BreakpointCondition = '⊜', BreakpointRejected = '⊘', LogPoint = '◆', Stopped = '⭔' }
+      for type, icon in pairs(breakpoint_icons) do
+        local tp = 'Dap' .. type
+        local hl = (type == 'Stopped') and 'DapStop' or 'DapBreak'
+        vim.fn.sign_define(tp, { text = icon, texthl = hl, numhl = hl })
+      end
 
       dap.listeners.after.event_initialized['dapui_config'] = dapui.open
       dap.listeners.before.event_terminated['dapui_config'] = dapui.close
@@ -516,14 +521,38 @@ require('lazy').setup({
       end
       dap_python.setup(find_uv_python())
       dap_python.test_runner = 'pytest'
+
+      -- Zig DAP configuration using CodeLLDB
+      dap.adapters.codelldb = {
+        type = 'server',
+        port = '${port}',
+        executable = {
+          command = vim.fn.stdpath 'data' .. '/mason/bin/codelldb',
+          args = { '--port', '${port}' },
+        },
+      }
+
+      dap.configurations.zig = {
+        {
+          name = 'Debug Zig executable',
+          type = 'codelldb',
+          request = 'launch',
+          program = '${workspaceFolder}/zig-out/bin/main',
+          cwd = '${workspaceFolder}',
+          stopOnEntry = true,
+          args = {},
+          -- Ensure we build before debugging
+          preLaunchTask = 'zig build',
+        },
+      }
+
       vim.keymap.set('n', '<Leader>db', dap.toggle_breakpoint, { desc = 'Toggle [b]reakpoint' })
-      vim.keymap.set('n', '<Leader>dB', dap.set_breakpoint, { desc = 'Set [B]reakpoint' })
-      vim.keymap.set('n', '<Leader>dc', dap.continue, { desc = '[C]ontinue' })
-      vim.keymap.set('n', '<Leader>di', dap.step_into, { desc = 'Step [i]nto' })
-      vim.keymap.set('n', '<Leader>do', dap.step_over, { desc = 'Step [o]ver' })
-      vim.keymap.set('n', '<Leader>du', dap.step_over, { desc = 'Step o[u]t' })
-      -- Toggle to see last session result. Without this, you can't see session output in case of unhandled exception.
       vim.keymap.set('n', '<Leader>dt', dapui.toggle, { desc = 'See las[t] session result' })
+      vim.keymap.set('n', '<F2>', dap.step_into, { desc = 'Step [i]nto' })
+      vim.keymap.set('n', '<F3>', dap.continue, { desc = '[C]ontinue' })
+      vim.keymap.set('n', '<F4>', dap.step_over, { desc = 'Step [o]ver' })
+      vim.keymap.set('n', '<F5>', dap.step_out, { desc = 'Step o[u]t' })
+      -- Toggle to see last session result. Without this, you can't see session output in case of unhandled exception.
     end,
   },
 
@@ -603,7 +632,15 @@ require('lazy').setup({
       'nvim-tree/nvim-web-devicons',
     },
   },
-
+  {
+    'iamcco/markdown-preview.nvim',
+    cmd = { 'MarkdownPreviewToggle', 'MarkdownPreview', 'MarkdownPreviewStop' },
+    ft = { 'markdown' },
+    build = function()
+      vim.cmd [[Lazy load markdown-preview.nvim]]
+      vim.fn['mkdp#util#install']()
+    end,
+  },
   -- Collection of various small independent plugins/modules for things I don't want to dedicate a whole plugin to
   -- For a full list of availalble mini plugins check the github repo.
   {
@@ -690,7 +727,7 @@ require('lazy').setup({
       require('neo-tree').setup {
         window = {
           position = 'left',
-          width = 0.15,
+          width = 0.1,
         },
         close_if_last_window = true,
         sort_case_insensitive = true,
@@ -921,7 +958,6 @@ require('lazy').setup({
           'stylua',
           'clangd',
           'zls',
-          'codelldb',
           'basedpyright',
           'ruff',
           'debugpy',

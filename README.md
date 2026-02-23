@@ -78,7 +78,7 @@ Then you can run the program from the command line.
 To test if you successfully added the program to your path cd into another folder and try and run the program. I usually ```cd ~``` because that takes you into the home folder.
 
 ## Dotfiles
-What are dotfiles and why are they called that?
+What are dotfiles? Why are they called that?
 Dotfiles are just files or folders that begin with a period or a dot hence dot files. eg: .zshrc, .config/, .git
 The reason that they being with a . is to make them hidden from file managers, which I personally hate, but whatever.
 I think they're there for less tech literate people to not get overwhelmed by all the files in their system that they will never touch.
@@ -90,89 +90,104 @@ The reason I and other people have our dotfiles in a git repository is to sync t
 Along the same vain if you have multiple computers you might want them to have the same set up. I personally sync these dotfiles between my laptop and my desktop which makes it easy and consistent to develop on both machines.
 
 ## Desktop environment vs Tiling window managers
-Desktop environment is what you're used to if you're coming from windows or Mac OS. There is a built in task bar that you can attach application to. There will usually be a control center for volume control and date time showing. And the windows open from different applications and float in the enviornment and you can drag and reshpae them.
-Window managers and what most people use, tiling window managers, only handle the organization and displaying of your windows. They don't come with a bar or an app launcher or a start menu. All of that is handled by other programs. The benefit of this is that tiling window managers help organize your windows into their own space on your monitor and they can neatly organize windows to use all of your screen real estate. They also have spaces.
-So if you're wondering how people make their windows look all pretty and organized it's because they're using a tiling window manager.
-How to pick which one you want: I really enjoy my tiling window manager having used desktop environments my whole life. It also gives you more customization. I would say if you like to customize and configure go with a tiling window manager and accept it take longer to set up than a desktop enviornment. But if you want something that just works and then you want to add some aethetics on top that may be limited go with a desktop enviornment.
-How to pick a tiling window manager: I'm gonna be honest I don't really know. All I can say is that I use hyprland because it has a good ecosystem for those extra featres that window managers don't come with. It was also relatively easy for me to configure as someone that had never used a tiling window manager before.
+A Desktop environment is what you're used to if you're coming from Windows or Mac OS. There is a task bar, an application launcher and a control center. Windows open and float or maybe open in full screen in the environment and you can drag and resize them.
+Tiling window managers, only handle the organization and displaying of windows. They display windows in a grid system that automatically makes windows non-overlapping. They don't come with an app launcher or task bar or a start menu. That functionality is implemented by other programs of your choosing. The trade off here is that it takes more work to get a system up and running, but you get more fine grain control and customization over that system.
+So if you're wondering how people make their windows look very organized and non overlapping it's because they're using a tiling window manager.
 ### How to choose between them
-This is one of the first things that you need to decide between when ricing your setup.
+This is one of the first things that you need to decide between when ricing your setup. And decides how much control you'll have over your set up.
+Because desktop envionrments come with built in elements you can only customize them as much as the environment allows. There's usually a good amount of customization options but it won't be as customizable as a tiling window manager environment.
+Tiling window managers only mange your windows so you have fine grain control of your environment. And there's a bunch of different tools to use for each of these. From your bar to your notification client to your application launcher to your lock screen. They are also very keyboard focused. This can be good for high productivity because you never need to take your hands off of the keyboard.
 Part of this is distro dependent. Some distros will choose for you. Some will let you choose between them. Some are sort of hostile to switching from a desktop environment to a tiling window manager and it's just sort of annoying.
-For a Tiling window manager I would recommned hyprland. A lot of people use it so there's a lot of examples to pull for your customization which is nice. It also has an ecosystem of surronding tools that are nice, such as a wallpaper program, a lock screen and some others. You can find examples for these in my dotfiles. There are other options so if you want to do more research to see what's different between them you can always look around r/unixporn or on youtube. 
-I'm not really sure what the difference betwwen some of the desktop enviornments are. I used Mint for a bit which comes with cinnamon which had some customization options. KDE Plasma and GNome are the main ones so I'm sure there's a lot of cusomization examples to copy or be inspried by.
-I know I just gave you a lot of options but at the end of the day don't spend too long picking one or the other. Once you know which type of experience you want, DE Vs WM just pick one. You'll figure out what you like and don't like once you've used the one you picked for awhile and then you can make a better decision later if you want to switch.
+I would say to choose between them based on how much control and customization you want. If you want a system that works out of the box but can be made to look pretty use a desktop environment.
+If you like to tinker and want a high level of customization go with a tiling window manager.
+Once you know which you want look into the differences between the different implementations. Like [hyprland](https://wiki.hypr.land/) vs [niri](https://github.com/niri-wm/niri) for tiling window managers. Or [KDE](https://kde.org/) vs [Gnome](https://www.gnome.org/) for desktop environment. There are more options than these but these are some of the popular options.
+I know I just gave you a lot of options but at the end of the day don't spend too long picking one or the other. Just pick one. Once you've used one or the other you'll figure out what you like and you can always switch.
 
 ## My dotfile principles
-In my dotfiles I try and not to include fields when I'm using the default value for that field. Documentation isn't always the best for listing out all of the options that are configureable. This can be very frustrating because its hard to customize something that you don't know is customizeable. 
-I mainly just got over this by using deepwiki to answer a question when I needed to try an implement some specific functionality that maybe I coulnd't find in the documentation.
-With all that said lets get into dotfiles and managing them. This is my repository for managing my dotfiles.
+I want my dotfiles to be readable and understandable so here are some disclaimers. I usually do not include configuration for fields that are default. Documentation isn't the best for listing out all of the options that are configureable. This can be very frustrating because its hard to customize something that you don't know is customizeable. 
+I got over this by using [Deepwiki](https://deepwiki.com/) to answer specific questions I had.
+I try to have single file configs. This makes them more readable for me by having all the configuration for an associated tool be in one place.
+In my config files there are comments that explain what the sections that are there do. I do this for myself when I'm coming back to reconfigure something I haven't touched in awhile. They should also be helpful for you to explain how each tool works how it does.
+There are also a lot of dotfiles online in the aformentioned r/unixporn. These can be incredibely helpful for seeing how a whole system comes together to create a working environment.
+There is another Readme in this repo called Logistics.md. This is just a file I use mainly to keep a consistent color palette between my tools. It also links to the github repos of the tools I use, which serves as a list of all my tools as well.
 
 #### Nerd Font Disclaimer
-When you look through my dotfiles on github there will be some characters that look like boxes with numbers in them. Those are unrendered icons and you need nerd fonts to render them. Usually these don't work in browsers that's why they look weird on github. Ghostty comes with a built in Nerd Font called JetBrains Mono. I use *This* website to preview the nerdfront that I use in ghostty.
-[Link to Nerdfont website](https://www.nerdfonts.com/)
+When you look through my dotfiles on github there will be some characters that look like boxes with numbers in them. Those are unrendered icons and you need nerd fonts to render them. Usually these don't work in browsers that's why they look weird on github. [Nerd fonts](https://www.nerdfonts.com) allows you to preview nerdfonts and also has a cheat sheet allowing you to copy icons.
+How to install fonts
 
 ### Cava
 [Cava repository](https://github.com/karlstav/cava)
 This is a terminal audio visualizer. It's purely aethetic and I just have it on my second monitor when I'm working to look nice.
-There isn't much to customize for Cava even though my config looks kinda long. The defaul config that comes when you download cava comes with a lot of helpful comments, a lot of which I've left in mine. You can change a lot of elements of the bars. Just exeriment until you find what's nice to look at. The other big area of customization I did is changing the colors of the bars. You can have a gradient that makes the bars have different colors at different heights which is what I did. Or you can have a mono colored bars. You can also change the background.
+There isn't much to customize for Cava even though my config looks kinda long. There is a default config file that comes when you download cava. It has a lot of helpful comments that explain what the different feilds do. I left some of these comments in my config file. You can change a lot of elements of the bars. Just experiment until you find what's nice to look at. The other big area of customization I did is changing the colors of the bars. You can have a gradient that makes the bars have different colors at different heights which is what I did. Or you can have a mono colored bars. You can also change the background color to contrast with your bar color.
 
 ## Ghostty
 [Ghostty Documentation](https://ghostty.org/)
-This is the terminal I use. It's fast and has a lot of modern features. It has a very easy to configure configuration file and it's very cusomizeable but has very good defaults. Ghostty has a lot of configuring that can be done, but has really good defaults. The aethetic of mine is based on the theme I use which is Kibble. To see how the theme look run this command in ghostty. I use it because it gives me everything I need in a terminal.
+This is the terminal I use. It's fast and configureable. The documentation has all of the features you can change and configure. I just have a couple of keybinds configured and some aesthetic things like my font and theme. The theme changes the text colors when running terminal commands. I personally use kibble because it matches the colors of my rice.
 
 Cursor animations are one of the new features. To customize your cursor animation you need a glsl file which is a shader file. I'm a programmer and I really don't know how make my own glsl shader for my cursor. I used these resources to make my custom one. Make sure you have the cursor shader line in your config file.
 
 ## Hyprland
 [Hyprland Documentation](https://wiki.hypr.land/Hypr-Ecosystem/hyprpaper/)
-It looks nice. Lets me customize keybinds to launch applications.
-My wallpaper is in my wallpapers folder. I would recommend adding your wallpapers there to keep the path to the picture consistent.
-Where did I find my wallpaper. R/unixporn is good repository of wallpapers as well.
+Hyprland is a tiling window manager that I use because it looks nice, has pretty, configurable animations and has a bunch of tools in its ecosystem such as hyprlock and hyprpaper which are explained below.
+
+My wallpaper is in my wallpapers folder. I would recommend adding your wallpapers there to keep the path to the wallpapers consistent.
+Functionality is grouped together by categories. In the configuration file this means there will be that category name and then curly braces {}. The variables for that category then need to be declared inside those curly braces
+I consulted the documentaiton a lot when configuring hyprland I honestly don't remember where I found my wallpaper but there are a bunch of good wallpaper websites. R/unixporn is good repository of wallpapers as well.
+
 ### Hyprlock
 [Hyprlock Documentaion](https://wiki.hypr.land/Hypr-Ecosystem/hyprlock/)
-Lock screen I use
+This is the hyprland ecosystem lock screen. Mine is quite minimal I just have the time and date. The documentation is pretty good for this one and simlple. 
+Because its a hyprland tool it uses the same configuration style of `categoryname {variabels}` to configure each category.
 
 ### Hyprpapaer
 [Hyprpaper Documentation](https://wiki.hypr.land/Hypr-Ecosystem/hyprpaper/)
-My wallpaper renderer.
+This is the hyprland ecosystem tool for displaying wallpapers. Mine just sets both my monitors to the same wallpaper.
 
 ## Neovim
 [Neovim](https://neovim.io/)
 I use neovim for code editing and for my personal Notes because I can't go back to any other text editor.
 
-I used this to start my neovim journey. It's a tutorial by one of the neovim maintainers and he explains a lot of core functionality and how to customize neovim to your liking.
-[kickstar](https://www.youtube.com/watch?v=m8C0Cq9Uv9o&list=WL&index=1)
+The aesthetic part of my neovim setup is in the cattpuccin plugin config. There I override the colors to be to my liking and fit with my rice theme.
+All of the other settings are keybinds and plugins to help my programming workflow. There is quite a lot of setup to get neovim off the ground as a good code editor but I would say it is worth it.
+Look elsewhere for a complete guide to setting up neovim. Many have done it far better than I ever could here.
+I used [kickstart](https://www.youtube.com/watch?v=m8C0Cq9Uv9o&list=WL&index=1) to start my neovim journey. It's a tutorial and base config file made by one of the neovim maintainers.He explains a lot of core functionality and how to customize neovim to your liking. It was incredibely helpful for me and allowed me to extend the config passed where he had set it up.
 
 ## Rofi
 [Rofi repo](https://github.com/davatorium/rofi)
-Very useful tool. I use it as a calculator and to open my app images and launch apps I don't have keybinds for
+I use rofi as my application launcher and for quick calulations I need.Very useful tool. I use it as a calculator and to open my app images and launch apps I don't have keybinds for
 
 
 ## Tmux
 [Tmux Wiki](https://github.com/tmux/tmux/wiki)
 [Cheat sheet](https://tmuxcheatsheet.com/)
-I have to restart my computer a lot because I have a windows partition. I know disgusting so I use Tmux resurect which restores your tmux state.
+Tmux is very much a developer tool so if you're not a Software engineer this one probably won't be helpful for you. Tmux basically allows you to save the state of your terminal and organize that state into sessions. So I use it to organize my different projects into different sessions and windows to keep everything organized and to keep navigation down.
+Tmux has a plugin ecosystem but I don't really use it. I have to restart my computer a lot because I have a windows partition. I know disgusting. So I use the Tmux resurect which can save your tmux session data and then restore it after you restart your computer.
 
 ## Waybar
 [Waybar Wiki](https://github.com/Alexays/Waybar/wiki)
-This is my bar. Useful stuff for setting it up here:
+Waybar has two config sections. I have this seperated out into two files but some people use more than 2 files. There is the config.jsonc and the style.css sections. The config.jsonc handles the functionality of waybar. So where the bar is located how many workspaces you have etc. The style.css handles the aesthetics and how it looks. There are built in names for predefined groups but you can also create custom groups. I use this for my gpu-useage percent on my bar. It can also be helpful to group different modules together. This allows them to be styled together in the css.
 
 ## Wlogout
 [Wlogout repo](https://github.com/ArtsyMacaw/wlogout)
-I use this as my start menu basicallly. It lets you logout, restart, etc.
+I use this as my start menu basicallly. It lets you logout, restart, sleep etc.
+The configuration is pretty simple as well. The layout file shows in order the labels that are listed. The action is a terminal command to run similar to X idk. The style.css handles how the menu looks. Including add pictures that display for each label.
 
 ## Starship
 [Startship wiki](https://starship.rs/)
 I use this as my terminal command prompt.
 It gives me a lot of useful info like the file path I'm currently in as well as the git status of the folder and the programming language this project is in which is helpful for my dev work.
+The format section at the top determins the order that different sections appear from left to right. You also define the colors of each section here. 
+Each section is configured by [name of section] where you can put the name of the section. In the configuration section of the wiki it lists out all of the section names and the options to configure them.
+On the wiki there are some example configs. I used the cattpuccin base because it organized the sections similar to how I liked
 
 ## Z shell
 [Z shell wiki](https://www.zsh.org/)
-I use Z shell because it has syntax highlighting and stuff when I wanna run terminal commands which is incredibly helpful.
-
+I use Z shell because it has a couple of plugins that I really value like syntax highlighting and autocomplete. These are incredibely useful because they help me determine if I'm formatting terminal commands correctly. The configureation for adding folders to the path is relatively simple as well.
 
 ## Scripts
 My folder for bash scripts
-
+I only have one right now that handles the cava visualizers on my waybar. It's good to keep scripts in one folder so they're consitently in one spot. Scripts are usually good for automating workflows. If there's something you do in the terminal a lot considering writing a script for it.
+Bash scripts are just a bunch of terminal commands chained together with some parsing logic. Bash scripting was pretty hard for me to understand at first so I would recommend reading about it if you want to know more/ want to do some more powerful bash scripting.
 
 ## Git
 
@@ -180,6 +195,7 @@ Git is a version control system for
 
 Ensure you have the following installed on your system
 ### Stow
+[Link to gnu stow]() This tool isn't super complicated but it's the main tool along with git I use to organize my dotfiles. I will go over how to use it more in the installation section.
 
 # Dotfiles
 ## Installation
@@ -200,10 +216,3 @@ $ stow .
 
 Video link [Here](https://www.youtube.com/watch?v=y6XCebnB9gs)
 
-- Topics:
-    - Package managers include webi and homebrew
-    - Window managers vs desktop environments
-    - List out all of the main packages I need for my rice then their functionality and explinations of how I set them up
-    - Not every field that can be changed is changed or explicitly listed out. Some wikis are helpful at listing out all of the things that can be changed for their tools and some aren't
-    - Talk about logistics.md
-    - Talk about gnu stow
