@@ -189,30 +189,34 @@ My folder for bash scripts
 I only have one right now that handles the cava visualizers on my waybar. It's good to keep scripts in one folder so they're consitently in one spot. Scripts are usually good for automating workflows. If there's something you do in the terminal a lot considering writing a script for it.
 Bash scripts are just a bunch of terminal commands chained together with some parsing logic. Bash scripting was pretty hard for me to understand at first so I would recommend reading about it if you want to know more/ want to do some more powerful bash scripting.
 
-## Git
-
-Git is a version control system for 
-
-Ensure you have the following installed on your system
-### Stow
-[Link to gnu stow]() This tool isn't super complicated but it's the main tool along with git I use to organize my dotfiles. I will go over how to use it more in the installation section.
-
 # Dotfiles
 ## Installation
+Ensure you have the following installed on your system.
+[Git](#Git)
+[GNU Stow](#Stow)
 
-First, check out the dotfiles repo in your $HOME directory using git
-[[Logistics]]
+### Git
+Git is a tool for managing the syncronization of code between different computers. It also allows you to clone folders you will need it to clone this repository.
+
+### Stow
+[GNU Stow](https://www.gnu.org/software/stow/) This tool isn't super complicated but it's the main tool along with git I use to organize my dotfiles. I will go over how to use it more in the installation section.
+
+I used [this](https://www.youtube.com/watch?v=y6XCebnB9gs) video to help me understand stow.
+
+### Instructions
+First, check out the dotfiles repo in your $HOME directory using git. Technically you can put this repo wherever you want but I put it in my ~ folder because its an easy to remember location.
 ```
 cd ~
 git clone git@github.com/Astordg/dotfile.git
 cd dotfiles
 ```
 
-Then use GNU stow to create symlinks
-
+Then use GNU stow to create symlinks. 
 ```
 $ stow .
 ```
 
-Video link [Here](https://www.youtube.com/watch?v=y6XCebnB9gs)
+This basically means that your dotfiles will exist in two places that are connected. One in this main repository that only holds the dotfiles for tools. The other is where they are expected to be in your system so these tools can parse them. The structure of this repo reflects how the files are meant to be organized. So config files that go in the ~/.config folder on your computer go in the dotfiles/.config in this structure. Same with files like .zshrc that aren't in any folder. dotfiles/.zshrc is linked to ~/.zshrc.
 
+#### New config
+To add a new config
