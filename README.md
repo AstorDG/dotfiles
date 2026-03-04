@@ -1,222 +1,757 @@
 # Intro to Ricing
-If you don't care about the tutorial go here. [Installation](#Installation)
 
-## Intro
-What is ricing? Ricing is the process of customizing your linux environment. It's both aesthetic and functional but mostly aesthetic.
-Why is it called ricing? It came from asian car owners adding mostly aesthetic mods to their cars and then the term was adopted in the computer space.
-I'm writing this as the introduction to ricing and some common Linux tools that I would have wanted when I started on my Linux journey.
-This is not meant to be a complete guide for all of the tools that I reference. It is meant to explain basic concepts that were confusing for me as a beginner and show you where to look when you get confused, because you will.
+## Quick Start
 
-## Disclaimers
-One of things that some guides will do that's very confusing is when they instruct you to run terminal commands they'll put '$' at the beginning of the command. The $ is just a stand in for the text in your terminal that preceeds the commands you type in. Also known as the command prompt. When running commands from a guide remember to exclude this $ part from the command when you're copy and pasting or typing out the command.
-Another thing to be wary of is multi line commands. Sometimes guides will just have a bunch of commands one after the other and whatever copy button they have will copy all of the lines onto your clip board which will paste them all into your terminal. If you try and run commands this way they will not work.
-Run these commands one at a time, for the most part. Copy these commands one line at a time.
-Finaly disclaimers is to remember that most of this setup is purely aesthetic. If you find yourself getting frustrated trying to customize some tool. or you feel like it's taking too long to set up, remember you can always just not use it. Or you can use it in it's uncustomized state. The beauty of linux is that it's your system and you can install and configure it however you want. Find a tool with the same or similar functionality that has better defaults or better configuration options. If it stops being fun just remember why you're ricing.
-With that being said let's get into some of the base level knowledge that you'll need to know before deciding how to rice your system.
+If you just want to use these dotfiles without reading the tutorial:
 
-### The *Terminal*
-The terminal a topic that could and probably has had multiple books written about it. I'm really only putting this section here to tell you not to be afraid of it.
-It's the main way to install packages, also known as programs, with your package manager although some distros have a graphical program that you can use to install packages. They are really using terminal commands under the hood though.
-Which is also true of a lot of the tools in this rice. Many of these tools have ways to run terminal commands and then display the output in ways unique to that tool.
-This was very confusing for me at first when looking at other people's dotfiles so I will point out these occasions. 
-It's very powerful and I would encourage you to become comfortable with it as it will help you a lot on your linux journey. But it is possible to not have to use the terminal at all.
-If you're just here for the pretty looks you can copy and paste my dotfiles and never look at them again.
-Throughout this guide I will talk about running commands and sometimes give you specific commands to run. These are safe but I would encourage you to use caution when running terminal commands and try and sort of understand what they're doing. Asking Mr. Chat GPT or your prefered ai assistant what a command does before running it is usually very helpful for breaking down commands. Especially long ones that chain into each other.
-With all of the disclaimers out of the way lets talk about how you even install these tools.
+```bash
+cd ~
+git clone https://github.com/Astordg/dotfile.git
+cd dotfiles
+stow .
+```
 
-## Package Managers
-One of the biggest changes when coming from Windows or MacOS is how programs/applications, or packages as we call them in the linux world, are installed.
-**All apps are packages but not all packages are apps**
-The main paradigm for installing applications on those operating stystems is going to a website or an app store and downloading the app or app installer. Then the app appears in your program launcher, your task bar or your applications foloder.
-While you can install packages this way on linux, the preferred way is to use a package manager.
-A package manager is a central program that handles downloading software onto your computer. Hence the name package manager. It manages the packages or software on your computer. You use a package manager basically like an app store. It can be accessed through the terminal but most distros have a graphical application that can also interact with the package manager so if you don't want to use the terminal you don't have to.
-There are some subtle differences between app stores and package managers but they serve the same purpose of getting software onto your computer.
-Different linux distributions, or distros for short, will have different package managers. Examples include apt for Ubuntu, pacman for Arch linux or DNF for Fedora.
-I would strongly suggest you to get familiar with your linux distribution's package manager as they can be confusing at first and take some time to learn.
-### Installing and uninstalling programs
-One of the things that's annoying when using a package manager is finding the exact name of a program or app you want to install.
-Sometimes packages will have version numbers in their package names or have some extra characters that make it hard to know exactly what to type to download a package.
-One way to search for packages is online. Some package managers or distros will have a website where you can search for packages.
-The better way that I would suggest is to use your package manager to search for packages. All package mangers will have a command that allows you to search their database for packages and each will come with a little description so you will know what you're downloading.
-An example for Ubuntu: apt search pack-name
-Usually the graphical application for your package manager will also have this search feature but it doesn't always give as much information.
-Package managers can also be used to uninstall packages. This is usually as easy as running the package manager and then an uninstall command and the name of the package.
-Example for Arch linux: pacman -R package-name
-This makes it easy to manage all the applications you have installed on your computer because they're all visible in one place.
-They will also have functionality to search for all of your installed packages which can be helpful for many uses one being if you want to clean your system of unused packages.
-#### Appimages
-App images are a self-contained portable app format that work on any linux distro. They are self contained because they have everything they need to run the app they don't rely on anything else installed on your system. 
-You typically download them online from the website of the company that makes the app. They do this as opposed to making the program installable through package managers. Sometimes getting your app into a package managers database can be a hassle. 
-Appimages aren't able to be run by default so you have to give them execute permissions. From the terminal you can run chmod u+x name_of_your_appimage to actually run them. chmod makes a file runnable(executable) by adding the execute permissions to it. File managers can usually make files executable as well so you don't need to use the terminal. 
-You can double click them to run from a file manager just like a mac or windows application. If you're using the terminal just type the name of the appimage and hit enter to run the app.
-### Supplementary package managers
-While technically multiple package mangers can be used on any distro this is usually a bad idea. Different package mangers store and manage data in different ways which can conflict with each other causing your system to break.
-Don't try and install apt on Arch linux. Or pacman on Ubuntu.
-There are only 2 packages I know of that are sort of an exception to this rule. Those are homebrew and webi.
-The benefit of using either of these two package managers is that they may have packages that your package manager doesn't have.
-#### HomeBrew:
-[Homebrew](https://brew.sh/) is mostly used as a package manager for macos but can also be used on linux and is generally safe to use with your distro's package manager.
-It installs packages from the web, usually a github repository, and adds it to a folder that you can then use just like it was installed through your package manager.
-#### Webi
-[Webinstall](https://webinstall.dev/) isn't technically a package manager but it does install packages and put them on your path so it has basically the same usecase.
-Webi is mainly for software developer and installs a bunch of dev tools that commonly in common package managers.
-#### Downloading programs from github
-Some programs aren't available to download from any of these sources but maybe you might still want them. This is some whatcommon for ricing tools. 
-For a lot of these you will download them through git via github. [Github](https://github.com/) is the website where you're reading this! It's just a place where developers store and share their code. Git is basically a tool for syncing code accross different devices and part of that is downloading code repositories. git clone is the terminal command to download a repository and there's an example further down for how to install this repository.
-You do need to make sure git is installed on your system to do this. You can check by running git in your terminal. If it says command not found you need to install git. It will be in your package manager so if your distro uses apt just run sudo apt install git.
-Once you clone a repository you need to cd into the directory. A directory is just a file folder. Which means run the cd command which means change directory and then the name of the repository that was just clones from git. Just type out the first couple characters and then press tab. Tab autocompletes commands in the terminal. Then you need to build or compile the program. This just means creating an executable or runnable file out of this directory. Usually in the readme section of github projects they will have instructions on how to do all of this.
-##### Adding packages to the path
-If these are terminal programs and you want to be able to run them from anywhere in your terminal you have to add that program to your PATH. They are not there by default like they are when the program is installed through your package manager.
-Some of this terminology was confusing to me so let me explain it here. The all capital PATH is a list of folders that your terminal will search through when attempting to run a program besides the folder your terminal is currently in.
-A folder path is a specifc location of that folder in the file system which is formatted by /s the represent folders.
-Folders in the path can be run no matter which folder your terminal is currently in.
-To see what folders are currently on your path you can type: echo $PATH into your terminal. This list is a bit hard to read because the separator between folders is a colon.
-To permanently add programs to your path you have to edit your shell's configuration file. There is an example in my .zshrc on line 12->15 to add a program to your path. .zshrc is the configuration file for z-shell.
-The configuration file for bash is .bashrc. Add this line to add a folder to your path: export PATH=/path/to/your/program/folder:$PATH.
-The format of this example path is a folder path. You're adding the FOLDER that contains your executable, not the executable file itself. Any executables in that folder can now be run from anywhere. You can use the chmod command I talked about earlier to make sure those programs are executable.
-Then you can run the program from the command line.
-To test if you successfully added the program to your path cd into another folder and try and run the program. I usually ```cd ~``` because that takes you into the home folder.
+Then log out and select Hyprland from your display manager. You'll need the packages listed in [Part 6](#part-6-installing-these-dotfiles).
 
-## Dotfiles
-What are dotfiles? Why are they called that?
-Dotfiles are just files or folders that begin with a period or a dot hence dot files. eg: .zshrc, .config/, .git
-The reason that they being with a . is to make them hidden from file managers, which I personally hate, but whatever.
-I think they're there for less tech literate people to not get overwhelmed by all the files in their system that they will never touch.
-However we are the exception(Aoi Todo). So if you're trying to look for your .zshrc or .bashrc file to add a folder to your path you won't be able to find them without special flags set. This is true both in the terminal and in a graphical file manager.
-If you're using the ls command in the terminal you have to add the -a flag to see hidden files. If you're using a file explorer you should be able to turn off hidden files in your settings.
-Most of the configuration in these dotfiles and most dotfiles in general are in the .config directory that will have subfolders that are not hidden. So once you're in the .config folder you will be able to see these files normally.
-Usually the folder name in the .config folder is just the name of the program it's associated. Eg. tmux for tmux and rofi for rofi. Sometimes these names are a little different like hypr for hyprland or nvim for neovim. Whenever you install these tools their documentation will list out the name of their config folder.
-The reason I and other people have our dotfiles in a git repository is to sync them accross devices or when setting up a new computer. If you get a new computer you don't have to lose all of the customization you've made for your set up. You can just clone the repo with your dotfiles and be up and running quickly.
-Along the same vain if you have multiple computers you might want them to have the same set up. I personally sync these dotfiles between my laptop and my desktop which makes it easy and consistent to develop on both machines.
+For the full guide, read on.
 
-## Desktop environment vs Tiling window managers
-A Desktop environment is what you're used to if you're coming from Windows or Mac OS. There is a task bar, an application launcher and a control center. Windows open and float or maybe open in full screen in the environment and you can drag and resize them.
-Tiling window managers, only handle the organization and displaying of windows. They display windows in a grid system that automatically makes windows non-overlapping. They don't come with an app launcher or task bar or a start menu. That functionality is implemented by other programs of your choosing. The trade off here is that it takes more work to get a system up and running, but you get more fine grain control and customization over that system.
-So if you're wondering how people make their windows look very organized and non overlapping it's because they're using a tiling window manager.
-### How to choose between them
-This is one of the first things that you need to decide between when ricing your setup. And decides how much control you'll have over your set up.
-Because desktop envionrments come with built in elements you can only customize them as much as the environment allows. There's usually a good amount of customization options but it won't be as customizable as a tiling window manager environment.
-Tiling window managers only mange your windows so you have fine grain control of your environment. And there's a bunch of different tools to use for each of these. From your bar to your notification client to your application launcher to your lock screen. They are also very keyboard focused. This can be good for high productivity because you never need to take your hands off of the keyboard.
-Part of this is distro dependent. Some distros will choose for you. Some will let you choose between them. Some are sort of hostile to switching from a desktop environment to a tiling window manager and it's just sort of annoying.
-I would say to choose between them based on how much control and customization you want. If you want a system that works out of the box but can be made to look pretty use a desktop environment.
-If you like to tinker and want a high level of customization go with a tiling window manager.
-Once you know which you want look into the differences between the different implementations. Like [hyprland](https://wiki.hypr.land/) vs [niri](https://github.com/niri-wm/niri) for tiling window managers. Or [KDE](https://kde.org/) vs [Gnome](https://www.gnome.org/) for desktop environment. There are more options than these but these are some of the popular options.
-I know I just gave you a lot of options but at the end of the day don't spend too long picking one or the other. Just pick one. Once you've used one or the other you'll figure out what you like and you can always switch.
+---
 
-## My dotfile principles
-I want my dotfiles to be readable and understandable so here are some disclaimers. I usually do not include configuration for fields that are default. Documentation isn't the best for listing out all of the options that are configureable. This can be very frustrating because its hard to customize something that you don't know is customizeable. 
-I got over this by using [Deepwiki](https://deepwiki.com/) to answer specific questions I had.
-I try to have single file configs. This makes them more readable for me by having all the configuration for an associated tool be in one place.
-In my config files there are comments that explain what the sections that are there do. I do this for myself when I'm coming back to reconfigure something I haven't touched in awhile. They should also be helpful for you to explain how each tool works how it does.
-There are also a lot of dotfiles online in the aformentioned r/unixporn. These can be incredibely helpful for seeing how a whole system comes together to create a working environment.
-There is another Readme in this repo called Logistics.md. This is just a file I use mainly to keep a consistent color palette between my tools. It also links to the github repos of the tools I use, which serves as a list of all my tools as well.
+## Showoff
 
-#### Nerd Font Disclaimer
-When you look through my dotfiles on github there will be some characters that look like boxes with numbers in them. Those are unrendered icons and you need nerd fonts to render them. Usually these don't work in browsers that's why they look weird on github. [Nerd fonts](https://www.nerdfonts.com) allows you to preview nerdfonts and also has a cheat sheet allowing you to copy icons.
-How to install fonts
+Gif of wallpaper. Opening multiple terminals. Cava then Btop. Go into tmux session: dotfiles + portfolio + current project.
+[Screenshots go here - add 2-3 images of your full setup]
 
-### Cava
-[Cava repository](https://github.com/karlstav/cava)
-This is a terminal audio visualizer. It's purely aethetic and I just have it on my second monitor when I'm working to look nice.
-There isn't much to customize for Cava even though my config looks kinda long. There is a default config file that comes when you download cava. It has a lot of helpful comments that explain what the different feilds do. I left some of these comments in my config file. You can change a lot of elements of the bars. Just experiment until you find what's nice to look at. The other big area of customization I did is changing the colors of the bars. You can have a gradient that makes the bars have different colors at different heights which is what I did. Or you can have a mono colored bars. You can also change the background color to contrast with your bar color.
+This is an Arch + Hyprland rice with a Cyberpunk aethetic.
+Components:
+- Waybar
+- Rofi
+- wlogout
 
-## Ghostty
-[Ghostty Documentation](https://ghostty.org/)
-This is the terminal I use. It's fast and configureable. The documentation has all of the features you can change and configure. I just have a couple of keybinds configured and some aesthetic things like my font and theme. The theme changes the text colors when running terminal commands. I personally use kibble because it matches the colors of my rice.
+---
 
-Cursor animations are one of the new features. To customize your cursor animation you need a glsl file which is a shader file. I'm a programmer and I really don't know how make my own glsl shader for my cursor. I used these resources to make my custom one. Make sure you have the cursor shader line in your config file.
+## Part 1: Before You Start
 
-## Hyprland
-[Hyprland Documentation](https://wiki.hypr.land/Hypr-Ecosystem/hyprpaper/)
-Hyprland is a tiling window manager that I use because it looks nice, has pretty, configurable animations and has a bunch of tools in its ecosystem such as hyprlock and hyprpaper which are explained below.
+### Common Traps in Guides
 
-My wallpaper is in my wallpapers folder. I would recommend adding your wallpapers there to keep the path to the wallpapers consistent.
-Functionality is grouped together by categories. In the configuration file this means there will be that category name and then curly braces {}. The variables for that category then need to be declared inside those curly braces
-I consulted the documentaiton a lot when configuring hyprland I honestly don't remember where I found my wallpaper but there are a bunch of good wallpaper websites. R/unixporn is good repository of wallpapers as well.
+**The `$` prefix**
+
+When guides show terminal commands, they often put `$` at the beginning:
+
+```bash
+$ sudo pacman -S hyprland
+```
+
+The `$` is just a stand-in for your command prompt. Don't type it. Only type the part after:
+
+```bash
+sudo pacman -S hyprland
+```
+
+**Multi-line commands**
+
+Some guides show multiple commands together. If you copy all of them at once and paste into your terminal, they may not work correctly. Copy and run commands one line at a time.
+
+**Running commands you don't understand**
+
+If you're unsure what a command does, ask an AI assistant to explain it before running. This is especially helpful for long commands that chain together.
+
+**Getting frustrated**
+
+Most of this setup is aesthetic. If customizing a tool is taking too long or frustrating you, remember: you can skip it. Use the tool with default settings, or find an alternative. The beauty of Linux is choice. If it stops being fun, remember why you started ricing.
+
+### Prerequisites
+
+**Recommended distributions:**
+- Arch-based (Arch, EndeavourOS, Manjaro) - best for Hyprland support
+- Fedora - good documentation
+- Ubuntu/Debian - works but may need more manual setup
+
+**Required:**
+- Git installed
+- A text editor (nano, vim, or any GUI editor)
+
+**Time expectation:** Setting up a rice takes a weekend, not an afternoon. Take breaks.
+
+---
+
+## Part 2: Linux Fundamentals
+
+### The Terminal
+
+The terminal is how you'll install packages and configure tools. Don't be afraid of it. Many GUI tools run terminal commands under the hood anyway.
+
+Basic commands you'll use:
+- `cd foldername` - change directory (navigate to a folder)
+- `ls` - list files in current directory
+- `ls -a` - list all files including hidden ones
+- `cat filename` - display file contents
+
+### Package Managers
+
+A package manager is your central app store. Instead of downloading installers from websites, you use one program to manage all your software.
+
+**Installing packages:**
+
+| Distro | Command |
+|--------|---------|
+| Ubuntu/Debian | `sudo apt install package-name` |
+| Arch-based | `sudo pacman -S package-name` |
+| Fedora | `sudo dnf install package-name` |
+
+**Searching for packages:**
+
+| Distro | Command |
+|--------|---------|
+| Ubuntu/Debian | `apt search package-name` |
+| Arch-based | `pacman -Ss package-name` |
+| Fedora | `dnf search package-name` |
+
+**Removing packages:**
+
+| Distro | Command |
+|--------|---------|
+| Ubuntu/Debian | `sudo apt remove package-name` |
+| Arch-based | `sudo pacman -R package-name` |
+| Fedora | `sudo dnf remove package-name` |
+
+**Appimages**
+
+Appimages are self-contained programs that work on any distro. Download them from the developer's website, then make them executable:
+
+```bash
+chmod u+x filename.AppImage
+```
+
+Then run them like any program.
+
+### Dotfiles
+
+Dotfiles are files and folders that start with a `.` (dot), making them hidden by default.
+
+Examples: `.zshrc`, `.config/`, `.git/`
+
+**Why hidden?** To keep regular users from accidentally breaking things. But as someone ricing your system, you'll need to access these.
+
+**Viewing hidden files:**
+- Terminal: `ls -a`
+- File manager: Look for "Show Hidden Files" in settings or press `Ctrl+H`
+
+**Where dotfiles live:**
+- `~/.zshrc` or `~/.bashrc` - shell configuration
+- `~/.config/` - most application configs go here in subfolders (e.g., `~/.config/hypr/`, `~/.config/waybar/`)
+
+**Why put dotfiles in a git repo?**
+- Sync across multiple computers
+- Quick setup on a new machine
+- Version control for your configurations
+
+### PATH and Executables
+
+**What is PATH?**
+
+PATH is a list of folders your terminal searches when you type a command. If a program's folder is in PATH, you can run it from anywhere.
+
+View your current PATH:
+```bash
+echo $PATH
+```
+
+**Adding to PATH:**
+
+If you download a program manually (not through a package manager), you need to add its folder to PATH.
+
+For Zsh, add to `~/.zshrc`:
+```bash
+export PATH=/path/to/program/folder:$PATH
+```
+
+For Bash, add to `~/.bashrc`:
+```bash
+export PATH=/path/to/program/folder:$PATH
+```
+
+Note: Add the *folder* containing the executable, not the executable file itself.
+
+**Making files executable:**
+
+Before running downloaded scripts or Appimages, make them executable:
+```bash
+chmod u+x filename
+```
+
+---
+
+## Part 3: Choosing Your Tools
+
+### Desktop Environment vs Tiling Window Manager
+
+**Desktop Environment (DE)** - What you're used to from Windows/Mac:
+- Task bar, app launcher, settings panels included
+- Windows float and can be dragged/resized
+- Works out of the box
+- Limited customization
+
+Examples: GNOME, KDE Plasma
+
+**Tiling Window Manager (TWM)** - Keyboard-focused, minimal:
+- Windows automatically arranged in a grid (non-overlapping)
+- No built-in bar, launcher, or settings - you choose each component
+- More setup work, but fine-grained control
+- Highly customizable
+
+Examples: Hyprland, Niri, Sway
+
+**How to choose:**
+- Want something that works immediately with decent customization? Use a DE
+- Want maximum control and don't mind setup time? Use a TWM
+
+### The Tool Stack
+
+For a tiling window manager setup, you need multiple tools working together:
+
+```
+Tiling Window Manager (Hyprland)
+    |
+    |-- Bar (Waybar) ---------------- System info, workspaces, clock
+    |
+    |-- Launcher (Rofi) ------------- Open apps, run commands
+    |
+    |-- Lock Screen (Hyprlock) ------- Screen lock
+    |
+    |-- Wallpaper (Hyprpaper) ------- Background images
+    |
+    |-- Logout Menu (Wlogout) ------- Shutdown, reboot, logout
+    |
+    |-- Terminal (Ghostty) ---------- Where you run commands
+            |
+            |-- Shell (Zsh) --------- Command interpreter
+            |       |
+            |       |-- Prompt (Starship) --- Styled command prompt
+            |
+            |-- Multiplexer (Tmux) -- Optional: Save terminal sessions
+```
+
+### Tool Selection Guide
+
+**Window Manager:**
+- [Hyprland](https://wiki.hypr.land/) - Modern, great animations, active development (what I use)
+- [Niri](https://github.com/niri-wm/niri) - Scroll-based tiling, simpler config
+- [Sway](https://github.com/swaywm/sway) - i3-compatible for Wayland, stable
+
+**Bar:**
+- [Waybar](https://github.com/Alexays/Waybar) - Highly customizable, good docs (what I use)
+- [Polybar](https://github.com/polybar/polybar) - More modules, X11-focused
+
+**Launcher:**
+- [Rofi](https://github.com/davatorium/rofi) - Flexible, can do calculator, window switcher (what I use)
+- [Wofi](https://hg.sr.ht/~scoopta/wofi) - Simpler, GTK-based
+
+**Terminal:**
+- [Ghostty](https://ghostty.org/) - Fast, modern features (what I use)
+- [Alacritty](https://github.com/alacritty/alacritty) - GPU-accelerated, popular
+- [Kitty](https://github.com/kovidgoyal/kitty) - Feature-rich, image support
+
+**Shell:**
+- [Zsh](https://www.zsh.org/) - Better autocomplete, plugins (what I use)
+- [Bash](https://www.gnu.org/software/bash/) - Default on most systems
+- [Fish](https://fishshell.com/) - User-friendly, great autosuggestions
+
+---
+
+## Part 4: CSS Basics for Ricing
+
+Several tools use CSS for styling: Waybar, Wlogout, and others. If you haven't used CSS, here's what you need to know.
+
+### Selectors
+
+CSS selectors target elements to style them:
+
+```css
+* { }                    /* Universal - applies to everything */
+window { }               /* Element - targets <window> tags */
+#workspaces { }          /* ID - targets element with id="workspaces" */
+.button { }              /* Class - targets elements with class="button" */
+button:hover { }         /* Pseudo-class - targets button on hover */
+```
+
+### The Box Model
+
+Every element is a box with layers:
+
+```
++---------------------------------+  <- margin (space outside)
+|  +---------------------------+  |
+|  |        border             |  |  <- border (edge)
+|  |  +---------------------+  |  |
+|  |  |     padding         |  |  |  <- padding (space inside)
+|  |  |  +---------------+  |  |  |
+|  |  |  |   content     |  |  |  |
+|  |  |  +---------------+  |  |  |
+|  |  +---------------------+  |  |
+|  +---------------------------+  |
++---------------------------------+
+```
+
+Common properties:
+```css
+margin: 10px;              /* Space outside the border */
+padding: 5px 10px;         /* Space inside the border (vertical horizontal) */
+border: 2px solid #D90202; /* Width, style, color */
+border-radius: 20px;       /* Rounded corners */
+```
+
+### Colors
+
+Two common formats:
+
+```css
+color: #D90202;                    /* Hex - 6 characters for RGB */
+background: rgba(217, 2, 1, 0.5);   /* RGBA - red, green, blue, alpha (transparency) */
+```
+
+Use [htmlcolorcodes.com](https://htmlcolorcodes.com/color-picker/) to pick colors.
+
+### Example from My Waybar
+
+```css
+#workspaces {
+    color: #33d4c4;              /* Text color - cyan */
+    margin: 10px 10px;           /* Space around the workspaces block */
+    border-radius: 20px;         /* Rounded corners */
+    border: 2px solid #D90202;   /* Red border */
+    background-color: #362921;   /* Rust orange background */
+}
+
+#workspaces button {
+    margin: 2px 2px;             /* Space between workspace buttons */
+    padding: 2px 15px;           /* Space inside each button */
+    background-color: #000000;   /* Black button background */
+    border-radius: 40px;         /* Fully rounded buttons */
+}
+
+#workspaces button.active {
+    color: #D90202;              /* Active workspace text is red */
+}
+```
+
+---
+
+## Part 5: Setting Up Each Tool
+
+### Zsh
+
+**What it does:** Your shell - interprets commands you type in the terminal.
+
+**Install:**
+```bash
+sudo apt install zsh      # Ubuntu/Debian
+sudo pacman -S zsh        # Arch
+sudo dnf install zsh      # Fedora
+```
+
+**Config location:** `~/.zshrc`
+
+**Key concepts:**
+- Zsh has better autocomplete and syntax highlighting than Bash
+- Plugins add functionality (syntax highlighting, autosuggestions)
+- Set Zsh as default: `chsh -s $(which zsh)`
+
+**My config highlights:**
+- PATH configuration on lines 12-15
+- Plugin configuration for syntax highlighting and autosuggestions
+
+**Docs:** [Zsh Wiki](https://www.zsh.org/)
+
+---
+
+### Starship
+
+**What it does:** Makes your command prompt look good and show useful info (git status, current directory, language version).
+
+**Install:**
+```bash
+sudo apt install starship      # Ubuntu/Debian
+sudo pacman -S starship        # Arch
+sudo dnf install starship      # Fedora
+```
+
+**Config location:** `~/.config/starship.toml`
+
+**Key concepts:**
+- The `format` section at the top defines the order of elements
+- Each module (directory, git_branch, etc.) can be configured separately
+- Colors are defined per-section
+
+**My config highlights:**
+- Based on Catppuccin theme
+- Custom color scheme matching my rice
+
+**Docs:** [Starship Wiki](https://starship.rs/)
+
+---
+
+### Hyprland
+
+**What it does:** The window manager - handles window placement, animations, keybinds, and monitors.
+
+**Install:**
+```bash
+sudo pacman -S hyprland        # Arch
+sudo dnf install hyprland      # Fedora
+```
+
+**Config location:** `~/.config/hypr/hyprland.conf`
+
+**Key concepts:**
+- Configuration is grouped by categories: `category { variables }`
+- Keybinds follow the pattern: `bind = modifier, key, action`
+- Workspaces are virtual desktops you switch between
+
+**My config highlights:**
+- Custom animations for window open/close
+- Keybinds for launching apps and managing windows
+- Monitor configuration
+
+**Docs:** [Hyprland Wiki](https://wiki.hypr.land/)
+
+---
+
+### Waybar
+
+**What it does:** The status bar - shows workspaces, system info, clock, media controls.
+
+**Install:**
+```bash
+sudo apt install waybar        # Ubuntu/Debian
+sudo pacman -S waybar          # Arch
+sudo dnf install waybar        # Fedora
+```
+
+**Config location:** `~/.config/waybar/`
+- `config.jsonc` - functionality (what modules, where they appear)
+- `style.css` - appearance (colors, spacing, fonts)
+
+**Key concepts:**
+- Modules are defined in config.jsonc with their position (left, center, right)
+- Custom modules can run scripts (see my GPU usage module)
+- Styling uses CSS selectors based on module IDs
+
+**My config highlights:**
+- Custom GPU usage module that runs a script
+- Grouped modules (hardware, media) for consistent styling
+- Color scheme in style.css matching my rice
+
+**Docs:** [Waybar Wiki](https://github.com/Alexays/Waybar/wiki)
+
+---
+
+### Rofi
+
+**What it does:** Application launcher - opens apps, runs commands, can act as a calculator.
+
+**Install:**
+```bash
+sudo apt install rofi          # Ubuntu/Debian
+sudo pacman -S rofi            # Arch
+sudo dnf install rofi          # Fedora
+```
+
+**Config location:** `~/.config/rofi/`
+
+**Key concepts:**
+- Can be invoked in different modes: drun (apps), run (commands), calc (calculator)
+- Themes control appearance
+- Launch from Hyprland with a keybind
+
+**My config highlights:**
+- Custom theme matching my color palette
+- Configured as calculator and app launcher
+
+**Docs:** [Rofi GitHub](https://github.com/davatorium/rofi)
+
+---
+
+### Ghostty
+
+**What it does:** Terminal emulator - where you run commands.
+
+**Install:** See [Ghostty Docs](https://ghostty.org/) for installation methods
+
+**Config location:** `~/.config/ghostty/config`
+
+**Key concepts:**
+- Simple key-value configuration format
+- Themes change text colors for commands
+- Font settings for readability
+
+**My config highlights:**
+- Kibble theme matching my rice colors
+- Custom keybinds
+- Cursor animation using a GLSL shader
+
+**Docs:** [Ghostty Documentation](https://ghostty.org/)
+
+---
 
 ### Hyprlock
-[Hyprlock Documentaion](https://wiki.hypr.land/Hypr-Ecosystem/hyprlock/)
-This is the hyprland ecosystem lock screen. Mine is quite minimal I just have the time and date. The documentation is pretty good for this one and simlple. 
-Because its a hyprland tool it uses the same configuration style of `categoryname {variabels}` to configure each category.
 
-### Hyprpapaer
-[Hyprpaper Documentation](https://wiki.hypr.land/Hypr-Ecosystem/hyprpaper/)
-This is the hyprland ecosystem tool for displaying wallpapers. Mine just sets both my monitors to the same wallpaper.
+**What it does:** Lock screen - secures your system when you step away.
 
-## Neovim
-[Neovim](https://neovim.io/)
-I use neovim for code editing and for my personal Notes because I can't go back to any other text editor.
-
-The aesthetic part of my neovim setup is in the cattpuccin plugin config. There I override the colors to be to my liking and fit with my rice theme.
-All of the other settings are keybinds and plugins to help my programming workflow. There is quite a lot of setup to get neovim off the ground as a good code editor but I would say it is worth it.
-Look elsewhere for a complete guide to setting up neovim. Many have done it far better than I ever could here.
-I used [kickstart](https://www.youtube.com/watch?v=m8C0Cq9Uv9o&list=WL&index=1) to start my neovim journey. It's a tutorial and base config file made by one of the neovim maintainers.He explains a lot of core functionality and how to customize neovim to your liking. It was incredibely helpful for me and allowed me to extend the config passed where he had set it up.
-
-## Rofi
-[Rofi repo](https://github.com/davatorium/rofi)
-I use rofi as my application launcher and for quick calulations I need.Very useful tool. I use it as a calculator and to open my app images and launch apps I don't have keybinds for
-
-
-## Tmux
-[Tmux Wiki](https://github.com/tmux/tmux/wiki)
-[Cheat sheet](https://tmuxcheatsheet.com/)
-Tmux is very much a developer tool so if you're not a Software engineer this one probably won't be helpful for you. Tmux basically allows you to save the state of your terminal and organize that state into sessions. So I use it to organize my different projects into different sessions and windows to keep everything organized and to keep navigation down.
-Tmux has a plugin ecosystem but I don't really use it. I have to restart my computer a lot because I have a windows partition. I know disgusting. So I use the Tmux resurect which can save your tmux session data and then restore it after you restart your computer.
-
-## Waybar
-[Waybar Wiki](https://github.com/Alexays/Waybar/wiki)
-Waybar has two config sections. I have this seperated out into two files but some people use more than 2 files. There is the config.jsonc and the style.css sections. The config.jsonc handles the functionality of waybar. So where the bar is located how many workspaces you have etc. The style.css handles the aesthetics and how it looks. There are built in names for predefined groups but you can also create custom groups. I use this for my gpu-useage percent on my bar. It can also be helpful to group different modules together. This allows them to be styled together in the css.
-
-## Wlogout
-[Wlogout repo](https://github.com/ArtsyMacaw/wlogout)
-I use this as my start menu basicallly. It lets you logout, restart, sleep etc.
-The configuration is pretty simple as well. The layout file shows in order the labels that are listed. The action is a terminal command to run similar to X idk. The style.css handles how the menu looks. Including add pictures that display for each label.
-
-## Starship
-[Startship wiki](https://starship.rs/)
-I use this as my terminal command prompt.
-It gives me a lot of useful info like the file path I'm currently in as well as the git status of the folder and the programming language this project is in which is helpful for my dev work.
-The format section at the top determins the order that different sections appear from left to right. You also define the colors of each section here. 
-Each section is configured by [name of section] where you can put the name of the section. In the configuration section of the wiki it lists out all of the section names and the options to configure them.
-On the wiki there are some example configs. I used the cattpuccin base because it organized the sections similar to how I liked
-
-## Z shell
-[Z shell wiki](https://www.zsh.org/)
-I use Z shell because it has a couple of plugins that I really value like syntax highlighting and autocomplete. These are incredibely useful because they help me determine if I'm formatting terminal commands correctly. The configureation for adding folders to the path is relatively simple as well.
-
-## Scripts
-My folder for bash scripts
-I only have one right now that handles the cava visualizers on my waybar. It's good to keep scripts in one folder so they're consitently in one spot. Scripts are usually good for automating workflows. If there's something you do in the terminal a lot considering writing a script for it.
-Bash scripts are just a bunch of terminal commands chained together with some parsing logic. Bash scripting was pretty hard for me to understand at first so I would recommend reading about it if you want to know more/ want to do some more powerful bash scripting.
-
-# Dotfiles
-## Installation
-Ensure you have the following installed on your system.
-[Git](#Git)
-[GNU Stow](#Stow)
-
-### Git
-Git is a tool for managing the syncronization of code between different computers. It also allows you to clone folders you will need it to clone this repository.
-
-### Stow
-[GNU Stow](https://www.gnu.org/software/stow/) This tool isn't super complicated but it's the main tool along with git I use to organize my dotfiles. I will go over how to use it more in the installation section.
-
-I used [this](https://www.youtube.com/watch?v=y6XCebnB9gs) video to help me understand stow.
-
-### Instructions
-First, check out the dotfiles repo in your $HOME directory using git. Technically you can put this repo wherever you want but I put it in my ~ folder because its an easy to remember location.
+**Install:**
+```bash
+sudo pacman -S hyprlock        # Arch
 ```
+
+**Config location:** `~/.config/hypr/hyprlock.conf`
+
+**Key concepts:**
+- Uses same category-based config style as Hyprland
+- Can display time, date, user image, input field
+
+**My config highlights:**
+- Minimal design with just time and date
+- Colors matching my rice
+
+**Docs:** [Hyprlock Wiki](https://wiki.hypr.land/Hypr-Ecosystem/hyprlock/)
+
+---
+
+### Hyprpaper
+
+**What it does:** Wallpaper manager - sets backgrounds for your monitors.
+
+**Install:**
+```bash
+sudo pacman -S hyprpaper       # Arch
+```
+
+**Config location:** `~/.config/hypr/hyprpaper.conf`
+
+**Key concepts:**
+- Preload wallpapers before using them
+- Set different wallpapers per monitor
+
+**My config highlights:**
+- Same wallpaper on both monitors
+- Wallpaper stored in my wallpapers folder
+
+**Docs:** [Hyprpaper Wiki](https://wiki.hypr.land/Hypr-Ecosystem/hyprpaper/)
+
+---
+
+### Wlogout
+
+**What it does:** Logout menu - buttons for shutdown, reboot, suspend, etc.
+
+**Install:**
+```bash
+sudo apt install wlogout       # Ubuntu/Debian
+sudo pacman -S wlogout         # Arch
+sudo dnf install wlogout       # Fedora
+```
+
+**Config location:** `~/.config/wlogout/`
+- `layout` - button order and labels
+- `style.css` - appearance and icons
+
+**Key concepts:**
+- Each button runs a command (systemctl poweroff, etc.)
+- Icons are set via CSS background-image
+
+**My config highlights:**
+- Custom icons for each action
+- Colors matching my rice
+
+**Docs:** [Wlogout GitHub](https://github.com/ArtsyMacaw/wlogout)
+
+---
+
+### Neovim
+
+**What it does:** Text editor - for code, config files, notes.
+
+**Install:**
+```bash
+sudo apt install neovim        # Ubuntu/Debian
+sudo pacman -S neovim          # Arch
+sudo dnf install neovim        # Fedora
+```
+
+**Config location:** `~/.config/nvim/`
+
+**Key concepts:**
+- Neovim requires significant setup to be a full IDE
+- Plugins add functionality (LSP, completion, colorschemes)
+- Lua is the configuration language
+
+**My config highlights:**
+- Catppuccin colorscheme with custom color overrides
+- LSP setup for code completion
+- See my nvim/README.md for more details
+
+**Recommended starting point:** [kickstart.nvim](https://github.com/nvim-lua/kickstart.nvim) - excellent tutorial and base config by a Neovim maintainer
+
+**Docs:** [Neovim](https://neovim.io/)
+
+---
+
+### Tmux
+
+**What it does:** Terminal multiplexer - save terminal sessions, split panes, organize projects.
+
+**Install:**
+```bash
+sudo apt install tmux          # Ubuntu/Debian
+sudo pacman -S tmux            # Arch
+sudo dnf install tmux          # Fedora
+```
+
+**Config location:** `~/.config/tmux/tmux.conf`
+
+**Key concepts:**
+- Sessions are saved terminal states
+- Windows are tabs within a session
+- Panes are splits within a window
+
+**My config highlights:**
+- Tmux Resurrect plugin to save/restore sessions after reboot
+- Custom keybinds for navigation
+
+**Docs:** [Tmux Wiki](https://github.com/tmux/tmux/wiki) | [Cheat Sheet](https://tmuxcheatsheet.com/)
+
+---
+
+### Cava
+
+**What it does:** Audio visualizer - displays sound as animated bars in the terminal.
+
+**Install:**
+```bash
+sudo apt install cava          # Ubuntu/Debian
+sudo pacman -S cava            # Arch
+sudo dnf install cava          # Fedora
+```
+
+**Config location:** `~/.config/cava/config`
+
+**Key concepts:**
+- Purely aesthetic
+- Customize bar width, height, colors, gradient
+
+**My config highlights:**
+- Gradient colors for bars
+- Integrated into Waybar as a custom module
+
+**Docs:** [Cava GitHub](https://github.com/karlstav/cava)
+
+---
+
+## Part 6: Installing These Dotfiles
+
+### Requirements
+
+Install these packages before using these dotfiles:
+
+```bash
+sudo pacman -S git stow zsh starship hyprland waybar rofi hyprlock hyprpaper wlogout neovim tmux cava
+```
+
+For Ubuntu/Debian:
+```bash
+sudo apt install git stow zsh starship waybar rofi wlogout neovim tmux cava
+```
+
+For Fedora:
+```bash
+sudo dnf install git stow zsh starship hyprland waybar rofi hyprlock hyprpaper wlogout neovim tmux cava
+```
+
+**Fonts:** Install a Nerd Font for icons to display correctly:
+- [MonoidNerdFont](https://github.com/ryanoasis/nerd-fonts/releases/download/v3.4.0/Monoid.zip)
+- [JetBrainsMono](https://github.com/ryanoasis/nerd-fonts/releases/download/v3.4.0/JetBrainsMono.zip)
+
+### Step-by-Step Installation
+
+1. Clone the repository:
+```bash
 cd ~
-git clone git@github.com/Astordg/dotfile.git
+git clone https://github.com/Astordg/dotfile.git
 cd dotfiles
 ```
 
-Then use GNU stow to create symlinks. 
-```
-$ stow .
+2. Create symlinks with GNU Stow:
+```bash
+stow .
 ```
 
-This basically means that your dotfiles will exist in two places that are connected. One in this main repository that only holds the dotfiles for tools. The other is where they are expected to be in your system so these tools can parse them. The structure of this repo reflects how the files are meant to be organized. So config files that go in the ~/.config folder on your computer go in the dotfiles/.config in this structure. Same with files like .zshrc that aren't in any folder. dotfiles/.zshrc is linked to ~/.zshrc.
+This creates symlinks from the dotfiles repo to where your system expects them. Your configs now exist in two connected places:
+- `~/dotfiles/.config/waybar/` <-> `~/.config/waybar/`
+- `~/dotfiles/.zshrc` <-> `~/.zshrc`
 
-#### New config
-To add a new config
+3. Log out and select Hyprland from your display manager.
+
+### Customizing
+
+**Change colors:**
+- Edit colors in `style.css` files (Waybar, Wlogout)
+- Update `starship.toml` for prompt colors
+- See [Logistics.md](Logistics.md) for my color palette
+
+**Add your wallpaper:**
+- Place wallpapers in the `wallpapers/` folder
+- Update `hyprpaper.conf` with the new filename
+
+**Make it your own:**
+- Modify keybinds in `hyprland.conf`
+- Add/remove Waybar modules in `waybar/config.jsonc`
+- Change fonts in any config
+
+---
+
+## Part 7: Troubleshooting & Resources
+
+### Common Issues
+
+**"Config changes aren't applying"**
+- Some tools need a reload: press your Hyprland reload keybind or restart the tool
+- Check for syntax errors (missing brackets, typos)
+- Verify you're editing the correct file location
+
+**"Fonts look like boxes with numbers"**
+- You need a Nerd Font installed
+- Set the font in your terminal and bar configs
+- See [Nerd Fonts](https://www.nerdfonts.com/)
+
+**"I don't know what's customizable"**
+- Use [Deepwiki](https://deepwiki.com/) to ask questions about specific tools
+- Browse r/unixporn dotfiles to see how others configured tools
+- Read the default config files (usually have helpful comments)
+
+**"Documentation is confusing"**
+- Check GitHub issues for the tool - others may have asked the same question
+- Look at example configs from r/unixporn
+- Ask an AI to explain specific config options
+
+### Resources
+
+**Inspiration:**
+- [r/unixporn](https://www.reddit.com/r/unixporn/) - Desktop screenshots and dotfiles
+
+**Documentation Help:**
+- [Deepwiki](https://deepwiki.com/) - AI-powered documentation search
+
+**Fonts & Icons:**
+- [Nerd Fonts](https://www.nerdfonts.com/) - Fonts with programming icons
+
+**Colors:**
+- [HTML Color Codes](https://htmlcolorcodes.com/color-picker/) - Pick and convert colors
+
+**My Color Palette:**
+- See [Logistics.md](Logistics.md) for all colors used in this rice
+
+---
+
+## Credits
+
+Tools used in this rice - linked in [Logistics.md](Logistics.md)
