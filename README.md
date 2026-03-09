@@ -17,6 +17,8 @@ For the full guide, read on.
 
 
 ---
+## Showoff
+
 <img src="showoff_assets/showoff.gif" width="100%">
 
 <details>
