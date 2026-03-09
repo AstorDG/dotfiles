@@ -12,20 +12,14 @@ stow .
 ```
 
 
-
-
-
-Then log out and select Hyprland from your display manager. You'll need the packages listed in [Part 6](<README#Part 5: Setting Up Each Tool>).
+Then log out and select Hyprland from your display manager. You'll need the packages listed in Part 6.
 
 For the full guide, read on.
-
 
 ---
 ## Showoff
 
 https://github.com/user-attachments/assets/d2a6a672-2746-4642-b1cd-7b2db4c76ccf
-
-<img src="showoff_assets/showoff.gif" width="100%">
 
 <details>
 <summary>📸 Click to view all screenshots</summary>
