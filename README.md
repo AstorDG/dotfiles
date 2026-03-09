@@ -15,31 +15,10 @@ Then log out and select Hyprland from your display manager. You'll need the pack
 
 For the full guide, read on.
 
----
-
-## Showoff
-
-This is an Arch + Hyprland rice with a Cyberpunk aethetic. It is meant for my programming workflow
-
-mp4 steps:
-1. wallpaper. 
-2. Open terminal run cava. Open terminal run Btop. 
-Play music to make cava start. 
-3. Move windows. Open two more terimanls. 
-4. Move windows around. Resize them.
-
-5. Go into tmux session: dotfiles + portfolio + current project. 
-6. Open neovim into dotfiles folder. Do some code change. Open neotree and create another tab. 
-7. Go out of neovim and switch around projects to show languages on my starship promt. This'll also show the git part and file chaning part of the promt. 
-
-8. Use rofi to launch Zen and Steam. Also show off calc functionality. 
-9. Close Steam. Open a new youtube tab in zen. Switch workspaces
-
-10. Show wlogout.
----
-<video src="showoff_assets/showoff.mkv" controls width="100%"></video>
 
 ---
+<video src="showoff_assets/showoff.mp4" controls width="100%"></video>
+
 <details>
 <summary>📸 Click to view all screenshots</summary>
 
