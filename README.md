@@ -37,9 +37,8 @@ Play music to make cava start.
 
 10. Show wlogout.
 ---
-hidden html here
-<!-- Video placeholder - add your .mp4 file to showoff_assets/ and uncomment below -->
-<!-- <video src="showoff_assets/showoff.mp4" controls width="100%"></video> -->
+<video src="showoff_assets/showoff.mkv" controls width="100%"></video>
+
 ---
 <details>
 <summary>📸 Click to view all screenshots</summary>
