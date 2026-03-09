@@ -17,7 +17,7 @@ For the full guide, read on.
 
 
 ---
-<video> src="showoff_assets/showoff.mp4" controls width="100%"></video>
+<video><src="showoff_assets/showoff.mp4" controls width="100%"></video>
 
 <details>
 <summary>📸 Click to view all screenshots</summary>
