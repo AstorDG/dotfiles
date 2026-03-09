@@ -17,7 +17,7 @@ For the full guide, read on.
 
 
 ---
-[Watch demo](showoff_assets/showoff.mp4)
+<img src="showoff_assets/showoff.gif" width="100%">
 
 <details>
 <summary>📸 Click to view all screenshots</summary>
