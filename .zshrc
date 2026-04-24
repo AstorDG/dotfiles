@@ -13,6 +13,7 @@ path=(
 	$path
 	~/.zig/
 	)
+export QML_IMPORT_PATH=/usr/lib/qt6/qml
 alias python='/opt/homebrew/bin/python3'
 alias pip='/opt/homebrew/bin/pip3'
 

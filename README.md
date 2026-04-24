@@ -51,6 +51,7 @@ https://github.com/user-attachments/assets/d2a6a672-2746-4642-b1cd-7b2db4c76ccf
 
 ### Common Traps and Disclaimers
 
+
 **The `$` prefix**
 
 When guides show terminal commands, they often put `$` at the beginning:
