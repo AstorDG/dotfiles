@@ -11,9 +11,8 @@ source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 #path variables
 path=(
 	$path
-	~/.zig/
 	)
-export QML_IMPORT_PATH=/usr/lib/qt6/qml
+
 alias python='/opt/homebrew/bin/python3'
 alias pip='/opt/homebrew/bin/pip3'
 
@@ -24,6 +23,10 @@ SAVEHIST=4000
 setopt appendhistory
 setopt INC_APPEND_HISTORY
 setopt SHARE_HISTORY
+
+alias ls="lsd"
+alias ll="lsd -la"
+alias n="nvim"
 
 # Generated for envman. Do not edit.
 [ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
@@ -38,3 +41,7 @@ export NVM_DIR="$HOME/.nvm"
 export PATH="$PATH:/Users/astor/.lmstudio/bin"
 # End of LM Studio CLI section
 
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"

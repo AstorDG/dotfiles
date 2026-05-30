@@ -102,6 +102,9 @@ map('n', '<M-v>', '<cmd>vsplit<cr>', { desc = 'Create a vertial split' })
 map('n', '<M-b>', '<cmd>split<cr>', { desc = 'Create a horizontal split' })
 map('n', '<M-g>', '<cmd>q<cr>', { desc = 'Close a split' })
 
+-- Visual Block mode
+map('n', '<M-v>', '<C-v>', {desc = 'visual block mode'})
+
 -- Highlight when yanking (copying) text
 vim.api.nvim_create_autocmd('TextYankPost', {
   desc = 'Highlight when yanking (copying) text',
@@ -182,8 +185,8 @@ vim.pack.add {
   { src = 'https://github.com/mfussenegger/nvim-lint' },
 
   -- Debugging
-    -- Shows how to use the DAP plugin to debug your code.
-    -- Primarily focused on configuring the debugger for Go, but can be extended to other languages as well.
+  -- Shows how to use the DAP plugin to debug your code.
+  -- Primarily focused on configuring the debugger for Go, but can be extended to other languages as well.
   { src = 'https://github.com/mfussenegger/nvim-dap' },
   { src = 'https://github.com/rcarriga/nvim-dap-ui' },
   { src = 'https://github.com/nvim-neotest/nvim-nio' },
@@ -191,12 +194,10 @@ vim.pack.add {
   { src = 'https://github.com/leoluz/nvim-dap-go' },
   { src = 'https://github.com/mfussenegger/nvim-dap-python' },
 
-  -- LSP autocomplete
-  --   -- Autocompletion. This interacts with LSPs, linters, formatters and snippets to add a menu of possible completions from all of those tools
-  --   -- Has a snippet Engine as a dependency to add snippet functionality. This is nice because you don't have to install those separately
-  --   -- Snippets are character shortcuts that add some longer text based on input characters. Examples can be seen on the lua-snip repo
-  --   -- freindly-snippets is just a library of snippets
-  --   -- I would suggest looking at deepwiki to understand more deeply how all of the tools work together
+  -- Autocompletion. This interacts with LSPs, linters, formatters and snippets to add a menu of possible completions from all of those tools
+  -- Has a snippet Engine as a dependency to add snippet functionality. This is nice because you don't have to install those separately
+  -- Snippets are character shortcuts that add some longer text based on input characters. Examples can be seen on the lua-snip repo
+  --  I would suggest looking at deepwiki to understand more deeply how all of the tools work together
   { src = 'https://github.com/saghen/blink.cmp', version = 'v1' },
   -- Snippets
   { src = 'https://github.com/L3MON4D3/LuaSnip' },
@@ -216,8 +217,8 @@ vim.cmd 'packloadall'
 -- ===================== PLUGIN CONFIGURATION =================
 --
 
-local dap = require('dap')
-local dapui = require('dapui')
+local dap = require 'dap'
+local dapui = require 'dapui'
 
 require('mason-nvim-dap').setup {
   automatic_installation = true,
@@ -249,8 +250,7 @@ dapui.setup {
 -- Breakpoint icons
 vim.api.nvim_set_hl(0, 'DapBreak', { fg = '#e51400' })
 vim.api.nvim_set_hl(0, 'DapStop', { fg = '#ffcc00' })
-local breakpoint_icons = vim.g.have_nerd_font
-    and { Breakpoint = '', BreakpointCondition = '', BreakpointRejected = '', LogPoint = '', Stopped = '' }
+local breakpoint_icons = vim.g.have_nerd_font and { Breakpoint = '', BreakpointCondition = '', BreakpointRejected = '', LogPoint = '', Stopped = '' }
   or { Breakpoint = '●', BreakpointCondition = '⊜', BreakpointRejected = '⊘', LogPoint = '◆', Stopped = '⭔' }
 for type, icon in pairs(breakpoint_icons) do
   local tp = 'Dap' .. type
@@ -271,7 +271,7 @@ require('dap-go').setup {
 }
 
 -- Python
-local dap_python = require('dap-python')
+local dap_python = require 'dap-python'
 local function find_uv_python()
   local cwd = vim.fn.getcwd()
   local uv_venv = cwd .. '/.venv/bin/python'
@@ -292,7 +292,7 @@ dap.adapters.codelldb = {
   type = 'server',
   port = '${port}',
   executable = {
-    command = vim.fn.stdpath('data') .. '/mason/bin/codelldb',
+    command = vim.fn.stdpath 'data' .. '/mason/bin/codelldb',
     args = { '--port', '${port}' },
   },
 }
@@ -470,56 +470,56 @@ vim.diagnostic.config {
     -- end,
   },
 }
--- Add installed LSPs here so that they will be installed on other machines when migrating this config.
-
 local capabilities = require('blink.cmp').get_lsp_capabilities()
 
 local servers = {
-  clangd = {},
-  zls = {},
-  codelldb = {},
-  basedpyright = {},
-  ruff = {},
-  debugpy = {},
-  qmlls = {},
   lua_ls = {
-    -- cmd = { ... },
-    -- filetypes = { ... },
-    -- capabilities = {},
+    capabilities = capabilities,
+    on_init = function(client)
+      if client.workspace_folders then
+        local path = client.workspace_folders[1].name
+        if path ~= vim.fn.stdpath('config')
+          and (vim.uv.fs_stat(path .. '/.luarc.json') or vim.uv.fs_stat(path .. '/.luarc.jsonc'))
+        then
+          return
+        end
+      end
+
+      client.config.settings.Lua = vim.tbl_deep_extend('force', client.config.settings.Lua, {
+        runtime = { version = 'LuaJIT' },
+        diagnostics = { globals = { 'vim' }, 'hl' },
+        workspace = { checkThirdParty = false, library = { vim.env.VIMRUNTIME, "/usr/share/hypr/stubs" } },
+        telemetry = { enable = false },
+      })
+    end,
     settings = {
       Lua = {
-        completion = {
-          callSnippet = 'Replace',
+        diagnostics = {
+          globals = { 'vim' },
         },
       },
     },
   },
+  clangd = { capabilities = capabilities },
+  zls = { capabilities = capabilities },
+  basedpyright = { capabilities = capabilities },
+  ruff = { capabilities = capabilities },
+  qmlls = { capabilities = capabilities },
 }
+
+for name, config in pairs(servers) do
+  vim.lsp.config(name, config)
+end
+
+vim.lsp.enable(vim.tbl_keys(servers))
 
 require('mason').setup {}
 
-require('mason-lspconfig').setup {
-  ensure_installed = {}, -- explicitly set to an empty table (Populates installs via mason-tool-installer)
-  automatic_installation = false,
-  handlers = {
-    function(server_name)
-      local server = servers[server_name] or {}
-      -- This handles overriding only values explicitly passed
-      -- by the server configuration above. Useful when disabling
-      -- certain features of an LSP (for example, turning off formatting for ts_ls)
-      server.capabilities = vim.tbl_deep_extend('force', {}, capabilities, server.capabilities or {})
-      require('lspconfig')[server_name].setup(server)
-    end,
-  },
+require('mason-tool-installer').setup {
+  ensure_installed = vim.tbl_extend('force', vim.tbl_keys(servers), {
+    'stylua',
+  }),
 }
-
-local ensure_installed = vim.tbl_keys(servers or {})
-vim.list_extend(ensure_installed, {
-  'stylua',
-  'ruff',
-  'debugpy',
-})
-require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 require('fidget').setup {}
 --
 -- compiles fzf if not already compiled on system. This has to happpppen before the plugin is setup
@@ -648,7 +648,7 @@ require('which-key').setup {
 require('neo-tree').setup {
   window = {
     position = 'left',
-    width = 0.1,
+    width = 0.15,
   },
   close_if_last_window = true,
   sort_case_insensitive = true,
@@ -770,8 +770,6 @@ require('colorizer').setup {
   css = { rgb_fn = true },
 }
 -- flash keybinds
-vim
-  .keymap
-  .set({ 'n', 'x', 'o' }, '<leader>f', function()
-    require('flash').jump()
-  end, { desc = 'Flash' })
+vim.keymap.set({ 'n', 'x', 'o' }, '<leader>f', function()
+  require('flash').jump()
+end, { desc = 'Flash' })
