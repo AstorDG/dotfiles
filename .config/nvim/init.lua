@@ -105,6 +105,7 @@ map('n', '<M-g>', '<cmd>q<cr>', { desc = 'Close a split' })
 -- Visual Block mode
 map('n', '<M-v>', '<C-v>', {desc = 'visual block mode'})
 
+
 -- Highlight when yanking (copying) text
 vim.api.nvim_create_autocmd('TextYankPost', {
   desc = 'Highlight when yanking (copying) text',

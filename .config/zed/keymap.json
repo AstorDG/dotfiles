@@ -1,0 +1,157 @@
+// Zed keymap
+//
+// For information on binding keys, see the Zed
+// documentation: https://zed.dev/docs/key-bindings
+//
+// To see the default key bindings run `zed: open default keymap`
+// from the command palette.
+[
+  {
+    "context": "Terminal",
+    "bindings": {
+      "null": "terminal::RerunTask"
+    }
+  },
+  {
+    "context": "Editor && vim_mode == insert",
+    "bindings": {
+      // "j k": "vim::NormalBefore"
+    },
+  },
+  {
+    "context": "Editor && vim_mode == normal",
+    "bindings": {
+      "j": ["workspace::SendKeystrokes", "g j"],
+      "k": ["workspace::SendKeystrokes", "g k"]
+    }
+  },
+  {
+    "context": "(VimControl && !menu) || (!Editor && !Terminal)",
+    "bindings": {
+      "ctrl-h": "workspace::ActivatePaneLeft",
+      "ctrl-j": "workspace::ActivatePaneDown",
+      "ctrl-l": "workspace::ActivatePaneRight",
+    },
+    "unbind": {
+      "ctrl-w h": "workspace::ActivatePaneLeft",
+      "ctrl-w j": "workspace::ActivatePaneDown",
+      "ctrl-w l": "workspace::ActivatePaneRight",
+    },
+  },
+  {
+    "context": "(VimControl && !menu) || !Editor",
+    "bindings": {
+      "ctrl-k": "workspace::ActivatePaneUp",
+    },
+    "unbind": {
+      "ctrl-w k": "workspace::ActivatePaneUp",
+    },
+  },
+  {
+    "context": "ProjectPanel && not_editing",
+    "bindings": {
+      "r": "project_panel::Rename",
+    },
+    "unbind": {
+      "shift-r": "project_panel::Rename",
+    },
+  },
+  {
+    "context": "!Editor && !Terminal",
+    "bindings": {
+      "ctrl-tab": "pane::ActivateNextItem",
+      "ctrl-shift-tab": "pane::ActivatePreviousItem",
+    },
+    "unbind": {
+      "] b": "pane::ActivateNextItem",
+      "[ b": "pane::ActivatePreviousItem",
+    },
+  },
+  {
+    "bindings": {
+      "\\": "project_panel::Toggle",
+      "ctrl-o": "workspace::Open",
+      "ctrl-b ctrl-o": "workspace::OpenFiles"
+    }
+  },
+  {
+    "context": "(VimControl && !menu) || (!Editor && !Terminal)",
+    "bindings": {
+      "alt-v": "pane::SplitVertical",
+      "ctrl-g": "pane::CloseAllItems"
+    }
+  },
+  {
+    "context": "Workspace",
+    "bindings": {
+      "alt-t": "terminal_panel::Toggle",
+      "ctrl-backspace": "command_palette::Toggle",
+      "null": "task::Rerun",
+      "ctrl-shift-tab": "tab_switcher::Toggle",
+    },
+    "unbind": {
+      "ctrl-shift-p": "command_palette::Toggle",
+      "ctrl-shift-e": "project_panel::ToggleFocus",
+    }
+  },
+  {
+    "context": "Terminal",
+    "bindings": {
+      "ctrl-b alt-t": "terminal::RerunTask"
+    },
+    "unbind": {
+      "alt-t": "terminal::RerunTask"
+    }
+  },
+  {
+    "context": "Pane",
+    "bindings": {
+      "ctrl-w": "pane::CloseActiveItem"
+    }
+  },
+  {
+    "context": "Editor",
+    "bindings": {
+      "ctrl-b ctrl-backspace": [
+        "editor::DeleteToPreviousWordStart",
+        {
+          "ignore_newlines": false,
+          "ignore_brackets": false
+        }
+      ],
+      "ctrl-tab": "pane::ActivateNextItem",
+      "ctrl-shift-tab": "pane::ActivatePreviousItem",
+      "ctrl-m": "editor::Format",
+      "ctrl-b b": "editor::ToggleBreakpoint"
+    },
+    //to unbind a command you have to do this:
+    // "unbind": {"keybind": "command"}
+    "unbind": {
+      "ctrl-backspace": [
+        "editor::DeleteToPreviousWordStart",
+        {
+          "ignore_newlines": false,
+          "ignore_brackets": false
+        }
+      ]
+    }
+  },
+  {
+    "unbind": {
+      "ctrl-o": "workspace::OpenFiles"
+    }
+  },
+  {
+    "context": "VimControl && !menu",
+    "bindings": {
+      "ctrl-b ctrl-]": "editor::GoToDefinition",
+      "ctrl-]": "pane::GoForward",
+      "ctrl-[": "pane::GoBack"
+    },
+    "unbind": {
+      "ctrl-i": "pane::GoForward",
+      "ctrl-]": "editor::GoToDefinition",
+      "ctrl-o": "pane::GoBack"
+    }
+  },
+]

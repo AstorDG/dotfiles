@@ -130,4 +130,3 @@ hl.bind("SUPER + SHIFT + F", hl.dsp.layout("colresize 1.0"))
 
 -- center window
 hl.bind("SUPER + SHIFT + K", hl.dsp.layout("focus l"))
-

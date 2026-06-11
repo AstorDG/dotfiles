@@ -1,0 +1,7 @@
+id = "cyberpunk"
+name = "Cyberpunk"
+version = "0.0.1"
+schema_version = 1
+authors = [""]
+description = "High contrast"
+repository = "https://github.com/your-name/my-zed-extension"
