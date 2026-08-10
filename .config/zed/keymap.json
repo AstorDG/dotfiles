@@ -6,152 +6,344 @@
 // To see the default key bindings run `zed: open default keymap`
 // from the command palette.
 [
-  {
-    "context": "Terminal",
-    "bindings": {
-      "null": "terminal::RerunTask"
+	{
+		"context": "Terminal",
+		"bindings": {
+			"null": "terminal::RerunTask"
+		}
+	},
+	{
+		"context": "Editor && vim_mode == insert",
+		"bindings": {
+			// "j k": "vim::NormalBefore"
+		}
+	},
+	{
+		"context": "Editor && vim_mode == normal",
+		"bindings": {
+			"j": ["workspace::SendKeystrokes", "g j"],
+			"k": ["workspace::SendKeystrokes", "g k"]
+		}
+	},
+	{
+		"context": "(VimControl && !menu) || (!Editor && !Terminal)",
+		"bindings": {
+			"ctrl-h": "workspace::ActivatePaneLeft",
+			"ctrl-j": "workspace::ActivatePaneDown",
+			"ctrl-l": "workspace::ActivatePaneRight"
+		},
+		"unbind": {
+			"ctrl-w h": "workspace::ActivatePaneLeft",
+			"ctrl-w j": "workspace::ActivatePaneDown",
+			"ctrl-w l": "workspace::ActivatePaneRight"
+		}
+	},
+	{
+		"context": "(VimControl && !menu) || !Editor",
+		"bindings": {
+			"ctrl-k": "workspace::ActivatePaneUp"
+		},
+		"unbind": {
+			"ctrl-w k": "workspace::ActivatePaneUp"
+		}
+	},
+	{
+		"context": "ProjectPanel && not_editing",
+		"bindings": {
+			"r": "project_panel::Rename"
+		},
+		"unbind": {
+			"shift-r": "project_panel::Rename"
+		}
+	},
+	{
+		"context": "!Editor && !Terminal",
+		"bindings": {
+			"ctrl-tab": "pane::ActivateNextItem",
+			"ctrl-shift-tab": "pane::ActivatePreviousItem"
+		},
+		"unbind": {
+			"] b": "pane::ActivateNextItem",
+			"[ b": "pane::ActivatePreviousItem"
+		}
+	},
+	{
+		"bindings": {
+			"\\": "project_panel::Toggle",
+			"ctrl-o": "workspace::Open",
+			"ctrl-b ctrl-o": "workspace::OpenFiles"
+		}
+	},
+	{
+		"context": "(VimControl && !menu) || (!Editor && !Terminal)",
+		"bindings": {
+			"alt-v": "pane::SplitVertical",
+			"ctrl-g": "pane::CloseAllItems"
+		}
+	},
+	{
+		"context": "Editor && vim_mode == insert",
+		"bindings": {
+			"\\": null
+		}
+	},
+	{
+		"context": "Terminal",
+		"bindings": {
+			"\\": null
+		}
+	},
+	{
+		"context": "Workspace",
+		"bindings": {
+			"ctrl-backspace": "command_palette::Toggle",
+			"null": "task::Rerun",
+			"ctrl-shift-tab": "tab_switcher::Toggle"
+		},
+		"unbind": {
+			"ctrl-shift-p": "command_palette::Toggle",
+			"ctrl-shift-e": "project_panel::ToggleFocus"
+		}
+	},
+	{
+		"context": "Terminal",
+		"bindings": {
+			"ctrl-b alt-t": "terminal::RerunTask"
+		},
+		"unbind": {
+			"alt-t": "terminal::RerunTask"
+		}
+	},
+	{
+		"context": "Pane",
+		"bindings": {
+			"ctrl-w": "pane::CloseActiveItem"
+		}
+	},
+	{
+		"context": "Editor",
+		"bindings": {
+			"ctrl-b ctrl-backspace": [
+				"editor::DeleteToPreviousWordStart",
+				{
+					"ignore_newlines": false,
+					"ignore_brackets": false
+				}
+			],
+			"ctrl-tab": "pane::ActivateNextItem",
+			"ctrl-shift-tab": "pane::ActivatePreviousItem",
+			"ctrl-b b": "editor::ToggleBreakpoint"
+		},
+		//to unbind a command you have to do this:
+		// "unbind": {"keybind": "command"}
+		"unbind": {
+			"ctrl-backspace": [
+				"editor::DeleteToPreviousWordStart",
+				{
+					"ignore_newlines": false,
+					"ignore_brackets": false
+				}
+			]
+		}
+	},
+	{
+		"unbind": {
+			"ctrl-o": "workspace::OpenFiles"
+		}
+	},
+	{
+		"context": "VimControl && !menu",
+		"bindings": {
+			"ctrl-b ctrl-]": "editor::GoToDefinition",
+			"ctrl-]": "pane::GoForward",
+			"ctrl-[": "pane::GoBack"
+		},
+		"unbind": {
+			"ctrl-i": "pane::GoForward",
+			"ctrl-]": "editor::GoToDefinition",
+			"ctrl-o": "pane::GoBack"
+		}
+	},
+	{
+		"context": "ProjectPanel && not_editing",
+		"bindings": {
+			"n": "project_panel::NewFile"
+		}
+	},
+	{
+		"context": "ProjectPanel && not_editing",
+		"bindings": {
+			"d": "project_panel::Delete"
+		}
+	},
+	{
+		"context": "ProjectPanel && not_editing",
+		"unbind": {
+			"shift-d": "project_panel::Delete"
+		}
+	},
+	{
+		"context": "ProjectPanel",
+		"bindings": {
+			"f": "project_panel::NewDirectory"
+		}
+	},
+	{
+		"context": "ProjectPanel",
+		"unbind": {
+			"alt-n": "project_panel::NewDirectory"
+		}
+	},
+	{
+		"context": "Workspace",
+		"bindings": {
+			"ctrl-o r": [
+    "projects::OpenRecent",
+    {
+     "create_new_window": false
     }
-  },
-  {
-    "context": "Editor && vim_mode == insert",
-    "bindings": {
-      // "j k": "vim::NormalBefore"
-    },
-  },
-  {
-    "context": "Editor && vim_mode == normal",
-    "bindings": {
-      "j": ["workspace::SendKeystrokes", "g j"],
-      "k": ["workspace::SendKeystrokes", "g k"]
-    }
-  },
-  {
-    "context": "(VimControl && !menu) || (!Editor && !Terminal)",
-    "bindings": {
-      "ctrl-h": "workspace::ActivatePaneLeft",
-      "ctrl-j": "workspace::ActivatePaneDown",
-      "ctrl-l": "workspace::ActivatePaneRight",
-    },
-    "unbind": {
-      "ctrl-w h": "workspace::ActivatePaneLeft",
-      "ctrl-w j": "workspace::ActivatePaneDown",
-      "ctrl-w l": "workspace::ActivatePaneRight",
-    },
-  },
-  {
-    "context": "(VimControl && !menu) || !Editor",
-    "bindings": {
-      "ctrl-k": "workspace::ActivatePaneUp",
-    },
-    "unbind": {
-      "ctrl-w k": "workspace::ActivatePaneUp",
-    },
-  },
-  {
-    "context": "ProjectPanel && not_editing",
-    "bindings": {
-      "r": "project_panel::Rename",
-    },
-    "unbind": {
-      "shift-r": "project_panel::Rename",
-    },
-  },
-  {
-    "context": "!Editor && !Terminal",
-    "bindings": {
-      "ctrl-tab": "pane::ActivateNextItem",
-      "ctrl-shift-tab": "pane::ActivatePreviousItem",
-    },
-    "unbind": {
-      "] b": "pane::ActivateNextItem",
-      "[ b": "pane::ActivatePreviousItem",
-    },
-  },
-  {
-    "bindings": {
-      "\\": "project_panel::Toggle",
-      "ctrl-o": "workspace::Open",
-      "ctrl-b ctrl-o": "workspace::OpenFiles"
-    }
-  },
-  {
-    "context": "(VimControl && !menu) || (!Editor && !Terminal)",
-    "bindings": {
-      "alt-v": "pane::SplitVertical",
-      "ctrl-g": "pane::CloseAllItems"
-    }
-  },
-  {
-    "context": "Workspace",
-    "bindings": {
-      "alt-t": "terminal_panel::Toggle",
-      "ctrl-backspace": "command_palette::Toggle",
-      "null": "task::Rerun",
-      "ctrl-shift-tab": "tab_switcher::Toggle",
-    },
-    "unbind": {
-      "ctrl-shift-p": "command_palette::Toggle",
-      "ctrl-shift-e": "project_panel::ToggleFocus",
-    }
-  },
-  {
-    "context": "Terminal",
-    "bindings": {
-      "ctrl-b alt-t": "terminal::RerunTask"
-    },
-    "unbind": {
-      "alt-t": "terminal::RerunTask"
-    }
-  },
-  {
-    "context": "Pane",
-    "bindings": {
-      "ctrl-w": "pane::CloseActiveItem"
-    }
-  },
-  {
-    "context": "Editor",
-    "bindings": {
-      "ctrl-b ctrl-backspace": [
-        "editor::DeleteToPreviousWordStart",
-        {
-          "ignore_newlines": false,
-          "ignore_brackets": false
-        }
-      ],
-      "ctrl-tab": "pane::ActivateNextItem",
-      "ctrl-shift-tab": "pane::ActivatePreviousItem",
-      "ctrl-m": "editor::Format",
-      "ctrl-b b": "editor::ToggleBreakpoint"
-    },
-    //to unbind a command you have to do this:
-    // "unbind": {"keybind": "command"}
-    "unbind": {
-      "ctrl-backspace": [
-        "editor::DeleteToPreviousWordStart",
-        {
-          "ignore_newlines": false,
-          "ignore_brackets": false
-        }
-      ]
-    }
-  },
-  {
-    "unbind": {
-      "ctrl-o": "workspace::OpenFiles"
-    }
-  },
-  {
-    "context": "VimControl && !menu",
-    "bindings": {
-      "ctrl-b ctrl-]": "editor::GoToDefinition",
-      "ctrl-]": "pane::GoForward",
-      "ctrl-[": "pane::GoBack"
-    },
-    "unbind": {
-      "ctrl-i": "pane::GoForward",
-      "ctrl-]": "editor::GoToDefinition",
-      "ctrl-o": "pane::GoBack"
-    }
-  },
+   ]
+		}
+	},
+	{
+		"context": "Workspace",
+		"unbind": {
+			"ctrl-r": [
+				"projects::OpenRecent",
+				{
+					"create_new_window": false
+				}
+			]
+		}
+	},
+	{
+		"context": "Workspace",
+		"bindings": {
+			"ctrl-o w": [
+				"projects::OpenRemote",
+				{
+					"from_existing_connection": false,
+					"create_new_window": false
+				}
+			]
+		}
+	},
+	{
+		"context": "Workspace",
+		"unbind": {
+			"ctrl-alt-shift-o": [
+				"projects::OpenRemote",
+				{
+					"from_existing_connection": false,
+					"create_new_window": false
+				}
+			]
+		}
+	},
+	{
+		"context": "Editor && edit_prediction && edit_prediction_mode == eager && !showing_completions",
+		"bindings": {
+			"ctrl-y": "editor::AcceptEditPrediction"
+		}
+	},
+	{
+		"context": "Editor && edit_prediction && edit_prediction_mode == eager && !showing_completions",
+		"unbind": {
+			"tab": "editor::AcceptEditPrediction"
+		}
+	},
+	{
+		"context": "vim_mode == insert",
+		"bindings": {
+			"ctrl-k ctrl-y": "vim::InsertFromAbove"
+		}
+	},
+	{
+		"context": "vim_mode == insert",
+		"unbind": {
+			"ctrl-y": "vim::InsertFromAbove"
+		}
+	},
+	{
+		"context": "VimControl && !menu",
+		"bindings": {
+			"ctrl-k ctrl-y": "vim::LineUp"
+		}
+	},
+	{
+		"context": "VimControl && !menu",
+		"unbind": {
+			"ctrl-y": "vim::LineUp"
+		}
+	},
+	{
+		"context": "showing_completions",
+		"bindings": {
+			"ctrl-k ctrl-y": "vim::LineUp"
+		}
+	},
+	{
+		"context": "showing_completions",
+		"unbind": {
+			"ctrl-y": "vim::LineUp"
+		}
+	},
+	{
+		"context": "vim_mode == literal",
+		"bindings": {
+			"ctrl-k ctrl-y": ["vim::Literal", ["ctrl-y", "\u0019"]]
+		}
+	},
+	{
+		"context": "vim_mode == literal",
+		"unbind": {
+			"ctrl-y": ["vim::Literal", ["ctrl-y", "\u0019"]]
+		}
+	},
+	{
+		"context": "Editor",
+		"bindings": {
+			"ctrl-k ctrl-y": "editor::Redo"
+		}
+	},
+	{
+		"context": "Editor",
+		"unbind": {
+			"ctrl-y": "editor::Redo"
+		}
+	},
+	{
+		"context": "Editor && showing_completions",
+		"bindings": {
+			"ctrl-y": "editor::ComposeCompletion"
+		},
+		"unbind": {
+			"tab": "editor::ComposeCompletion",
+			"enter": "editor::ConfirmCompletion"
+		}
+	},
+ {
+  "context": "vim_mode == normal",
+   "bindings": {
+   "space s g": "text_finder::Toggle"
+  }
+ },
+ {
+  "context": "vim_mode==normal",
+  "bindings": {
+   "space s f": "file_finder::Toggle"
+  }
+ },
+ {
+  "context": "Workspace",
+  "unbind": {
+   "ctrl-p": "file_finder::Toggle"
+  }
+ },
+ {
+  "context": "vim_mode==normal",
+  "bindings": {
+   "space l m": "editor::Format"
+  }
+ }
 ]
