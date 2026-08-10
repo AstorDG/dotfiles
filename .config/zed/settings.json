@@ -7,42 +7,118 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
-  "which_key": {
-    "enabled": true
-  },
-  "inlay_hints": {
-    "show_background": true,
-    "edit_debounce_ms": 200,
-    "enabled": true
-  },
-  "toolbar": {
-    "code_actions": false,
-    "quick_actions": false,
-    "breadcrumbs": false
-  },
-  "languages": {
-    "Markdown": {
-      "hard_tabs": true
+ "soft_wrap": "bounded",
+ "preferred_line_length": 100,
+ "search": {
+  "include_ignored": true
+ },
+ "auto_install_extension": {
+ 	"charmed-icons": true,
+  	"docker-compose": true,
+   "dockerfile": true,
+   "java": true,
+   "markdown-oxide": true,
+   "tokyo-night": true,
+   "zig": true,
+ },
+ "git_panel": {
+  "tree_view": true
+ },
+ "file_scan_exclustions": [],
+ "disable_ai": false,
+ "scroll_beyond_last_line": "off",
+	"inlay_hints": {
+		"enabled": true
+	},
+	"toolbar": {
+		"quick_actions": false,
+		"agent_review": false,
+		"selections_menu": false,
+		"breadcrumbs": false
+	},
+	"tab_size": 4,
+	"show_whitespaces": "trailing",
+	"hard_tabs": true,
+	"tabs": {
+		"file_icons": true,
+		"git_status": false
+	},
+	"which_key": {
+		"delay_ms": 100,
+		"enabled": true
+	},
+	"ui_font_family": "Monoid Nerd Font",
+	"buffer_font_family": "Monoid Nerd Font",
+	"buffer_font_features": {
+		"calt": true,
+		"liga": true
+	},
+	"wsl_connections": [
+  {
+   "distro_name": "FedoraLinux-44",
+   "user": null,
+   "projects": [
+    {
+     "paths": [
+      "/home/amgoujon"
+     ]
+    },
+    {
+     "paths": [
+      "/home/amgoujon/Obsidian_Vaults"
+     ]
+    },
+    {
+     "paths": [
+      "/home/amgoujon/Obsidian_Vaults/./"
+     ]
+    },
+    {
+     "paths": [
+      "/home/amgoujon/code/docker-testing/./"
+     ]
+    },
+    {
+     "paths": [
+      "/home/amgoujon/code/infrastructure"
+     ]
+    },
+    {
+     "paths": [
+      "/home/amgoujon/code/infrastructure/./"
+     ]
+    },
+    {
+     "paths": [
+      "/home/amgoujon/code/pokedex"
+     ]
+    },
+    {
+     "paths": [
+      "/home/amgoujon/code/virtual_tcm"
+     ]
     }
-  },
-  "cli_default_open_behavior": "existing_window",
-  "session": {
-    "trust_all_worktrees": true,
-  },
-  "vim_mode": true,
-  "icon_theme": {
-    "mode": "light",
-    "light": "Zed (Default)",
-    "dark": "Soft Charmed Icons"
-  },
-  "ui_font_size": 16,
-  "buffer_font_size": 16.0,
-  "buffer_font_family": "Monoid Nerd Font",
-  "ui_font_family": "Monoid Nerd Font",
-  "theme": {
-    "mode": "dark",
-    "light": "One Light",
-    "dark": "Cyberpunk Dark",
-  },
-  "format_on_save": "off",
+   ]
+  }
+ ],
+	"telemetry": {
+		"diagnostics": true,
+		"metrics": false
+	},
+	"session": {
+		"trust_all_worktrees": true
+	},
+	"vim_mode": true,
+	"icon_theme": {
+		"mode": "light",
+		"light": "Zed (Default)",
+		"dark": "Light Charmed Icons"
+	},
+	"ui_font_size": 16,
+	"buffer_font_size": 15,
+	"theme": {
+		"mode": "dark",
+		"light": "One Light",
+		"dark": "Cyberpunk Dark"
+	}
 }
