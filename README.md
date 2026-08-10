@@ -12,7 +12,7 @@ stow .
 ```
 
 
-Then log out and select Hyprland from your display manager. You'll need the packages listed in Part 6.
+
 
 For the full guide, read on.
 
@@ -43,7 +43,6 @@ https://github.com/user-attachments/assets/d2a6a672-2746-4642-b1cd-7b2db4c76ccf
 ![Zen Browser](showoff_assets/Zen.png)
 
 </details>
-
 
 ---
 
@@ -965,4 +964,3 @@ I'm adding this section to to let you know that I did use AI to help me structur
 - Tools used in this rice - linked in [Logistics.md](Logistics.md)
 - The r/Unixporn subreddit for providing me with inspiriation and refernce dotfiles to look at. 
 - Pewdiepie for motivating me to try Arch linux.
-

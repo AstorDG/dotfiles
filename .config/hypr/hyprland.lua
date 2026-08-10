@@ -2,7 +2,8 @@
 ----------------
 --- MONITORS ---
 ----------------
-hl.monitor({output = "DP-2", mode = "preferred", position = "0x0", scale = 1, vrr = 1})
+hl.monitor({output = "DP-2", mode = "3440x1440@180", position = "0x0", scale = 1, vrr = 1})
+hl.monitor({output = "", mode = "preferred", position = "auto", scale = 1})
 
 -------------------
 --- MY PROGRAMS ---
