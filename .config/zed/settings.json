@@ -7,6 +7,12 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
+ "theme": "Cyberpunk Dark",
+ "git_panel": {
+  "sort_by": "path",
+  "group_by": "status",
+  "tree_view": true
+ },
  "soft_wrap": "bounded",
  "preferred_line_length": 100,
  "search": {
@@ -21,10 +27,7 @@
    "tokyo-night": true,
    "zig": true,
    "lua": true,
- "git_panel": {
-  "tree_view": true
  },
- "file_scan_exclustions": [],
  "disable_ai": false,
  "scroll_beyond_last_line": "off",
 	"inlay_hints": {
@@ -116,10 +119,4 @@
 	},
 	"ui_font_size": 16,
 	"buffer_font_size": 15,
-	"theme": {
-		"mode": "dark",
-		"light": "One Light",
-		"dark": "Cyberpunk Dark"
-	}
-},
 }
