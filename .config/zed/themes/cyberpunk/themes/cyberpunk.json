@@ -28,7 +28,7 @@
 				"ghost_element.selected": "#55D1FF44",
 				"ghost_element.disabled": "#FFFFFFFF",
 				"text": "#00FFD5FF",
-				"text.muted": "#007F99FF",
+				"text.muted": "#9E33FFFF",
 				"text.placeholder": "#CCCCCCCF",
 				"text.disabled": "#FF0000FF",
 				"text.accent": "#00FF00FF",
@@ -265,7 +265,7 @@
 						"font_weight": null
 					},
 					"link_uri": {
-						"color": "#4700E6FF",
+						"color": "#6826FCFF",
 						"font_style": null,
 						"font_weight": null
 					},
@@ -425,4 +425,3 @@
 		}
 	]
 }
-
