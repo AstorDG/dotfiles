@@ -11,7 +11,7 @@ background-blur = true
 
 # System settings
 confirm-close-surface = false
-shell-integration = zsh
+shell-integration = fish
 
 #Shaders and colors
 custom-shader = ~/.config/ghostty/shaders/cursor_warp.glsl
@@ -30,16 +30,3 @@ keybind = super+q=quit
 keybind = ctrl+==increase_font_size:1.0
 keybind = ctrl+-=decrease_font_size:1.0
 keybind = ctrl+w=close_surface
-#Split changes, I'm leaving these commeted for now as I see if I use the tmux splits more
-# keybind = alt+v=new_split:right
-# keybind = alt+h=new_split:down
-# keybind = alt+h=goto_split:left
-# keybind = alt+k=goto_split:up
-# keybind = alt+j=goto_split:down
-# keybind = alt+l=goto_split:right
-# keybind = alt+shift+h=resize_split:left,10
-# keybind = alt+shift+k=resize_split:up,10
-# keybind = alt+shift+j=resize_split:down,10
-# keybind = alt+shift+l=resize_split:right,10
-# keybind = alt+e=equalize_splits
-

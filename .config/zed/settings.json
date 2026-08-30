@@ -20,6 +20,8 @@
    "markdown-oxide": true,
    "tokyo-night": true,
    "zig": true,
+   "lua": true,
+   "markdown-oxide": true,
  },
  "git_panel": {
   "tree_view": true

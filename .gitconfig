@@ -1,0 +1,7 @@
+[user]
+	name = astordg
+	email = astormg999@gmail.com
+[init]
+	defaultBranch = main
+[core]
+    editor = zed --wait

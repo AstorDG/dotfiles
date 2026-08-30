@@ -1,14 +1,14 @@
 {
   "Media Critique Template": {
     "prefix": "template-media-crit",
-    "description": "Template for media critique notes",
     "body": [
       "- **Status:** #Not-Started",
       "    - **Date Started:**",
       "    - **Date Finished:**",
       "    - **Rating:**",
       "    - **Thoughts:**"
-    ]
+    ],
+    "description": "Template for media critique notes"
   },
   "To Do Template": {
     "prefix": "template-todo",

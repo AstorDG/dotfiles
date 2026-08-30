@@ -5,6 +5,7 @@
     - [cava](https://github.com/karlstav/cava)
     - [ghostty](https://ghostty.org/)
     - [git](https://git-scm.com/downloads)
+    - [fish](https://fishshell.com/)
     - [hyprland](https://github.com/hyprwm/Hyprland?tab=readme-ov-file)
     - [neovim](https://neovim.io/)
     - [rofi](https://github.com/davatorium/rofi)
@@ -14,7 +15,7 @@
     - [tmux](https://github.com/tmux/tmux)
     - [waybar](https://github.com/Alexays/Waybar)
     - [zen](https://zen-browser.app/)
-    - [zsh](https://wiki.archlinux.org/title/Zsh)
+    - [zed](https://zed.dev)
 
 - ## Colors I'm reusing in my dotfiles. Helpful for keeping colors consistent
 - This is the website for converting colors to hex that I use: [colors](https://htmlcolorcodes.com/color-picker/)
@@ -34,5 +35,3 @@
 ## Fonts and their download links
 - [MonoidNerdFont](https://github.com/ryanoasis/nerd-fonts/releases/download/v3.4.0/Monoid.zip)
 - [JetBrainsMono](https://github.com/ryanoasis/nerd-fonts/releases/download/v3.4.0/JetBrainsMono.zip)
-
-

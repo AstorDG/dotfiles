@@ -34,7 +34,7 @@
 	stirling-pdf-desktop
 	zoom-us
 	#zen-browser flake
-	inputs.zen-browser.packages.${pkgs.system}.default
+	# inputs.zen-browser.packages.${pkgs.system}.default
 
 	##### Non Nix packages #####
 	#

@@ -9,10 +9,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    zen-browser = {
-          url = "github:0xc000022070/zen-browser-flake";
-          inputs.nixpkgs.follows = "nixpkgs-unstable";
-    };
+    # zen-browser = {
+    #       url = "github:0xc000022070/zen-browser-flake";
+    #       inputs.nixpkgs.follows = "nixpkgs-unstable";
+    # };
   };
 
   outputs =
@@ -22,8 +22,8 @@
      	nix-darwin.lib.darwinSystem {
         	modules = [ ./configuration.nix ];
 	    };
-		specialArgs = {
-			inherit inputs;
-		};
+		# specialArgs = {
+		# 	inherit inputs;
+		# };
     };
 }
