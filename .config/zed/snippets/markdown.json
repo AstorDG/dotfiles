@@ -1,6 +1,6 @@
 {
   "Media Critique Template": {
-    "prefix": "template-media-crit",
+    "prefix": "media-crit",
     "body": [
       "- **Status:** #Not-Started",
       "    - **Date Started:**",
@@ -10,42 +10,16 @@
     ],
     "description": "Template for media critique notes"
   },
-  "To Do Template": {
-    "prefix": "template-todo",
-    "description": "One todo item",
-    "body": [
-      "- [ ] "
-    ]
+  "Default Note Template": {
+  	"prefix": "default-note",
+   "body": [
+   "Status:",
+   " ",
+   "Tags:",
+   "",
+   "### References:",
+   "Links to source material and similar notes"
+   ],
+   "description": "Template for a regular note"
   },
-  "Interview Template": {
-    "prefix": "template_interview",
-    "description": "Template for interview prep",
-    "body": [
-	"- **Company:**",
-	"- **Interviewer:**",
-	"- **How I fit the job description:**",
-    "- **What can I teach them/ bring to the table that they might not have?:**",
-	"- **Questions I have for the interviewer:**",
-	"	- Why do they work there?",
-	"- **Values of the Company:**",
-	"- **Notes from the interview:**",
-	"- **Next Steps:**"
-    ]
-  },
-	"Portfolio Project Template": {
-		"prefix": "portfolio_template",
-		"description": "Template for all the info in a portfolio Project",
-		"body": [
-			"- Genre:",
-			"- Timeline:",
-			"- Role:",
-			"- Description:",
-			"- Tech stack:",
-			"- Team size:",
-			"- *My Work*",
-			"	- ",
-			"- Links",
-			"	- "
-		]
-	}
 }
