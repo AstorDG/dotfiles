@@ -14,6 +14,16 @@
     "flakes"
   ];
 
+  # Startup commands
+  launchd.user.agents.border = {
+  	command = "/run/current-system/sw/bin/borders width=12 active_color=0xff600000 inactive_color=0xff646464";
+   	serviceConfig = {
+    	RunAtLoad = true;
+     	KeepAlive = true;
+      	ProcessType = "Background";
+    };
+  };
+
   environment.systemPackages = with pkgs; [
 
   	##### Terminal Apps #####
@@ -25,6 +35,7 @@
     nixd
     neovim
     zig
+    jankyborders
 
     ##### GUI Apps #####
     zed-editor
@@ -46,6 +57,8 @@
   # Makes Fish your login shell.
   users.users.astor.shell = pkgs.fish;
   environment.shells = [pkgs.fish];
+
+  security.pam.services.sudo_local.touchIdAuth = true;
 
   # macOS settings managed by nix-darwin.
   # Show hidden files in finder
