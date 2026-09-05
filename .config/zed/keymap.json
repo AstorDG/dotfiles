@@ -184,12 +184,6 @@
 	},
 	{
 		"context": "ProjectPanel",
-		"bindings": {
-			"f": "project_panel::NewDirectory"
-		}
-	},
-	{
-		"context": "ProjectPanel",
 		"unbind": {
 			"alt-n": "project_panel::NewDirectory"
 		}
@@ -344,6 +338,64 @@
   "context": "vim_mode==normal",
   "bindings": {
    "space l m": "editor::Format"
+  }
+ },
+ {
+  "context": "vim_mode == normal",
+  "bindings": {
+   "space t a": [
+    "pane::CloseOtherItems",
+    {
+     "close_pinned": false
+    }
+   ]
+  }
+ },
+ {
+  "context": "Pane",
+  "unbind": {
+   "ctrl-alt-t": [
+    "pane::CloseOtherItems",
+    {
+     "close_pinned": false
+    }
+   ]
+  }
+ },
+ {
+  "context": "vim_mode == normal",
+  "bindings": {
+   "space t h": "pane::SwapItemLeft"
+  }
+ },
+ {
+  "context": "Pane",
+  "unbind": {
+   "ctrl-shift-pageup": "pane::SwapItemLeft"
+  }
+ },
+ {
+  "context": "vim_mode == normal",
+  "bindings": {
+   "space t l": "pane::SwapItemRight"
+  }
+ },
+ {
+  "context": "Pane",
+  "unbind": {
+   "ctrl-shift-pagedown": "pane::SwapItemRight"
+  }
+ },
+ {
+  "context": "vim_mode == normal",
+  "bindings": {
+   "space t p": "pane::TogglePinTab"
+  }
+ },
+ {
+  "context": "Pane",
+  "unbind": {
+   "ctrl-k shift-enter": "pane::TogglePinTab"
   }
  }
 ]
