@@ -28,6 +28,7 @@
 
   	##### Terminal Apps #####
     fish
+    lsd
     starship
     btop
     stow

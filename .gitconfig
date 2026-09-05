@@ -5,9 +5,3 @@
 	defaultBranch = main
 [core]
     editor = zed --wait
-[credential "https://github.com"]
-	helper = 
-	helper = !/home/winston/.local/bin/gh auth git-credential
-[credential "https://gist.github.com"]
-	helper = 
-	helper = !/home/winston/.local/bin/gh auth git-credential
