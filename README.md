@@ -11,9 +11,6 @@ cd dotfiles
 stow .
 ```
 
-
-
-
 For the full guide, read on.
 
 ---

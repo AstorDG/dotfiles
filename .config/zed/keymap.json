@@ -28,9 +28,7 @@
 	{
 		"context": "(VimControl && !menu) || (!Editor && !Terminal)",
 		"bindings": {
-			"ctrl-h": "workspace::ActivatePaneLeft",
-			"ctrl-j": "workspace::ActivatePaneDown",
-			"ctrl-l": "workspace::ActivatePaneRight"
+			
 		},
 		"unbind": {
 			"ctrl-w h": "workspace::ActivatePaneLeft",
@@ -70,7 +68,7 @@
 	{
 		"bindings": {
 			"\\": "project_panel::Toggle",
-			"ctrl-o": "workspace::Open",
+			"ctrl-o o": "workspace::Open",
 			"ctrl-b ctrl-o": "workspace::OpenFiles"
 		}
 	},
@@ -396,6 +394,47 @@
   "context": "Pane",
   "unbind": {
    "ctrl-k shift-enter": "pane::TogglePinTab"
+  }
+ },
+ {
+  "context": "(VimControl && !menu) || !Editor",
+  "bindings": {
+   "ctrl-j": "workspace::ActivatePaneDown"
+  }
+ },
+ {
+  "context": "(VimControl && !menu) || !Editor",
+  "bindings": {
+   "ctrl-l": "workspace::ActivatePaneRight"
+  }
+ },
+ {
+  "context": "(VimControl && !menu) || !Editor",
+  "bindings": {
+   "ctrl-h": "workspace::ActivatePaneLeft"
+  }
+ },
+ {
+  "context": "Workspace",
+  "bindings": {
+   "ctrl-a t": "multi_workspace::ToggleWorkspaceSidebar"
+  }
+ },
+ {
+  "context": "Workspace",
+  "unbind": {
+   "ctrl-alt-j": "multi_workspace::ToggleWorkspaceSidebar"
+  }
+ },
+ {
+  "bindings": {
+   "ctrl-a p": "agent::Toggle"
+  }
+ },
+ {
+  "context": "Workspace",
+   "bindings": {
+   "ctrl-g p": "git_panel::Toggle"
   }
  }
 ]

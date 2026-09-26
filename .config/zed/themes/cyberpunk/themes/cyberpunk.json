@@ -148,7 +148,7 @@
 				"warning.border": "#5d4c2fff",
 				"players": [
 					{
-						"cursor": "#00D5FFFF",
+						"cursor": "#BF00FFBB",
 						"background": "#74ade8ff",
 						"selection": "#7b8EBD70"
 					},
