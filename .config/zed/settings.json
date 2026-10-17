@@ -9,21 +9,36 @@
 {
  "cursor_blink": false,
  "agent": {
+  "tool_permissions": {
+   "tools": {
+    "fetch": {
+     "default": "allow"
+    }
+   }
+  },
   "sandbox_permissions": {
    "network_hosts": [
     "zed.dev",
-    "raw.githubusercontent.com"
+    "raw.githubusercontent.com",
+    "ziglang.org",
+    "api.github.com",
+    "github.com"
    ]
   },
-  "default_profile": "write",
+  "default_profile": "ask",
   "profiles": {
-   
+   "code": {
+    "name": "code",
+    "tools": {},
+    "enable_all_context_servers": false,
+    "context_servers": {}
+   }
   },
   "default_model": {
    "provider": "opencode",
    "model": "go/gpt-5.6-luna",
    "enable_thinking": true,
-   "effort": "high"
+   "effort": "medium"
   },
   "favorite_models": [],
   "model_parameters": []
