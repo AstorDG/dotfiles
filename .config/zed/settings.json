@@ -68,6 +68,7 @@
    "nix": true,
  },
  "disable_ai": false,
+ "lsp_document_colors": "background",
  "scroll_beyond_last_line": "off",
 	"inlay_hints": {
 		"enabled": true

@@ -9,14 +9,14 @@ hl.monitor({output = "", mode = "preferred", position = "auto", scale = 1})
 --- MY PROGRAMS ---
 -------------------
 local terminal = "ghostty"
-local fileManager = "dolphin"
+local fileManager = "luciole"
 local browser = "zen-browser"
 
 -----------------
 --- AUTOSTART ---
 -----------------
 hl.on("hyprland.start", function()
-	hl.exec_cmd("hyprpaper & waybar")
+	hl.exec_cmd("noctalia")
 end)
 
 -- Environment Variables
@@ -79,6 +79,7 @@ hl.config({
 	}
 })
 
+
 hl.curosr = {
 		no_warps = true,
 		warp_on_change_workspace = 0,
@@ -99,17 +100,19 @@ hl.bind("SUPER + ALT + F", hl.dsp.exec_cmd(fileManager))
 hl.bind("SUPER + ALT + B", hl.dsp.exec_cmd(browser))
 hl.bind("SUPER + Q", hl.dsp.window.close())
 
-hl.bind("SUPER + BACKSPACE", hl.dsp.exec_cmd("pkill rofi || rofi -show run"))
+hl.bind("SUPER + BACKSPACE", hl.dsp.exec_cmd("noctalia msg panel-toggle launcher"))
 
-hl.bind("F7", hl.dsp.exec_cmd("pactl set-sink-volume @DEFAULT_SINK@ -5%"), {repeating = true })
-hl.bind("F8", hl.dsp.exec_cmd("pactl set-sink-volume @DEFAULT_SINK@ +5%"), {repeating = true })
 
-hl.bind("F12", hl.dsp.exec_cmd("hyprshot -m region -o ~/screen-shots/"))
+-- media keybinds
+hl.bind("F7",  hl.dsp.exec_cmd("noctalia msg volume-down"), {repeating = true })
+hl.bind("F8",  hl.dsp.exec_cmd("noctalia msg volume-up"), {repeating = true })
+hl.bind("F9",  hl.dsp.exec_cmd("noctalia msg media previous"), {repeating = true })
+hl.bind("F10", hl.dsp.exec_cmd("noctalia msg media toggle"), {repeating = true })
+hl.bind("F11", hl.dsp.exec_cmd("noctalia msg media next"), {repeating = true })
+hl.bind("F12", hl.dsp.exec_cmd("noctalia msg screenshot-region"))
 
 -- move focus
 hl.bind("SUPER + H", hl.dsp.focus({ direction = "left"}))
--- hl.bind("SUPER + J", hl.dsp.focus({ direction = "down"}))
--- hl.bind("SUPER + K", hl.dsp.focus({ direction = "up"}))
 hl.bind("SUPER + L", hl.dsp.focus({ direction = "right"}))
 
 -- move windows left and right
@@ -124,10 +127,15 @@ for i = 1, 5 do
 	hl.bind("SUPER + CTRL + " .. key, hl.dsp.window.move({ workspace = i}))
 end
 
+-- Workspace rules
+hl.workspace_rule({ workspace = "1", monitor = "DP-2", persistent = true, default_name = "code" })
+hl.workspace_rule({ workspace = "2", monitor = "DP-2", persistent = true, default_name = "game" })
+hl.workspace_rule({ workspace = "3", monitor = "DP-2", persistent = true, default_name = "background" })
+
 -- resize windows
 hl.bind("SUPER + SHIFT + H", hl.dsp.layout("colresize -conf"))
 hl.bind("SUPER + SHIFT + L", hl.dsp.layout("colresize +conf"))
 hl.bind("SUPER + SHIFT + F", hl.dsp.layout("colresize 1.0"))
 
 -- center window
-hl.bind("SUPER + SHIFT + K", hl.dsp.layout("focus l"))
+hl.bind("SUPER + CTRL + J", hl.dsp.layout("center"))

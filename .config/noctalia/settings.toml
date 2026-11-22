@@ -1,0 +1,349 @@
+config_version = 20
+
+[accessibility]
+ui_scale = 1.0500000081956387
+
+[audio]
+enable_notification_sounds = false
+spectrum_frame_rate = 120
+
+[bar.default]
+background_opacity = 0.0
+capsule = true
+capsule_border = "primary"
+capsule_fill = "surface"
+capsule_foreground = "on_surface"
+capsule_padding = 4.0
+capsule_radius = 0
+capsule_thickness = 0.9499999824911356
+center = [ "session", "audio_visualizer", "launcher" ]
+compositor_blur = false
+end = [ "workspaces", "media", "volume", "clock", "bar" ]
+font_family = "Fixedsys Excelsior"
+font_scale = 0.75999999046325684
+font_weight = 400
+margin_edge = 2
+margin_ends = "0%"
+margin_opposite_edge = 4
+padding = 10
+radius = 0
+scale = 1.7500000186264515
+shadow = false
+start = [ "control-center", "network", "Ram_Value", "Gpu_Usage", "Cpu_Temp", "Cpu_Usage" ]
+thickness = 40
+widget_spacing = 10
+
+[control_center]
+hidden_tabs = [ "power", "bluetooth", "weather", "notifications" ]
+show_session_button = false
+sidebar = "full"
+sidebar_section = "full"
+width = 900
+
+    [[control_center.shortcuts]]
+    type = "wifi"
+
+[desktop_widgets]
+enabled = false
+
+[keybinds]
+down = [ "Down", "Ctrl+j" ]
+left = [ "Left", "Ctrl+h" ]
+right = [ "Right", "Ctrl+l" ]
+up = [ "Up", "Ctrl+k" ]
+validate = [ "Return" ]
+
+[lockscreen]
+blur_intensity = 0.29999999329447746
+tint_color = "#1E1110"
+tint_intensity = 0.60999998636543751
+transition = [ "pixel" ]
+transition_duration = 2000
+
+[lockscreen_widgets]
+enabled = true
+schema_version = 2
+widget_order = [
+    "lockscreen-login-box@DP-2",
+    "lockscreen-widget-0000000000000002",
+    "lockscreen-widget-0000000000000004",
+    "lockscreen-widget-0000000000000006"
+]
+
+    [lockscreen_widgets.grid]
+    cell_size = 16
+    major_interval = 4
+    visible = true
+
+    [lockscreen_widgets.widget."lockscreen-login-box@DP-2"]
+    box_height = 196.0
+    box_width = 810.0
+    cx = 1720.0
+    cy = 1182.0
+    output = "DP-2"
+    placement_height = 1440.0
+    placement_width = 3440.0
+    rotation = 0.0
+    type = "login_box"
+
+        [lockscreen_widgets.widget."lockscreen-login-box@DP-2".settings]
+        background_color = "surface_container"
+        background_opacity = 0.79000000000000004
+        background_radius = 32.0
+        center_password_text = true
+        input_opacity = 1.0
+        input_radius = 32.0
+        layout = "regular"
+        show_caps_lock = true
+        show_keyboard_layout = false
+        show_login_button = false
+        show_media = true
+        show_media_controls = true
+        show_password_reveal = true
+        show_session_buttons = true
+        show_unlock_hint = false
+        show_weather = false
+
+    [lockscreen_widgets.widget.lockscreen-widget-0000000000000002]
+    box_height = 560.0
+    box_width = 864.0
+    cx = 1720.0
+    cy = 720.0
+    output = "DP-2"
+    placement_height = 1440.0
+    placement_width = 3440.0
+    rotation = 0.0
+    type = "fancy_audio_visualizer"
+
+        [lockscreen_widgets.widget.lockscreen-widget-0000000000000002.settings]
+        background = false
+        bloom_intensity = 1.0
+        fade_when_idle = true
+        inner_diameter = 0.35000000000000003
+        primary_color = "on_error"
+        rotation_speed = 0.40000000000000002
+        secondary_color = "on_error_container"
+        sensitivity = 1.5
+        visualization_mode = "wave"
+        wave_thickness = 0.90000000000000013
+
+    [lockscreen_widgets.widget.lockscreen-widget-0000000000000004]
+    box_height = 80.0
+    box_width = 384.0
+    cx = 1933.0
+    cy = 368.0
+    output = "DP-2"
+    placement_height = 1440.0
+    placement_width = 3440.0
+    rotation = 0.0
+    type = "clock"
+
+        [lockscreen_widgets.widget.lockscreen-widget-0000000000000004.settings]
+        background_opacity = 1.0
+        background_padding = 6
+        background_radius = 32
+        center_text = true
+        clock_style = "digital"
+        format = "{:%D}"
+
+    [lockscreen_widgets.widget.lockscreen-widget-0000000000000006]
+    box_height = 80.0
+    box_width = 288.0
+    cx = 1480.0
+    cy = 248.0
+    output = "DP-2"
+    placement_height = 1440.0
+    placement_width = 3440.0
+    rotation = 0.0
+    type = "clock"
+
+        [lockscreen_widgets.widget.lockscreen-widget-0000000000000006.settings]
+        background_opacity = 1.0
+        background_padding = 5
+        background_radius = 32
+        clock_style = "digital"
+        format = "{:%I:%M}"
+
+[notification]
+enable_daemon = false
+
+[osd]
+enabled = false
+
+[plugin_settings."hbollon/shift"]
+automation = "manual"
+day_start_hour = 0
+holidays_enabled = false
+notify_target_reached = false
+weekly_hours = 0.0
+work_week = "custom"
+
+[plugin_settings."thepunkoff/pomodoro"]
+panel_position = "center"
+
+[plugins]
+enabled = [ "aabidk20/yt-music", "hbollon/shift" ]
+
+[shell]
+font_family = "Fixedsys Excelsior"
+polkit_agent = true
+
+    [shell.greeter_sync]
+    auto_sync = true
+
+    [shell.launcher]
+    auto_paste = "ctrl_v"
+    category_icons_only = true
+    compact = true
+    default_view = "all"
+    fetch_exchange_rates = false
+    provider_prefix = ">"
+    search_position = "top"
+    width = 1000
+
+        [shell.launcher.providers.calculator]
+        global = false
+
+    [shell.panel]
+    border_color = "on_primary"
+    clipboard_placement = "attached"
+    control_center_position = "center"
+    polkit_placement = "attached"
+
+    [shell.screenshot]
+    confirm_region = true
+    directory = "/home/winston/screen-shots"
+    format = "jpeg"
+    show_cursor = true
+
+    [[shell.session.actions]]
+    action = "lock"
+    countdown_seconds = 0.0
+    enabled = true
+    shortcut = "1"
+    variant = "default"
+
+    [[shell.session.actions]]
+    action = "logout"
+    countdown_seconds = 0.0
+    enabled = true
+    shortcut = "2"
+    variant = "default"
+
+    [[shell.session.actions]]
+    action = "lock_and_suspend"
+    countdown_seconds = 0.0
+    enabled = true
+    shortcut = "3"
+    variant = "default"
+
+    [[shell.session.actions]]
+    action = "reboot"
+    countdown_seconds = 0.0
+    enabled = true
+    shortcut = "4"
+    variant = "default"
+
+    [[shell.session.actions]]
+    action = "shutdown"
+    countdown_seconds = 0.0
+    enabled = true
+    shortcut = "5"
+    variant = "destructive"
+
+    [[shell.session.actions]]
+    action = "command"
+    command = "notify-send 'Noctalia' 'Custom session entry'"
+    countdown_seconds = 0.0
+    enabled = true
+    variant = "default"
+
+[theme]
+builtin = "Tokyo-Night"
+community_palette = "Cyberpunk"
+custom_palette = "cyberpunk"
+mode = "dark"
+source = "custom"
+wallpaper_scheme = "m3-content"
+
+[wallpaper]
+directory = "/home/winston/dotfiles/.config/hypr/wallpapers"
+edge_smoothness = 0.64999998547136784
+transition = [ "pixel" ]
+transition_duration = 2000
+transition_on_startup = true
+
+    [wallpaper.default]
+    path = "/home/winston/dotfiles/.config/hypr/wallpapers/Teahouse.png"
+
+    [wallpaper.last]
+    path = "/home/winston/dotfiles/.config/hypr/wallpapers/Teahouse.png"
+
+    [wallpaper.monitors.DP-2]
+    path = "/home/winston/dotfiles/.config/hypr/wallpapers/Teahouse.png"
+
+[widget.Cpu_Temp]
+glyph = "cpu"
+stat = "cpu_temp"
+type = "sysmon"
+
+[widget.Cpu_Usage]
+glyph = "cpu"
+show_cpu_cores = true
+type = "sysmon"
+
+[widget.Gpu_Usage]
+custom_label = "󰾲"
+scale = 1.1000000000000001
+show_glyph = false
+stat = "gpu_usage"
+type = "sysmon"
+
+[widget.Ram_Value]
+custom_label = ""
+show_glyph = false
+stat = "ram_used"
+type = "sysmon"
+
+[widget.audio_visualizer]
+bands = 30
+capsule_padding = 0
+color = "tertiary"
+color_1 = "secondary"
+color_2 = "hover"
+show_when_idle = true
+width = 80
+
+[widget.bar]
+custom_label = ""
+scale = 1.25
+show_glyph = false
+type = "hbollon/shift:bar"
+
+[widget.clock]
+format = "{:%a %d %I:%M}"
+scale = 1.25
+
+[widget.control-center]
+glyph = "settings"
+
+[widget.media]
+font_scale = 0.90000000000000013
+rotate_album_art = true
+scale = 1.1500000000000001
+
+[widget.network]
+scale = 1.1500000000000001
+show_label = false
+
+[widget.sysmon]
+custom_label = ""
+scale = 1.1000000000000001
+show_glyph = false
+stat = "ram_pct"
+
+[widget.workspaces]
+active_pill_size = 2.0
+empty_color = "on_primary"
+labels_only_when_occupied = true
+monitors = [ "*" ]
